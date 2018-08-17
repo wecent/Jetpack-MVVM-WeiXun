@@ -31,7 +31,7 @@ import butterknife.OnClick;
 
 /**
  * desc: 新闻页面 .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/7 .
  */
 public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsContract.View {

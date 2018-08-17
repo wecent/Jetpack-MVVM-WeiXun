@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/3 .
  */
 public class Channel extends DataSupport implements Serializable, MultiItemEntity {

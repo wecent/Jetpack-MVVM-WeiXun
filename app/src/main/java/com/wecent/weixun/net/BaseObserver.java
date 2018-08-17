@@ -6,7 +6,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public abstract class BaseObserver<T> implements Observer<T> {

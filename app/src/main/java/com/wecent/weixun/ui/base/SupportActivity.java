@@ -15,7 +15,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public class SupportActivity extends RxAppCompatActivity implements ISupportActivity{

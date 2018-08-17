@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * desc: 新闻adapter.
- * author: Will .
+ * author: wecent .
  * date: 2017/9/8 .
  */
 public class NewsDetailAdapter extends BaseMultiItemQuickAdapter<NewsDetail.ItemBean, BaseViewHolder> {

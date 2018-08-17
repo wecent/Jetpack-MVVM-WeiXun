@@ -22,7 +22,7 @@ import butterknife.BindView;
 
 /**
  * desc: 视频页面
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public class VideoFragment extends BaseFragment<VideoPresenter> implements VideoContract.View {

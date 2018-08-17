@@ -14,7 +14,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/24 .
  */
 public class ImageBrowsePresenter extends BasePresenter<ImageBrowseContract.View> implements ImageBrowseContract.Presenter {

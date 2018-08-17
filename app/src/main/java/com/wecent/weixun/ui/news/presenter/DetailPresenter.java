@@ -21,7 +21,7 @@ import io.reactivex.functions.Function;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/8 .
  */
 public class DetailPresenter extends BasePresenter<DetailContract.View> implements DetailContract.Presenter {

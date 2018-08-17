@@ -23,7 +23,7 @@ import butterknife.OnClick;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/12 .
  */
 public class NewsDelPop extends BasePopup<NewsDelPop> {

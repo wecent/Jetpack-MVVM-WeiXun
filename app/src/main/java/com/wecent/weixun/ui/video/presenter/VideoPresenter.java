@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/10 .
  */
 public class VideoPresenter extends BasePresenter<VideoContract.View> implements VideoContract.Presenter {

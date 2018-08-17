@@ -23,7 +23,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/27 .
  */
 @SuppressLint("ValidFragment")

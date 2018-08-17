@@ -16,7 +16,7 @@ import io.reactivex.functions.Function;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/27 .
  */
 public class JanDanPresenter extends BasePresenter<JanDanContract.View> implements JanDanContract.Presenter {

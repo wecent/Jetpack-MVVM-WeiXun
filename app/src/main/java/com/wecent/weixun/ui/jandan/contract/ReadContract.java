@@ -5,7 +5,7 @@ import com.wecent.weixun.ui.base.BaseContract;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/7 .
  */
 public interface ReadContract {

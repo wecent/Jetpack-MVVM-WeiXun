@@ -26,7 +26,7 @@ import butterknife.Unbinder;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extends SupportFragment implements IBase, BaseContract.BaseView {
@@ -104,7 +104,6 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
 
     }
 
-
     protected void showLoadingDialog() {
         if (mLoadingDialog != null)
             mLoadingDialog.show();
@@ -122,7 +121,6 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
         if (mLoadingDialog != null && mLoadingDialog.isShowing())
             mLoadingDialog.dismiss();
     }
-
 
     private void initStateView() {
         if (mSimpleMultiStateView == null) return;

@@ -2,7 +2,7 @@ package com.wecent.weixun.ui.base;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 

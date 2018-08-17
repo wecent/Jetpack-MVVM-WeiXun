@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * desc: 新鲜事文章bean.
- * author: Will .
+ * author: wecent .
  * date: 2017/9/10 .
  */
 public class FreshNewsArticleBean implements Serializable {

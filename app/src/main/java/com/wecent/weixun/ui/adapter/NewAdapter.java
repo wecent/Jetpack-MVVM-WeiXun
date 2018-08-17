@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/10 .
  */
 public class NewAdapter extends BaseMultiItemQuickAdapter<Channel, BaseViewHolder> {

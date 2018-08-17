@@ -49,7 +49,7 @@ import static com.wecent.weixun.R.id.scrollview;
 
 /**
  * desc: 图片新闻浏览页面.
- * author: Will .
+ * author: wecent .
  * date: 2017/9/24 .
  */
 public class ImageBrowseActivity extends BaseActivity<ArticleReadPresenter> implements ArticleReadContract.View {

@@ -5,7 +5,7 @@ import com.wecent.weixun.R;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/27 .
  */
 public final class CustomLoadMoreView extends LoadMoreView {

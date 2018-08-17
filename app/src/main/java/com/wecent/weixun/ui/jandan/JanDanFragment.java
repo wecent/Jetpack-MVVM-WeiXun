@@ -22,7 +22,7 @@ import butterknife.BindView;
 
 /**
  * desc: 煎蛋
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public class JanDanFragment extends BaseFragment {

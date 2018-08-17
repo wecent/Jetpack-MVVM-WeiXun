@@ -20,7 +20,7 @@ import javax.inject.Inject;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/7 .
  */
 public class NewsPresenter extends BasePresenter<NewsContract.View> implements NewsContract.Presenter {

@@ -9,7 +9,7 @@ import android.widget.ScrollView;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/24 .
  */
 public class MyScrollView extends ScrollView {

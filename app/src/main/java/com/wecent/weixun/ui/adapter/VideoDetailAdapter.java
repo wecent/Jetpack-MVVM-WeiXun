@@ -23,7 +23,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/10 .
  */
 public class VideoDetailAdapter extends BaseQuickAdapter<VideoDetailBean.ItemBean, BaseViewHolder> {

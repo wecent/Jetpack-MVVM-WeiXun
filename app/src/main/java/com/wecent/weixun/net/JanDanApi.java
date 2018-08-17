@@ -13,7 +13,7 @@ import io.reactivex.Observable;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/27 .
  */
 public class JanDanApi {

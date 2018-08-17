@@ -29,7 +29,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extends SupportActivity implements IBase, BaseContract.BaseView, BGASwipeBackHelper.Delegate {

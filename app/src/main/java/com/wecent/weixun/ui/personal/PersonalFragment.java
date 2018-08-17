@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 
 /**
  * desc: 个人页面
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public class PersonalFragment extends BaseFragment implements ToolBarClickListener, TranslucentScrollView.TranslucentChangedListener {

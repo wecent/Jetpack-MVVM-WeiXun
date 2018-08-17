@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/27 .
  */
 public class JdDetailBean {

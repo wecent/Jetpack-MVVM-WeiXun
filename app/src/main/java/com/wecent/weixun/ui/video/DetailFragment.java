@@ -27,7 +27,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/10 .
  */
 public class DetailFragment extends BaseFragment<VideoPresenter> implements VideoContract.View {

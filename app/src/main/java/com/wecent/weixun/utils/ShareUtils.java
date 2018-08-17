@@ -7,7 +7,7 @@ import android.util.Log;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/10/18 .
  */
 public class ShareUtils {

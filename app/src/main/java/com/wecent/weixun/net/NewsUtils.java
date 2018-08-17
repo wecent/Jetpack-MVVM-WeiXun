@@ -4,7 +4,7 @@ import com.wecent.weixun.bean.NewsDetail;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/20 .
  */
 public class NewsUtils {

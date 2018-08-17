@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/31 .
  */
 public class JokesAdapter extends BaseQuickAdapter<JdDetailBean.CommentsBean, BaseViewHolder> {

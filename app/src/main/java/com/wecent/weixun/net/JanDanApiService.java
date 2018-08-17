@@ -11,7 +11,7 @@ import retrofit2.http.Url;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/27 .
  */
 public interface JanDanApiService {

@@ -9,7 +9,7 @@ import com.wecent.weixun.ui.video.DetailFragment;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/10 .
  */
 public class VideoPagerAdapter extends FragmentStatePagerAdapter {

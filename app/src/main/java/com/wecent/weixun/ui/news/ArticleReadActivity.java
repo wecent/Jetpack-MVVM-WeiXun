@@ -33,7 +33,7 @@ import butterknife.OnClick;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/21 .
  */
 public class ArticleReadActivity extends BaseActivity<ArticleReadPresenter> implements ArticleReadContract.View {

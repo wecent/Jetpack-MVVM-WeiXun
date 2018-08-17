@@ -2,7 +2,7 @@ package com.wecent.weixun.bean;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public class Constants {

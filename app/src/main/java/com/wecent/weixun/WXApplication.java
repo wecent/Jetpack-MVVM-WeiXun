@@ -14,7 +14,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackManager;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 public class WXApplication extends LitePalApplication {

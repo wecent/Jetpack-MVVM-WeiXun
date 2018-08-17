@@ -50,7 +50,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/8 .
  */
 public class DetailFragment extends BaseFragment<DetailPresenter> implements DetailContract.View {

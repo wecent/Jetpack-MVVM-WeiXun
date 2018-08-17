@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * desc:
- * author: Will .
+ * author: wecent .
  * date: 2017/9/2 .
  */
 @Module

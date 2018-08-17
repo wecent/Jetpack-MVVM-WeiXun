@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * desc: .
- * author: Will .
+ * author: wecent .
  * date: 2017/9/21 .
  */
 public class ArticleReadPresenter extends BasePresenter<ArticleReadContract.View> implements ArticleReadContract.Presenter {
