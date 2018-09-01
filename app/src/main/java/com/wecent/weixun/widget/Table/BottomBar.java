@@ -55,7 +55,7 @@ public class BottomBar extends LinearLayout {
         mTabParams.weight = 1;
     }
 
-    public BottomBar addItem(final BottomBarTab tab) {
+    public BottomBar addItem(final BottomTab tab) {
         tab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

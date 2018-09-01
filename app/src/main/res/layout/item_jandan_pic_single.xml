@@ -82,7 +82,7 @@
                 android:indeterminate="true"
                 app:mpb_progressStyle="horizontal"
                 android:layout_alignParentTop="true"
-                app:mpb_secondaryProgressTint="@color/colorPrimary"/>
+                app:mpb_secondaryProgressTint="@color/app_color_blue"/>
 
             <com.wecent.weixun.widget.ShowMaxImageView
                 android:id="@+id/img"

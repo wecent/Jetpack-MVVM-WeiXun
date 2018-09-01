@@ -118,7 +118,7 @@ public class PersonalFragment extends BaseFragment implements ToolBarClickListen
         //关联需要渐变的视图
         scrollTrans.setTransView(toolTrans);
         //设置ActionBar键渐变颜色
-        scrollTrans.setTransColor(getResources().getColor(R.color.colorPrimary));
+        scrollTrans.setTransColor(getResources().getColor(R.color.app_color_blue));
         //关联伸缩的视图
         scrollTrans.setPullZoomView(llHeader);
     }

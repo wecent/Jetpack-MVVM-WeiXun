@@ -14,7 +14,7 @@ import com.wecent.weixun.ui.news.NewsFragment;
 import com.wecent.weixun.ui.video.VideoFragment;
 import com.wecent.weixun.utils.StatusBarUtils;
 import com.wecent.weixun.widget.Table.BottomBar;
-import com.wecent.weixun.widget.Table.BottomBarTab;
+import com.wecent.weixun.widget.Table.BottomTab;
 
 import butterknife.BindView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -65,10 +65,10 @@ public class MainActivity extends BaseActivity {
             mFragments[3] = findFragment(PersonalFragment.class);
         }
 
-        mBottomBar.addItem(new BottomBarTab(this, R.drawable.ic_news, "新闻"))
-                .addItem(new BottomBarTab(this, R.drawable.ic_video, "视频"))
-                .addItem(new BottomBarTab(this, R.drawable.ic_jiandan, "煎蛋"))
-                .addItem(new BottomBarTab(this, R.drawable.ic_my, "我的"));
+        mBottomBar.addItem(new BottomTab(this, R.drawable.ic_news, "新闻"))
+                .addItem(new BottomTab(this, R.drawable.ic_video, "视频"))
+                .addItem(new BottomTab(this, R.drawable.ic_jiandan, "煎蛋"))
+                .addItem(new BottomTab(this, R.drawable.ic_my, "我的"));
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {

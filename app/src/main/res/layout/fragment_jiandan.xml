@@ -8,7 +8,7 @@
         android:id="@+id/fake_status_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/statusbar_view_height"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/app_color_blue"/>
 
     <android.support.design.widget.TabLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +17,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/iv_edit"
-        app:tabBackground="@color/colorPrimary"
+        app:tabBackground="@color/app_color_blue"
         app:tabIndicatorColor="@android:color/white"
         app:tabIndicatorHeight="2dp"
         app:tabMaxWidth="0dp"
@@ -26,11 +26,9 @@
         app:tabSelectedTextColor="@android:color/white"
         app:tabTextColor="#CCE7EF"/>
 
-
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

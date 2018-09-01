@@ -74,7 +74,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_weibo" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_weibo"
@@ -108,7 +108,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_zhihu" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_zhihu"
@@ -142,7 +142,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_dingtalk" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_ding"
@@ -176,7 +176,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_taobao" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_taobao"
@@ -210,7 +210,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_alipay" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_qq"
@@ -244,7 +244,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_sketch" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_ie"
@@ -278,7 +278,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_google" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_google"
@@ -312,7 +312,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_facebook" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_facebook"
@@ -346,7 +346,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_dropbox" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_dropbox"
@@ -380,7 +380,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_linkedin" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_linkedin"
@@ -415,7 +415,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_reddit" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_reddit"
@@ -444,6 +444,6 @@
         android:id="@+id/toolTrans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary" />
+        android:background="@color/app_color_blue" />
 
 </RelativeLayout>

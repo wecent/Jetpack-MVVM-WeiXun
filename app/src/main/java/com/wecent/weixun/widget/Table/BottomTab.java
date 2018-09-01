@@ -13,9 +13,7 @@ import android.widget.TextView;
 import com.wecent.weixun.R;
 import com.wecent.weixun.utils.ContextUtils;
 
-
-
-public class BottomBarTab extends LinearLayout {
+public class BottomTab extends LinearLayout {
 
     private Context mContext;
     private ImageView mImageView;
@@ -24,16 +22,16 @@ public class BottomBarTab extends LinearLayout {
     private int icon;
     private static boolean ifshow = false;
 
-    public BottomBarTab(Context context, @DrawableRes int icon, String title) {
+    public BottomTab(Context context, @DrawableRes int icon, String title) {
         this(context, null, icon,  title);
     }
 
 
-    public BottomBarTab(Context context, AttributeSet attrs, int icon, String title) {
+    public BottomTab(Context context, AttributeSet attrs, int icon, String title) {
         this(context, attrs, 0, icon, title);
     }
 
-    public BottomBarTab(Context context, AttributeSet attrs, int defStyleAttr, int icon, String title) {
+    public BottomTab(Context context, AttributeSet attrs, int defStyleAttr, int icon, String title) {
         super(context, attrs, defStyleAttr);
         init(context, icon, title);
     }
@@ -48,10 +46,10 @@ public class BottomBarTab extends LinearLayout {
 
         setOrientation(LinearLayout.VERTICAL);
         mImageView = new ImageView(context);
-        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics());
         LayoutParams imageViewParams = new LayoutParams(size, size);
         imageViewParams.gravity = Gravity.CENTER_HORIZONTAL;
-        imageViewParams.topMargin = ContextUtils.dip2px(context, 5.0f);
+        imageViewParams.topMargin = ContextUtils.dip2px(context, 3.5f);
         mImageView.setImageResource(icon);
         mImageView.setLayoutParams(imageViewParams);
 
@@ -59,8 +57,8 @@ public class BottomBarTab extends LinearLayout {
         LayoutParams textViewParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         textViewParams.gravity = Gravity.CENTER_HORIZONTAL;
         // textViewParams.addRule(ALIGN_PARENT_BOTTOM);
-        textViewParams.topMargin = ContextUtils.dip2px(context, 2.5f);
-        textViewParams.bottomMargin = ContextUtils.dip2px(context, 5.0f);
+//        textViewParams.topMargin = ContextUtils.dip2px(context, 2.5f);
+        textViewParams.bottomMargin = ContextUtils.dip2px(context, 3.5f);
         mTextView = new TextView(context);
         mTextView.setText(title);
         mTextView.setTextSize(ContextUtils.dip2px(context, 3.5f));
@@ -74,15 +72,13 @@ public class BottomBarTab extends LinearLayout {
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         if (selected) {
-            mImageView.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimary));
-            mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
-
+            mImageView.setColorFilter(ContextCompat.getColor(mContext, R.color.app_color_blue));
+            mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.app_color_blue));
         } else {
             mImageView.setColorFilter(ContextCompat.getColor(mContext, R.color.color_table));
             mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.color_table));
         }
     }
-
 
     public void setTabPosition(int position) {
         mTabPosition = position;

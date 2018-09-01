@@ -8,16 +8,16 @@
         android:id="@+id/fake_status_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/statusbar_view_height"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/app_color_blue"/>
 
     <android.support.design.widget.TabLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/iv_edit"
-        app:tabBackground="@color/colorPrimary"
+        app:tabBackground="@color/app_color_blue"
         app:tabIndicatorColor="@android:color/white"
         app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"

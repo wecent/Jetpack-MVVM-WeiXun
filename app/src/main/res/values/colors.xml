@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#64B6D1</color>
-    <color name="colorPrimaryDark">#F68E54</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="app_color_blue">#00A8E1</color>
+    <color name="app_color_blue_disabled">#8000A8E1</color>
+    <color name="app_color_blue_pressed">#C000A8E1</color>
+
+    <color name="config_color_separator">#DEE0E2</color>
+    <color name="config_color_separator_darken">#D4D6D8</color>
+    <color name="config_color_background">#F4F5F7</color>
+    <color name="config_color_background_pressed">#EEEFF1</color>
+    <color name="config_color_pressed">#EEEEF0</color>
+
+    <color name="config_color_white">#FFFFFF</color>
+    <color name="config_color_75_white">#C0FFFFFF</color>
+    <color name="config_color_60_white">#99FFFFFF</color>
+    <color name="config_color_50_white">#80FFFFFF</color>
+    <color name="config_color_25_white">#40FFFFFF</color>
+    <color name="config_color_15_white">#26FFFFFF</color>
+    <color name="config_color_10_white">#19FFFFFF</color>
+
+    <color name="config_color_black">#000000</color>
+    <color name="config_color_75_black">#C0000000</color>
+    <color name="config_color_60_black">#99000000</color>
+    <color name="config_color_50_black">#80000000</color>
+    <color name="config_color_25_black">#40000000</color>
+    <color name="config_color_15_black">#26000000</color>
+    <color name="config_color_10_black">#19000000</color>
+
+    <color name="config_color_gray_1">#353C46</color>
+    <color name="config_color_gray_2">#49505A</color>
+    <color name="config_color_gray_3">#5D646E</color>
+    <color name="config_color_gray_4">#717882</color>
+    <color name="config_color_gray_5">#858C96</color>
+    <color name="config_color_gray_6">#99A0AA</color>
+    <color name="config_color_gray_7">#ADB4BE</color>
+    <color name="config_color_gray_8">#C4C8D0</color>
+    <color name="config_color_gray_9">#D8DCE4</color>
 
     <color name="color_background">#f5f5f5</color>
     <color name="color_table">#a3a3a3</color>
