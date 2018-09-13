@@ -1,4 +1,4 @@
-package com.wecent.weixun.net;
+package com.wecent.weixun.network;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;

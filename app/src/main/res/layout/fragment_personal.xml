@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.wecent.weixun.widget.Scroll.TranslucentScrollView
+    <com.wecent.weixun.widget.trans.TranslucentScrollView
         android:id="@+id/scrollTrans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -438,9 +438,9 @@
 
         </LinearLayout>
 
-    </com.wecent.weixun.widget.Scroll.TranslucentScrollView>
+    </com.wecent.weixun.widget.trans.TranslucentScrollView>
 
-    <com.wecent.weixun.widget.ToolBar.TranslucentToolBar
+    <com.wecent.weixun.widget.trans.TranslucentToolBar
         android:id="@+id/toolTrans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -12,9 +12,10 @@ import com.wecent.weixun.bean.FreshNewsBean;
 import com.wecent.weixun.bean.JdDetailBean;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
-import com.wecent.weixun.net.JanDanApi;
+import com.wecent.weixun.network.JanDanApi;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.widget.CustomLoadMoreView;
+import com.wecent.weixun.widget.PtrWeiXunHeader;
 
 import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -27,7 +28,7 @@ import in.srain.cube.views.ptr.PtrHandler;
  * date: 2017/9/27 .
  */
 @SuppressLint("ValidFragment")
-public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements JanDanContract.View {
+public class DetailFragment extends BaseFragment<JanDanPresenter> implements JanDanContract.View {
     public static final String TYPE = "type";
 
     @BindView(R.id.mRecyclerView)
@@ -38,15 +39,17 @@ public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements J
     private BaseQuickAdapter mAdapter;
     private int pageNum = 1;
     private String type;
+    private PtrWeiXunHeader mHeader;
+    private PtrFrameLayout mFrame;
 
-    public JdDetailFragment(BaseQuickAdapter adapter) {
+    public DetailFragment(BaseQuickAdapter adapter) {
         this.mAdapter = adapter;
     }
 
-    public static JdDetailFragment newInstance(String type, BaseQuickAdapter baseQuickAdapter) {
+    public static DetailFragment newInstance(String type, BaseQuickAdapter baseQuickAdapter) {
         Bundle args = new Bundle();
         args.putCharSequence(TYPE, type);
-        JdDetailFragment fragment = new JdDetailFragment(baseQuickAdapter);
+        DetailFragment fragment = new DetailFragment(baseQuickAdapter);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,6 +70,9 @@ public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements J
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         mPtrFrameLayout.disableWhenHorizontalMove(true);
+        mHeader = new PtrWeiXunHeader(mContext);
+        mPtrFrameLayout.setHeaderView(mHeader);
+        mPtrFrameLayout.addPtrUIHandler(mHeader);
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
@@ -75,6 +81,7 @@ public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements J
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                mFrame = frame;
                 pageNum = 1;
                 mPresenter.getData(type, pageNum);
 
@@ -104,7 +111,7 @@ public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements J
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
         if (getArguments() == null) return;
         type = getArguments().getString(TYPE);
         mPresenter.getData(type, pageNum);
@@ -112,7 +119,7 @@ public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements J
 
     @Override
     public void onRetry() {
-        initData();
+        bindData();
     }
 
     @Override
@@ -132,11 +139,17 @@ public class JdDetailFragment extends BaseFragment<JanDanPresenter> implements J
     public void loadDetailData(String type, JdDetailBean jdDetailBean) {
         if (jdDetailBean == null) {
             mPtrFrameLayout.refreshComplete();
+            if (mHeader != null && mFrame != null) {
+                mHeader.refreshComplete(false, mFrame);
+            }
             showFaild();
         } else {
             pageNum++;
             mAdapter.setNewData(jdDetailBean.getComments());
             mPtrFrameLayout.refreshComplete();
+            if (mHeader != null && mFrame != null) {
+                mHeader.refreshComplete(true, mFrame);
+            }
             showSuccess();
         }
     }

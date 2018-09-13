@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.wecent.weixun.R;
 import com.wecent.weixun.bean.VideoChannelBean;
@@ -19,6 +21,8 @@ import com.wecent.weixun.ui.video.presenter.VideoPresenter;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * desc: 视频页面
@@ -31,8 +35,10 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     TabLayout mTablayout;
     @BindView(R.id.viewpager)
     ViewPager mViewpager;
+    @BindView(R.id.fake_status_bar)
+    View fakeStatusBar;
+    Unbinder unbinder;
     private VideoPagerAdapter mVideoPagerAdapter;
-
 
     public static VideoFragment newInstance() {
         Bundle args = new Bundle();
@@ -60,8 +66,20 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
+        setStatusBarHeight(getStatusBarHeight());
         mPresenter.getVideoChannel();
+    }
+
+    /**
+     * 设置状态栏高度
+     *
+     * @param statusBarHeight
+     */
+    public void setStatusBarHeight(int statusBarHeight) {
+        ViewGroup.LayoutParams params = fakeStatusBar.getLayoutParams();
+        params.height = statusBarHeight;
+        fakeStatusBar.setLayoutParams(params);
     }
 
     @Override
@@ -89,4 +107,17 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
 
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

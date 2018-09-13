@@ -16,9 +16,9 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.bean.FreshNewsArticleBean;
 import com.wecent.weixun.bean.FreshNewsBean;
 import com.wecent.weixun.component.ApplicationComponent;
-import com.wecent.weixun.net.BaseObserver;
-import com.wecent.weixun.net.JanDanApi;
-import com.wecent.weixun.net.RxSchedulers;
+import com.wecent.weixun.network.BaseObserver;
+import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.utils.DateUtil;
 import com.wecent.weixun.utils.ImageLoaderUtil;
@@ -88,7 +88,7 @@ public class ReadActivity extends BaseActivity {
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
 
     }
 

@@ -81,7 +81,7 @@ public class ImageBrowseActivity extends BaseActivity {
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
         if (getIntent().getExtras() == null) return;
         imageUrls = getIntent().getExtras().getStringArray("urls");
         selectedIndex = getIntent().getExtras().getInt("selectedIndex");

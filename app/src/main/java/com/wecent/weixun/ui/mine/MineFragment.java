@@ -1,4 +1,4 @@
-package com.wecent.weixun.ui.personal;
+package com.wecent.weixun.ui.mine;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseFragment;
-import com.wecent.weixun.widget.Scroll.TranslucentScrollView;
-import com.wecent.weixun.widget.ToolBar.ToolBarClickListener;
-import com.wecent.weixun.widget.ToolBar.TranslucentToolBar;
+import com.wecent.weixun.widget.trans.TranslucentScrollView;
+import com.wecent.weixun.widget.trans.ToolBarClickListener;
+import com.wecent.weixun.widget.trans.TranslucentToolBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +26,7 @@ import butterknife.Unbinder;
  * author: wecent .
  * date: 2017/9/2 .
  */
-public class PersonalFragment extends BaseFragment implements ToolBarClickListener, TranslucentScrollView.TranslucentChangedListener {
+public class MineFragment extends BaseFragment implements ToolBarClickListener, TranslucentScrollView.TranslucentChangedListener {
 
     @BindView(R.id.v_status)
     View vStatus;
@@ -88,9 +88,9 @@ public class PersonalFragment extends BaseFragment implements ToolBarClickListen
     TranslucentToolBar toolTrans;
     Unbinder unbinder;
 
-    public static PersonalFragment newInstance() {
+    public static MineFragment newInstance() {
         Bundle args = new Bundle();
-        PersonalFragment fragment = new PersonalFragment();
+        MineFragment fragment = new MineFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -124,22 +124,9 @@ public class PersonalFragment extends BaseFragment implements ToolBarClickListen
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
 
     }
-
-//    @OnClick({R.id.tvUrl, R.id.tvGithubUrl})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R.id.tvUrl:
-//                toWeb(getResources().getString(R.string.willUrl));
-//                break;
-//            case R.id.tvGithubUrl:
-//                toWeb(getResources().getString(R.string.githubUrl));
-//                break;
-//
-//        }
-//    }
 
     private void toWeb(String url) {
         Uri weburl = Uri.parse(url);

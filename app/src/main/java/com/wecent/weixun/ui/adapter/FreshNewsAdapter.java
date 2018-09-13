@@ -22,7 +22,7 @@ public class FreshNewsAdapter extends BaseQuickAdapter<FreshNewsBean.PostsBean, 
     private Context mContext;
 
     public FreshNewsAdapter(Context context, @Nullable List<FreshNewsBean.PostsBean> data) {
-        super(R.layout.item_freshnews, data);
+        super(R.layout.item_jiandan_news, data);
         this.mContext = context;
     }
 

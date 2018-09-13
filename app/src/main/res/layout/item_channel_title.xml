@@ -4,8 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
-              android:padding="5dp"
-    >
+              android:padding="5dp">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -13,8 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:text="我的频道"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_sort"
@@ -24,8 +22,7 @@
         android:text="点击进入频道"
         android:textSize="14sp"
         android:textColor="@android:color/darker_gray"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <View
         android:layout_width="0dp"
@@ -36,6 +33,6 @@
         android:id="@+id/tv_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="编辑"
-        />
+        android:text="编辑" />
+
 </LinearLayout>

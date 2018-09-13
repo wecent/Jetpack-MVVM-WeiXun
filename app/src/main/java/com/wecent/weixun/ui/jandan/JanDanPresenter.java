@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.wecent.weixun.bean.FreshNewsBean;
 import com.wecent.weixun.bean.JdDetailBean;
-import com.wecent.weixun.net.BaseObserver;
-import com.wecent.weixun.net.JanDanApi;
-import com.wecent.weixun.net.RxSchedulers;
+import com.wecent.weixun.network.BaseObserver;
+import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -57,7 +57,6 @@ public class JanDanPresenter extends BasePresenter<JanDanContract.View> implemen
 
                     }
                 });
-
     }
 
     @Override

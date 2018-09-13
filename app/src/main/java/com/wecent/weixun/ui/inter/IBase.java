@@ -20,6 +20,6 @@ public interface IBase {
 
     void bindView(View view,Bundle savedInstanceState);
 
-    void initData();
+    void bindData();
 
 }

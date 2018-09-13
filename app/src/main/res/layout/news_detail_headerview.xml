@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
@@ -23,14 +22,12 @@
         android:text="@string/detail_header_tv"
         android:layout_marginTop="8dp"
         android:textSize="@dimen/sp_12"
-        android:layout_gravity="center_horizontal"
-        />
+        android:layout_gravity="center_horizontal" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/color_line"
-        android:layout_margin="8dp"
-        ></View>
+        android:layout_margin="8dp" />
 
 </LinearLayout>

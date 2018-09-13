@@ -25,8 +25,8 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.bean.NewsDetail;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
-import com.wecent.weixun.net.NewsApi;
-import com.wecent.weixun.net.NewsUtils;
+import com.wecent.weixun.network.NewsApi;
+import com.wecent.weixun.network.NewsUtils;
 import com.wecent.weixun.ui.adapter.NewsDetailAdapter;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.news.contract.DetailContract;
@@ -35,6 +35,7 @@ import com.wecent.weixun.utils.ContextUtils;
 import com.wecent.weixun.utils.ImageLoaderUtil;
 import com.wecent.weixun.widget.CustomLoadMoreView;
 import com.wecent.weixun.widget.NewsDelPop;
+import com.wecent.weixun.widget.PtrWeiXunHeader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -44,6 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -54,7 +56,7 @@ import in.srain.cube.views.ptr.PtrHandler;
  * date: 2017/9/8 .
  */
 public class DetailFragment extends BaseFragment<DetailPresenter> implements DetailContract.View {
-    private static final String TAG = "JdDetailFragment";
+    private static final String TAG = "DetailFragment";
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
@@ -76,6 +78,8 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
     private int upPullNum = 1;
     private int downPullNum = 1;
     private boolean isRemoveHeaderView = false;
+    private PtrWeiXunHeader mHeader;
+    private PtrFrameLayout mFrame;
 
     public static DetailFragment newInstance(String newsid, int position) {
         Bundle args = new Bundle();
@@ -102,6 +106,9 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         mPtrFrameLayout.disableWhenHorizontalMove(true);
+        mHeader = new PtrWeiXunHeader(mContext);
+        mPtrFrameLayout.setHeaderView(mHeader);
+        mPtrFrameLayout.addPtrUIHandler(mHeader);
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
@@ -111,6 +118,7 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 Log.i(TAG, "onRefreshBegin: " + downPullNum);
+                mFrame = frame;
                 isRemoveHeaderView = true;
                 mPresenter.getData(newsid, NewsApi.ACTION_DOWN, downPullNum);
             }
@@ -149,7 +157,7 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
                         view.getHeight();
                         int[] location = new int[2];
                         view.getLocationInWindow(location);
-                        Log.i("JdDetailFragment", "点击的item的高度:" + view.getHeight() + "x值:" + location[0] + "y值" + location[1]);
+                        Log.i("DetailFragment", "点击的item的高度:" + view.getHeight() + "x值:" + location[0] + "y值" + location[1]);
                         if (itemBean.getStyle() == null) return;
                         if (ContextUtils.getSreenWidth(WXApplication.getContext()) - 50 - location[1] < ContextUtils.dip2px(WXApplication.getContext(), 80)) {
                             newsDelPop
@@ -210,7 +218,7 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
         if (getArguments() == null) return;
         newsid = getArguments().getString("newsid");
         position = getArguments().getInt("position");
@@ -219,7 +227,7 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
 
     @Override
     public void onRetry() {
-        initData();
+        bindData();
     }
 
     @Override
@@ -253,6 +261,9 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
     @Override
     public void loadData(List<NewsDetail.ItemBean> itemBeanList) {
         if (itemBeanList == null || itemBeanList.size() == 0) {
+            if (mHeader != null && mFrame != null) {
+                mHeader.refreshComplete(false, mFrame);
+            }
             showFaild();
             mPtrFrameLayout.refreshComplete();
         } else {
@@ -263,6 +274,9 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
             detailAdapter.setNewData(itemBeanList);
             showToast(itemBeanList.size(), true);
             mPtrFrameLayout.refreshComplete();
+            if (mHeader != null && mFrame != null) {
+                mHeader.refreshComplete(true, mFrame);
+            }
             showSuccess();
             Log.i(TAG, "loadData: " + itemBeanList.toString());
         }

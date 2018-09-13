@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
-
     <com.wecent.weixun.widget.SwipeBackLayout
         android:id="@+id/swipe_layout"
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
             android:layout_height="match_parent"/>
 
     </com.wecent.weixun.widget.SwipeBackLayout>
-
 
     <TextView
         android:id="@+id/page_text"

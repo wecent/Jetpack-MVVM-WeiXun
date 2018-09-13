@@ -1,4 +1,3 @@
-
 <RelativeLayout
     android:id="@+id/rl_channel"
     xmlns:android="http://schemas.android.com/apk/res/android"

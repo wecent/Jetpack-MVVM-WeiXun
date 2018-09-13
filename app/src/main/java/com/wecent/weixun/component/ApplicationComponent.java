@@ -5,8 +5,8 @@ import android.content.Context;
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.module.ApplicationModule;
 import com.wecent.weixun.module.HttpModule;
-import com.wecent.weixun.net.JanDanApi;
-import com.wecent.weixun.net.NewsApi;
+import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.NewsApi;
 
 import dagger.Component;
 

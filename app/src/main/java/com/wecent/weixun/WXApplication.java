@@ -27,7 +27,6 @@ public class WXApplication extends LitePalApplication {
 
     public static int height = 0;
 
-
     @Override
     public void onCreate() {
         super.onCreate();

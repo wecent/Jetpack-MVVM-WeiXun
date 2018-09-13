@@ -1,8 +1,8 @@
 package com.wecent.weixun.ui.jandan.presenter;
 
 import com.wecent.weixun.bean.NewsArticleBean;
-import com.wecent.weixun.net.NewsApi;
-import com.wecent.weixun.net.RxSchedulers;
+import com.wecent.weixun.network.NewsApi;
+import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.news.contract.ArticleReadContract;
 

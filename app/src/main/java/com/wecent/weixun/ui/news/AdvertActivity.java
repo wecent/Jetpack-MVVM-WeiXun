@@ -83,7 +83,7 @@ public class AdvertActivity extends BaseActivity {
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
         if (getIntent() == null) return;
         String url = getIntent().getStringExtra("url");
         if (!TextUtils.isEmpty(url)) {

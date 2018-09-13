@@ -78,7 +78,9 @@
                 android:gravity="center_vertical|right"
                 android:singleLine="true"
                 android:visibility="gone" />
+
         </RelativeLayout>
 
     </RelativeLayout>
+
 </LinearLayout>

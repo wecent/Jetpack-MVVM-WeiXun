@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <com.airbnb.lottie.LottieAnimationView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,8 +20,8 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_fileName="anim/loading_.json"
-            app:lottie_scale="1"
-            />
+            app:lottie_scale="1" />
+
     </RelativeLayout>
 
     <FrameLayout
@@ -30,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
-
 
         <TextView
             android:id="@+id/tv_prompt"

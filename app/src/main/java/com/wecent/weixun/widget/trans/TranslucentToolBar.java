@@ -1,4 +1,4 @@
-package com.wecent.weixun.widget.ToolBar;
+package com.wecent.weixun.widget.trans;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.wecent.weixun.R;
 
 /**
- * 支持渐变的 actionBar
- * Created by 晖仔(Milo) on 2016/12/28.
- * email:303767416@qq.com
+ * desc:
+ * author: wecent .
+ * date: 2017/9/2 .
  */
 
 public final class TranslucentToolBar extends LinearLayout {

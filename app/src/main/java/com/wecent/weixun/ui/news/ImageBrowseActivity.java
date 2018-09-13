@@ -27,7 +27,7 @@ import com.wecent.weixun.bean.NewsArticleBean;
 import com.wecent.weixun.bean.NewsDetail;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
-import com.wecent.weixun.net.ApiConstants;
+import com.wecent.weixun.network.ApiConstants;
 import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.news.contract.ArticleReadContract;
 import com.wecent.weixun.ui.news.presenter.ArticleReadPresenter;
@@ -161,7 +161,7 @@ public class ImageBrowseActivity extends BaseActivity<ArticleReadPresenter> impl
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
         if (getIntent().getExtras() == null) return;
         String aid = getIntent().getStringExtra(AID);
         boolean isCmpp = getIntent().getBooleanExtra(ISCMPP, false);
@@ -170,7 +170,7 @@ public class ImageBrowseActivity extends BaseActivity<ArticleReadPresenter> impl
 
     @Override
     public void onRetry() {
-        initData();
+        bindData();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.wecent.weixun.net;
+package com.wecent.weixun.network;
 
 import com.wecent.weixun.bean.FreshNewsArticleBean;
 import com.wecent.weixun.bean.FreshNewsBean;
@@ -17,7 +17,8 @@ import retrofit2.http.Url;
 public interface JanDanApiService {
 
     @GET
-    Observable<FreshNewsBean> getFreshNews(@Url String url, @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
+    Observable<FreshNewsBean> getFreshNews(@Url String url,
+                                           @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
                                            @Query("include") String include,
                                            @Query("page") int page,
                                            @Query("custom_fields") String custom_fields,
@@ -26,12 +27,14 @@ public interface JanDanApiService {
 
 
     @GET
-    Observable<JdDetailBean> getDetailData(@Url String url, @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
+    Observable<JdDetailBean> getDetailData(@Url String url,
+                                           @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
                                            @Query("page") int page
     );
 
     @GET
-    Observable<FreshNewsArticleBean> getFreshNewsArticle(@Url String url, @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
+    Observable<FreshNewsArticleBean> getFreshNewsArticle(@Url String url,
+                                                         @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
                                                          @Query("include") String include,
                                                          @Query("id") int id
     );

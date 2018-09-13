@@ -17,7 +17,7 @@
         android:background="@color/color_line"
         android:layout_above="@+id/bottomBar" />
 
-    <com.wecent.weixun.widget.Table.BottomBar
+    <com.wecent.weixun.widget.table.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

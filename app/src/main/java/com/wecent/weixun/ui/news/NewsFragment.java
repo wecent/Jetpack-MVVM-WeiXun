@@ -3,9 +3,12 @@ package com.wecent.weixun.ui.news;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.flyco.tablayout.SlidingTabLayout;
 import com.wecent.weixun.R;
 import com.wecent.weixun.bean.Channel;
 import com.wecent.weixun.component.ApplicationComponent;
@@ -27,7 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * desc: 新闻页面 .
@@ -44,6 +49,9 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     ImageView mIvEdit;
     @BindView(R.id.SlidingTabLayout)
     com.flyco.tablayout.SlidingTabLayout SlidingTabLayout;
+    @BindView(R.id.fake_status_bar)
+    View fakeStatusBar;
+    Unbinder unbinder;
 
     private ChannelPagerAdapter mChannelPagerAdapter;
 
@@ -62,7 +70,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
 
     @Override
     public int getContentLayout() {
-        return R.layout.fragment_news_new;
+        return R.layout.fragment_news;
     }
 
     @Override
@@ -97,10 +105,22 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
+        setStatusBarHeight(getStatusBarHeight());
         mSelectedDatas = new ArrayList<>();
         mUnSelectedDatas = new ArrayList<>();
         mPresenter.getChannel();
+    }
+
+    /**
+     * 设置状态栏高度
+     *
+     * @param statusBarHeight
+     */
+    public void setStatusBarHeight(int statusBarHeight) {
+        ViewGroup.LayoutParams params = fakeStatusBar.getLayoutParams();
+        params.height = statusBarHeight;
+        fakeStatusBar.setLayoutParams(params);
     }
 
     @Override
@@ -195,5 +215,14 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     public void onDestroyView() {
         EventBus.getDefault().unregister(this);
         super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
     }
 }

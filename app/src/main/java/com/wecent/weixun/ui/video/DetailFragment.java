@@ -16,6 +16,7 @@ import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.video.contract.VideoContract;
 import com.wecent.weixun.ui.video.presenter.VideoPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
+import com.wecent.weixun.widget.PtrWeiXunHeader;
 
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class DetailFragment extends BaseFragment<VideoPresenter> implements Vide
     private VideoDetailAdapter detailAdapter;
     private int pageNum = 1;
     private String typeId;
+    private PtrWeiXunHeader mHeader;
+    private PtrFrameLayout mFrame;
 
     public static DetailFragment newInstance(String typeId) {
         Bundle args = new Bundle();
@@ -67,6 +70,9 @@ public class DetailFragment extends BaseFragment<VideoPresenter> implements Vide
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         mPtrFrameLayout.disableWhenHorizontalMove(true);
+        mHeader = new PtrWeiXunHeader(mContext);
+        mPtrFrameLayout.setHeaderView(mHeader);
+        mPtrFrameLayout.addPtrUIHandler(mHeader);
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
@@ -75,6 +81,7 @@ public class DetailFragment extends BaseFragment<VideoPresenter> implements Vide
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                mFrame = frame;
                 pageNum = 1;
                 if (mPresenter != null) {
                     mPresenter.getVideoDetails(pageNum, "list", typeId);
@@ -97,7 +104,7 @@ public class DetailFragment extends BaseFragment<VideoPresenter> implements Vide
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
         if (getArguments() == null) return;
         typeId = getArguments().getString(TYPEID);
         if (mPresenter != null) {
@@ -107,18 +114,24 @@ public class DetailFragment extends BaseFragment<VideoPresenter> implements Vide
 
     @Override
     public void onRetry() {
-        initData();
+        bindData();
     }
 
     @Override
     public void loadVideoDetails(List<VideoDetailBean> detailBean) {
         if (detailBean == null) {
+            if (mHeader != null && mFrame != null) {
+                mHeader.refreshComplete(false, mFrame);
+            }
             showFaild();
             return;
         }
         pageNum++;
         detailAdapter.setNewData(detailBean.get(0).getItem());
         mPtrFrameLayout.refreshComplete();
+        if (mHeader != null && mFrame != null) {
+            mHeader.refreshComplete(true, mFrame);
+        }
         showSuccess();
     }
 

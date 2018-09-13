@@ -1,4 +1,4 @@
-package com.wecent.weixun.widget.Scroll;
+package com.wecent.weixun.widget.trans;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;

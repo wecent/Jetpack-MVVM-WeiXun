@@ -133,7 +133,7 @@
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
                         android:text="OO"
-                        android:textColor="@color/color_table"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:textSize="14sp"
                         android:textStyle="normal" />
 
@@ -145,7 +145,7 @@
                         android:minEms="1"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:textColor="@color/color_table"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -164,7 +164,7 @@
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
                         android:text="XX"
-                        android:textColor="@color/color_table"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:textSize="14sp"
                         android:textStyle="normal" />
 
@@ -176,7 +176,7 @@
                         android:minEms="1"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:textColor="@color/color_table"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -194,7 +194,7 @@
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
                         android:text="吐槽"
-                        android:textColor="@color/color_table"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:textSize="14sp" />
 
                     <TextView
@@ -209,6 +209,7 @@
                         android:textColor="@color/secondary_text_default_material_light"
                         android:textSize="14sp" />
                 </LinearLayout>
+
             </LinearLayout>
 
             <ImageView
@@ -219,6 +220,9 @@
                 android:contentDescription="@null"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_dots_horizontal" />
+
         </RelativeLayout>
+
     </LinearLayout>
+
 </android.support.v7.widget.CardView>

@@ -1,4 +1,4 @@
-package com.wecent.weixun.net;
+package com.wecent.weixun.network;
 
 import com.wecent.weixun.bean.NewsArticleBean;
 import com.wecent.weixun.bean.NewsCmppVideoBean;

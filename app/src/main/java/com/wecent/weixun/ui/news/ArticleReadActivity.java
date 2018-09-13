@@ -48,8 +48,6 @@ public class ArticleReadActivity extends BaseActivity<ArticleReadPresenter> impl
     TextView mTvName;
     @BindView(R.id.tv_updateTime)
     TextView mTvUpdateTime;
-    //    @BindView(R.id.tv_content)
-//    TextView mTvContent;
     @BindView(R.id.webview)
     WebView mWebView;
     @BindView(R.id.iv_back)
@@ -132,7 +130,7 @@ public class ArticleReadActivity extends BaseActivity<ArticleReadPresenter> impl
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
     }
 
     @Override

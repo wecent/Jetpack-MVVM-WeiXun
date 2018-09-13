@@ -1,4 +1,4 @@
-package com.wecent.weixun.widget.Table;
+package com.wecent.weixun.widget.table;
 
 import android.content.Context;
 import android.graphics.Color;

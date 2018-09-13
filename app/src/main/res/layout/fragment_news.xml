@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1.0dp"
+        android:background="@color/app_color_blue"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp">
 
-    <android.support.design.widget.TabLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:tabSelectedTextColor="@color/app_color_blue"
-        app:tabTextColor="@android:color/black"
-        android:layout_toLeftOf="@+id/iv_edit"
-        android:layout_alignParentLeft="true"
-        app:tabIndicatorColor="@android:color/white"
-        app:tabMode="scrollable"
-        app:tabIndicatorHeight="0dp"
-        app:tabBackground="@android:color/white"
-        app:tabPadding="5dp" />
+        <com.flyco.tablayout.SlidingTabLayout
+            xmlns:tl="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/SlidingTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/iv_edit"
+            android:background="@color/app_color_blue"
+            tl:tl_indicator_color="@android:color/white"
+            tl:tl_textSelectColor="@android:color/white"
+            tl:tl_textsize="14sp"/>
 
         <ImageButton
             android:id="@id/iv_edit"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_news_add"
-            android:background="@android:color/white"
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_centerVertical="true"
+            android:background="@color/app_color_blue"
+            android:padding="8dp"
+            android:src="@drawable/ic_news_add"/>
 
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <com.wecent.weixun.widget.CustomViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

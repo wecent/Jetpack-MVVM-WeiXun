@@ -56,7 +56,7 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
         attachView();
         bindView(mRootView, savedInstanceState);
         initStateView();
-        initData();
+        bindData();
         mLoadingDialog = DialogHelper.getLoadingDialog(this);
     }
 

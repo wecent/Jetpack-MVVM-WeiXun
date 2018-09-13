@@ -3,10 +3,10 @@ package com.wecent.weixun.ui.news.presenter;
 import android.util.Log;
 
 import com.wecent.weixun.bean.NewsDetail;
-import com.wecent.weixun.net.BaseObserver;
-import com.wecent.weixun.net.NewsApi;
-import com.wecent.weixun.net.NewsUtils;
-import com.wecent.weixun.net.RxSchedulers;
+import com.wecent.weixun.network.BaseObserver;
+import com.wecent.weixun.network.NewsApi;
+import com.wecent.weixun.network.NewsUtils;
+import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.news.contract.DetailContract;
 

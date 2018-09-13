@@ -1,12 +1,12 @@
 package com.wecent.weixun.module;
 
 import com.wecent.weixun.WXApplication;
-import com.wecent.weixun.net.ApiConstants;
-import com.wecent.weixun.net.JanDanApi;
-import com.wecent.weixun.net.JanDanApiService;
-import com.wecent.weixun.net.NewsApi;
-import com.wecent.weixun.net.NewsApiService;
-import com.wecent.weixun.net.RetrofitConfig;
+import com.wecent.weixun.network.ApiConstants;
+import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.JanDanApiService;
+import com.wecent.weixun.network.NewsApi;
+import com.wecent.weixun.network.NewsApiService;
+import com.wecent.weixun.network.RetrofitConfig;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;

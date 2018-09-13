@@ -9,12 +9,12 @@ import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.base.SupportFragment;
 import com.wecent.weixun.ui.jandan.JanDanFragment;
-import com.wecent.weixun.ui.personal.PersonalFragment;
+import com.wecent.weixun.ui.mine.MineFragment;
 import com.wecent.weixun.ui.news.NewsFragment;
 import com.wecent.weixun.ui.video.VideoFragment;
 import com.wecent.weixun.utils.StatusBarUtils;
-import com.wecent.weixun.widget.Table.BottomBar;
-import com.wecent.weixun.widget.Table.BottomTab;
+import com.wecent.weixun.widget.table.BottomBar;
+import com.wecent.weixun.widget.table.BottomTab;
 
 import butterknife.BindView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
             mFragments[0] = NewsFragment.newInstance();
             mFragments[1] = VideoFragment.newInstance();
             mFragments[2] = JanDanFragment.newInstance();
-            mFragments[3] = PersonalFragment.newInstance();
+            mFragments[3] = MineFragment.newInstance();
 
             getSupportDelegate().loadMultipleRootFragment(R.id.contentContainer, 0,
                     mFragments[0],
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
             mFragments[0] = findFragment(NewsFragment.class);
             mFragments[1] = findFragment(VideoFragment.class);
             mFragments[2] = findFragment(JanDanFragment.class);
-            mFragments[3] = findFragment(PersonalFragment.class);
+            mFragments[3] = findFragment(MineFragment.class);
         }
 
         mBottomBar.addItem(new BottomTab(this, R.drawable.ic_news, "新闻"))
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
 
     }
 

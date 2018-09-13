@@ -119,7 +119,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
-    public void initData() {
+    public void bindData() {
 
     }
 
