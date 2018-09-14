@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:layout_height="44dp">
 
     <RelativeLayout
         android:id="@+id/load_more_loading_view"
@@ -19,7 +19,7 @@
             android:layout_centerInParent="true"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_fileName="anim/loading_.json"
+            app:lottie_fileName="anim/loading_more.json"
             app:lottie_scale="1" />
 
     </RelativeLayout>
