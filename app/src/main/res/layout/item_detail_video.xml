@@ -64,7 +64,7 @@
             android:layout_height="15dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_eye" />
+            android:src="@drawable/ic_look" />
 
         <TextView
             android:id="@+id/tv_playtime"

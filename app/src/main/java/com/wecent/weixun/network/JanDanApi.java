@@ -2,9 +2,9 @@ package com.wecent.weixun.network;
 
 import android.support.annotation.StringDef;
 
-import com.wecent.weixun.bean.FreshNewsArticleBean;
-import com.wecent.weixun.bean.FreshNewsBean;
-import com.wecent.weixun.bean.JdDetailBean;
+import com.wecent.weixun.model.FreshNewsArticleBean;
+import com.wecent.weixun.model.FreshNewsBean;
+import com.wecent.weixun.model.JdDetailBean;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -51,7 +51,7 @@ public class JanDanApi {
      * @return
      */
     public Observable<FreshNewsBean> getFreshNews(int page) {
-        return mService.getFreshNews(ApiConstants.sJanDanApi, TYPE_FRESH,
+        return mService.getFreshNews(ApiConstants.mJanDanApi, TYPE_FRESH,
                 "url,date,tags,author,title,excerpt,comment_count,comment_status,custom_fields",
                 page, "thumb_c,views", "1");
     }
@@ -64,7 +64,7 @@ public class JanDanApi {
      * @return
      */
     public Observable<JdDetailBean> getJdDetails(@Type String type, int page) {
-        return mService.getDetailData(ApiConstants.sJanDanApi, type, page);
+        return mService.getDetailData(ApiConstants.mJanDanApi, type, page);
     }
 
     /**
@@ -74,7 +74,7 @@ public class JanDanApi {
      * @return
      */
     public Observable<FreshNewsArticleBean> getFreshNewsArticle(int id) {
-        return mService.getFreshNewsArticle(ApiConstants.sJanDanApi, TYPE_FRESHARTICLE, "content,date,modified", id);
+        return mService.getFreshNewsArticle(ApiConstants.mJanDanApi, TYPE_FRESHARTICLE, "content,date,modified", id);
     }
 
 }

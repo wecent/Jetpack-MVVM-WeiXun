@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.wecent.weixun.WXApplication;
-import com.wecent.weixun.bean.Constants;
+import com.wecent.weixun.model.Constants;
 import com.wecent.weixun.utils.NetworkUtils;
 
 import java.io.IOException;

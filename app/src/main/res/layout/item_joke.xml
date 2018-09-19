@@ -167,7 +167,7 @@
                 android:layout_alignParentRight="true"
                 android:contentDescription="@null"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_dots_horizontal" />
+                android:src="@drawable/ic_share" />
 
         </RelativeLayout>
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+         <com.wecent.weixun.widget.BorderTextView
+             android:id="@+id/tv_tag"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="置顶"
+             android:textSize="10sp"
+             android:textColor="#F96B6B" />
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_marginLeft="5dp"
+            style="@style/text_news_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中新网移动版"
+            android:textColor="@color/config_color_gray_9"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_comment_num"
+            style="@style/text_news_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="1020评论"
+            android:textColor="@color/config_color_gray_9"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/text_news_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="5分钟前"
+            android:textColor="@color/config_color_gray_9"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

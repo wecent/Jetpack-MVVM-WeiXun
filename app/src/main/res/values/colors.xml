@@ -36,6 +36,16 @@
     <color name="config_color_gray_8">#C4C8D0</color>
     <color name="config_color_gray_9">#D8DCE4</color>
 
+    <color name="config_color_base_1">#111111</color>
+    <color name="config_color_base_2">#222222</color>
+    <color name="config_color_base_3">#333333</color>
+    <color name="config_color_base_4">#444444</color>
+    <color name="config_color_base_5">#555555</color>
+    <color name="config_color_base_6">#666666</color>
+    <color name="config_color_base_7">#777777</color>
+    <color name="config_color_base_8">#888888</color>
+    <color name="config_color_base_9">#999999</color>
+
     <color name="color_background">#f5f5f5</color>
     <color name="color_table">#a3a3a3</color>
     <color name="color_black">#000000</color>

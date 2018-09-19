@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.FreshNewsArticleBean;
-import com.wecent.weixun.bean.FreshNewsBean;
+import com.wecent.weixun.model.FreshNewsArticleBean;
+import com.wecent.weixun.model.FreshNewsBean;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.JanDanApi;
@@ -48,9 +48,6 @@ public class ReadActivity extends BaseActivity {
     ImageView mIvBack;
     @BindView(R.id.iv_share)
     ImageView mIvShare;
-    @BindView(R.id.iv_comment)
-    ImageView mIvComment;
-
 
     public static void launch(Context context, FreshNewsBean.PostsBean postsBean) {
         Intent intent = new Intent(context, ReadActivity.class);
@@ -160,15 +157,13 @@ public class ReadActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_back, R.id.iv_share, R.id.iv_comment})
+    @OnClick({R.id.iv_back, R.id.iv_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
             case R.id.iv_share:
-                break;
-            case R.id.iv_comment:
                 break;
         }
     }

@@ -8,6 +8,22 @@
         <item name="colorAccent">@color/app_color_blue_disabled</item>
     </style>
 
+    <style name="text_news_buttom">
+        <item name="android:textColor">#AEAEAE</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0.0dip</item>
+    </style>
+
+    <style name="text_news_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="text_white">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_write</item>

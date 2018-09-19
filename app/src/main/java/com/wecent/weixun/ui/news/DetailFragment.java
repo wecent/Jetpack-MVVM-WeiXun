@@ -22,7 +22,7 @@ import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.NewsDetail;
+import com.wecent.weixun.model.NewsDetail;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.network.NewsApi;
@@ -45,7 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -322,15 +321,15 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
         }
         switch (itemBean.getType()) {
             case NewsUtils.TYPE_DOC:
-                Intent intent = new Intent(getActivity(), ArticleReadActivity.class);
+                Intent intent = new Intent(getActivity(), NewsArticleActivity.class);
                 intent.putExtra("aid", itemBean.getDocumentId());
                 startActivity(intent);
                 break;
             case NewsUtils.TYPE_SLIDE:
-                ImageBrowseActivity.launch(getActivity(), itemBean);
+                NewsImageActivity.launch(getActivity(), itemBean);
                 break;
             case NewsUtils.TYPE_ADVERT:
-                AdvertActivity.launch(getActivity(), itemBean.getLink().getWeburl());
+                NewsAdvertActivity.launch(getActivity(), itemBean.getLink().getWeburl());
                 break;
             case NewsUtils.TYPE_PHVIDEO:
                 T("TYPE_PHVIDEO");
@@ -345,17 +344,17 @@ public class DetailFragment extends BaseFragment<DetailPresenter> implements Det
         switch (itemBean.getItemType()) {
             case NewsDetail.ItemBean.TYPE_DOC_TITLEIMG:
             case NewsDetail.ItemBean.TYPE_DOC_SLIDEIMG:
-                Intent intent = new Intent(getActivity(), ArticleReadActivity.class);
+                Intent intent = new Intent(getActivity(), NewsArticleActivity.class);
                 intent.putExtra("aid", itemBean.getDocumentId());
                 startActivity(intent);
                 break;
             case NewsDetail.ItemBean.TYPE_SLIDE:
-                ImageBrowseActivity.launch(getActivity(), itemBean);
+                NewsImageActivity.launch(getActivity(), itemBean);
                 break;
             case NewsDetail.ItemBean.TYPE_ADVERT_TITLEIMG:
             case NewsDetail.ItemBean.TYPE_ADVERT_SLIDEIMG:
             case NewsDetail.ItemBean.TYPE_ADVERT_LONGIMG:
-                AdvertActivity.launch(getActivity(), itemBean.getLink().getWeburl());
+                NewsAdvertActivity.launch(getActivity(), itemBean.getLink().getWeburl());
                 break;
             case NewsDetail.ItemBean.TYPE_PHVIDEO:
                 T("TYPE_PHVIDEO");

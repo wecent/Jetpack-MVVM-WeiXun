@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.Channel;
-import com.wecent.weixun.event.NewChannelEvent;
-import com.wecent.weixun.event.SelectChannelEvent;
+import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.event.NewChannelEvent;
+import com.wecent.weixun.model.event.SelectChannelEvent;
 import com.wecent.weixun.ui.adapter.NewAdapter;
 import com.wecent.weixun.ui.inter.ItemDragHelperCallBack;
 import com.wecent.weixun.ui.inter.OnChannelListener;

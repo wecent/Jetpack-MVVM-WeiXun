@@ -2,7 +2,7 @@ package com.wecent.weixun.ui.news.presenter;
 
 import android.util.Log;
 
-import com.wecent.weixun.bean.NewsDetail;
+import com.wecent.weixun.model.NewsDetail;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.network.NewsUtils;
@@ -17,7 +17,6 @@ import javax.inject.Inject;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
-
 
 /**
  * desc: .

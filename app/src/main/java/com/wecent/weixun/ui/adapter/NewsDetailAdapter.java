@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.NewsDetail;
+import com.wecent.weixun.model.NewsDetail;
 import com.wecent.weixun.utils.ImageLoaderUtil;
 
 import java.util.List;
@@ -17,8 +17,8 @@ import java.util.List;
  * date: 2017/9/8 .
  */
 public class NewsDetailAdapter extends BaseMultiItemQuickAdapter<NewsDetail.ItemBean, BaseViewHolder> {
-    private Context mContext;
 
+    private Context mContext;
 
     public NewsDetailAdapter(List<NewsDetail.ItemBean> data, Context context) {
         super(data);

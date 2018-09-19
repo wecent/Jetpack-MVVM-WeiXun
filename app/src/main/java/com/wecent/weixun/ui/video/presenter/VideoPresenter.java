@@ -1,7 +1,7 @@
 package com.wecent.weixun.ui.video.presenter;
 
-import com.wecent.weixun.bean.VideoChannelBean;
-import com.wecent.weixun.bean.VideoDetailBean;
+import com.wecent.weixun.model.VideoChannelBean;
+import com.wecent.weixun.model.VideoDetailBean;
 import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BasePresenter;

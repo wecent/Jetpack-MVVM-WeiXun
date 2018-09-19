@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.VideoChannelBean;
-import com.wecent.weixun.bean.VideoDetailBean;
+import com.wecent.weixun.model.VideoChannelBean;
+import com.wecent.weixun.model.VideoDetailBean;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.ui.adapter.VideoPagerAdapter;
@@ -84,7 +84,7 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
 
     @Override
     public void onRetry() {
-
+        bindData();
     }
 
     @Override

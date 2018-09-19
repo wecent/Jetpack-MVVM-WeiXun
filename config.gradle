@@ -64,6 +64,7 @@ ext {
             "transitionhelper"      : "me.immortalz:transitionhelper:1.0.6",
             "swipebacklayout"       : "cn.bingoogolapple:bga-swipebacklayout:1.1.0@aar",
             "gif-drawable"          : "pl.droidsonroids.gif:android-gif-drawable:1.2.8",
+            "klog"          : "com.github.zhaokaiqiang.klog:library:1.6.0",
 
             //event
             "androideventbus"       : "org.simple:androideventbus:1.0.5.1",

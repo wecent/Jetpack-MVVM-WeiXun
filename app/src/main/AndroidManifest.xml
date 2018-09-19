@@ -50,20 +50,20 @@
 
         </activity>
         <activity
-            android:name=".ui.news.ArticleReadActivity"
+            android:name=".ui.news.NewsArticleActivity"
             android:screenOrientation="portrait"
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
         <activity
-            android:name=".ui.news.AdvertActivity"
+            android:name=".ui.news.NewsAdvertActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
         <activity
-            android:name=".ui.news.ImageBrowseActivity"
+            android:name=".ui.news.NewsImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden">

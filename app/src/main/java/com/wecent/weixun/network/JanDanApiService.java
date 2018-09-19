@@ -1,8 +1,8 @@
 package com.wecent.weixun.network;
 
-import com.wecent.weixun.bean.FreshNewsArticleBean;
-import com.wecent.weixun.bean.FreshNewsBean;
-import com.wecent.weixun.bean.JdDetailBean;
+import com.wecent.weixun.model.FreshNewsArticleBean;
+import com.wecent.weixun.model.FreshNewsBean;
+import com.wecent.weixun.model.JdDetailBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

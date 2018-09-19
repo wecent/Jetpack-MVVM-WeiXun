@@ -1,6 +1,8 @@
 package com.wecent.weixun.widget.trans;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -18,15 +20,11 @@ import com.wecent.weixun.R;
 
 public final class TranslucentToolBar extends LinearLayout {
 
-    private View layRoot;
-    private View vStatusBar;
-    private View layLeft;
-    private View layRight;
-    public TextView tvTitle;
-    private TextView tvLeft;
-    private TextView tvRight;
-    private View iconLeft;
-    private View iconRight;
+    private LinearLayout mTransRoot;
+    private View mTransStatus;
+    public TextView mTransTitle;
+    public TextView mTransLeft;
+    public TextView mTransRight;
 
     public TranslucentToolBar(Context context) {
         this(context, null);
@@ -34,23 +32,24 @@ public final class TranslucentToolBar extends LinearLayout {
 
     public TranslucentToolBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        initTransContent();
     }
 
     public TranslucentToolBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    private void init() {
+    private void initTransContent() {
         setOrientation(HORIZONTAL);
         View contentView = inflate(getContext(), R.layout.toolbar_trans, this);
-        layRoot = contentView.findViewById(R.id.lay_transroot);
-        vStatusBar = contentView.findViewById(R.id.v_statusbar);
-        tvTitle = (TextView) contentView.findViewById(R.id.tv_actionbar_title);
-        tvLeft = (TextView) contentView.findViewById(R.id.tv_actionbar_left);
-        tvRight = (TextView) contentView.findViewById(R.id.tv_actionbar_right);
-        iconLeft = contentView.findViewById(R.id.iv_actionbar_left);
-        iconRight = contentView.findViewById(R.id.v_actionbar_right);
+        mTransRoot = (LinearLayout) contentView.findViewById(R.id.ll_trans_root);
+        mTransStatus = contentView.findViewById(R.id.v_trans_status);
+        mTransTitle = (TextView) contentView.findViewById(R.id.tv_trans_title);
+        mTransTitle.setVisibility(View.GONE);
+        mTransLeft = (TextView) contentView.findViewById(R.id.tv_trans_left);
+        mTransLeft.setVisibility(View.GONE);
+        mTransRight = (TextView) contentView.findViewById(R.id.tv_trans_right);
+        mTransRight.setVisibility(View.GONE);
     }
 
     /**
@@ -59,16 +58,16 @@ public final class TranslucentToolBar extends LinearLayout {
      * @param statusBarHeight
      */
     public void setStatusBarHeight(int statusBarHeight) {
-        ViewGroup.LayoutParams params = vStatusBar.getLayoutParams();
+        ViewGroup.LayoutParams params = mTransStatus.getLayoutParams();
         params.height = statusBarHeight;
-        vStatusBar.setLayoutParams(params);
+        mTransStatus.setLayoutParams(params);
     }
 
     /**
      * 设置是否需要渐变
      */
     public void setNeedTranslucent() {
-        setNeedTranslucent(true, false);
+        setNeedTranslucent(true, true);
     }
 
     /**
@@ -76,81 +75,181 @@ public final class TranslucentToolBar extends LinearLayout {
      *
      * @param translucent
      */
-    public void setNeedTranslucent(boolean translucent, boolean titleInitVisibile) {
+    public void setNeedTranslucent(boolean translucent, boolean hideContent) {
         if (translucent) {
-            layRoot.setBackgroundDrawable(null);
+            mTransRoot.setBackground(null);
         }
-        if (!titleInitVisibile) {
-            tvTitle.setVisibility(View.GONE);
+        if (hideContent) {
+            mTransTitle.setVisibility(View.GONE);
+            mTransLeft.setVisibility(View.GONE);
+            mTransRight.setVisibility(View.GONE);
         }
     }
 
     /**
-     * 设置标题
+     * 设置颜色背景
+     *
+     * @param resBackground
+     */
+    public void setColorBackground(int resBackground) {
+        mTransRoot.setBackgroundColor(resBackground);
+    }
+
+    /**
+     * 设置图片背景
+     *
+     * @param resBackground
+     */
+    public void setDrawalleBackground(Drawable resBackground) {
+        mTransRoot.setBackground(resBackground);
+    }
+
+    /**
+     * 设置标题文本
      *
      * @param strTitle
      */
     public void setTitle(String strTitle) {
         if (!TextUtils.isEmpty(strTitle)) {
-            tvTitle.setText(strTitle);
+            mTransTitle.setVisibility(View.VISIBLE);
+            mTransTitle.setText(strTitle);
         } else {
-            tvTitle.setVisibility(View.GONE);
+            mTransTitle.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * 设置左边文本
+     *
+     * @param strLeft
+     */
+    public void setLeft(String strLeft) {
+        if (!TextUtils.isEmpty(strLeft)) {
+            mTransLeft.setVisibility(View.VISIBLE);
+            mTransLeft.setText(strLeft);
+        } else {
+            mTransLeft.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * 设置左边图片
+     *
+     * @param resLeft
+     */
+    public void setLeftIcon(int resLeft) {
+        Drawable icLeft = ContextCompat.getDrawable(getContext(), resLeft);
+        icLeft.setBounds(0, 0, icLeft.getMinimumWidth(), icLeft.getMinimumHeight());
+        mTransLeft.setCompoundDrawables(icLeft, null, null, null);
+    }
+
+    /**
+     * 设置左边监听事件
+     *
+     * @param listener
+     */
+    public void setLeftClickListener(final ToolBarClickListener listener) {
+        mTransLeft.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onLeftClick();
+            }
+        });
+    }
+
+    /**
+     * 设置右边文本
+     *
+     * @param strRight
+     */
+    public void setRight(String strRight) {
+        if (!TextUtils.isEmpty(strRight)) {
+            mTransRight.setVisibility(View.VISIBLE);
+            mTransRight.setText(strRight);
+        } else {
+            mTransRight.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * 设置右边图片
+     *
+     * @param resRight
+     */
+    public void setRightIcon(int resRight) {
+        if (resRight != 0) {
+            mTransRight.setVisibility(View.VISIBLE);
+            Drawable icRight = ContextCompat.getDrawable(getContext(), resRight);
+            icRight.setBounds(0, 0, icRight.getMinimumWidth(), icRight.getMinimumHeight());
+            mTransRight.setCompoundDrawables(null, null, icRight, null);
+        } else {
+            mTransRight.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * 设置右边监听事件
+     *
+     * @param listener
+     */
+    public void setRightClickListener(final View.OnClickListener listener) {
+        mTransRight.setOnClickListener(listener);
     }
 
     /**
      * 设置数据
      *
      * @param strTitle
-     * @param resIdLeft
+     * @param resLeft
      * @param strLeft
-     * @param resIdRight
+     * @param resRight
      * @param strRight
      * @param listener
      */
-    public void setData(String strTitle, int resIdLeft, String strLeft, int resIdRight, String strRight, final ToolBarClickListener listener) {
+    public void setData(String strTitle, int resLeft, String strLeft, int resRight, String strRight, final ToolBarClickListener listener) {
         if (!TextUtils.isEmpty(strTitle)) {
-            tvTitle.setText(strTitle);
+            mTransTitle.setVisibility(View.VISIBLE);
+            mTransTitle.setText(strTitle);
         } else {
-            tvTitle.setVisibility(View.GONE);
+            mTransTitle.setVisibility(View.GONE);
         }
+
         if (!TextUtils.isEmpty(strLeft)) {
-            tvLeft.setText(strLeft);
-            tvLeft.setVisibility(View.VISIBLE);
+            mTransLeft.setVisibility(View.VISIBLE);
+            mTransLeft.setText(strLeft);
         } else {
-            tvLeft.setVisibility(View.GONE);
+            mTransLeft.setVisibility(View.GONE);
         }
+
         if (!TextUtils.isEmpty(strRight)) {
-            tvRight.setText(strRight);
-            tvRight.setVisibility(View.VISIBLE);
+            mTransRight.setVisibility(View.VISIBLE);
+            mTransRight.setText(strRight);
         } else {
-            tvRight.setVisibility(View.GONE);
+            mTransRight.setVisibility(View.GONE);
         }
 
-        if (resIdLeft == 0) {
-            iconLeft.setVisibility(View.GONE);
-        } else {
-            iconLeft.setBackgroundResource(resIdLeft);
-            iconLeft.setVisibility(View.VISIBLE);
+        if (resLeft != 0) {
+            mTransLeft.setVisibility(View.VISIBLE);
+            Drawable icLeft = ContextCompat.getDrawable(getContext(), resLeft);
+            icLeft.setBounds(0, 0, icLeft.getMinimumWidth(), icLeft.getMinimumHeight());
+            mTransRight.setCompoundDrawables(icLeft, null, null, null);
         }
 
-        if (resIdRight == 0) {
-            iconRight.setVisibility(View.GONE);
-        } else {
-            iconRight.setBackgroundResource(resIdRight);
-            iconRight.setVisibility(View.VISIBLE);
+        if (resRight != 0) {
+            mTransRight.setVisibility(View.VISIBLE);
+            Drawable icRight = ContextCompat.getDrawable(getContext(), resRight);
+            icRight.setBounds(0, 0, icRight.getMinimumWidth(), icRight.getMinimumHeight());
+            mTransRight.setCompoundDrawables(null, null, icRight, null);
         }
 
         if (listener != null) {
-            layLeft = findViewById(R.id.lay_actionbar_left);
-            layRight = findViewById(R.id.lay_actionbar_right);
-            layLeft.setOnClickListener(new OnClickListener() {
+            mTransLeft.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onLeftClick();
                 }
             });
-            layRight.setOnClickListener(new OnClickListener() {
+            mTransRight.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onRightClick();

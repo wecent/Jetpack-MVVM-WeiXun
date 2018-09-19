@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <View
         android:id="@+id/fake_status_bar"
@@ -12,28 +13,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="45dp"
+        android:background="@color/app_color_blue">
 
         <com.flyco.tablayout.SlidingTabLayout
-            xmlns:tl="http://schemas.android.com/apk/res-auto"
             android:id="@+id/SlidingTabLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/iv_edit"
-            android:background="@color/app_color_blue"
-            tl:tl_indicator_color="@android:color/white"
-            tl:tl_textSelectColor="@android:color/white"
-            tl:tl_textsize="14sp"/>
+            tl:tl_tab_width="48dp"
+            tl:tl_indicator_color="@color/config_color_white"
+            tl:tl_textSelectColor="@color/config_color_white"
+            tl:tl_indicator_style="NORMAL"
+            tl:tl_indicator_width="36dp"
+            tl:tl_textsize="16sp"
+            tl:tl_textBold="SELECT"/>
 
-        <ImageButton
+        <ImageView
             android:id="@id/iv_edit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@color/app_color_blue"
-            android:padding="8dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:src="@drawable/ic_news_add"/>
 
     </RelativeLayout>

@@ -7,8 +7,8 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.VideoChannelBean;
-import com.wecent.weixun.bean.VideoDetailBean;
+import com.wecent.weixun.model.VideoChannelBean;
+import com.wecent.weixun.model.VideoDetailBean;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.ui.adapter.VideoDetailAdapter;

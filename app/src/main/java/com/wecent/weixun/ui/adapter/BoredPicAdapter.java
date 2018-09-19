@@ -16,7 +16,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.JdDetailBean;
+import com.wecent.weixun.model.JdDetailBean;
 import com.wecent.weixun.ui.jandan.ImageBrowseActivity;
 import com.wecent.weixun.utils.ContextUtils;
 import com.wecent.weixun.utils.DateUtil;

@@ -10,12 +10,12 @@ import android.widget.ImageView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.Channel;
+import com.wecent.weixun.model.Channel;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.database.ChannelDao;
-import com.wecent.weixun.event.NewChannelEvent;
-import com.wecent.weixun.event.SelectChannelEvent;
+import com.wecent.weixun.model.event.NewChannelEvent;
+import com.wecent.weixun.model.event.SelectChannelEvent;
 import com.wecent.weixun.ui.adapter.ChannelPagerAdapter;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.news.contract.NewsContract;
@@ -48,7 +48,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     @BindView(R.id.iv_edit)
     ImageView mIvEdit;
     @BindView(R.id.SlidingTabLayout)
-    com.flyco.tablayout.SlidingTabLayout SlidingTabLayout;
+    SlidingTabLayout mTabLayout;
     @BindView(R.id.fake_status_bar)
     View fakeStatusBar;
     Unbinder unbinder;
@@ -139,7 +139,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
             mViewpager.setAdapter(mChannelPagerAdapter);
             mViewpager.setOffscreenPageLimit(2);
             mViewpager.setCurrentItem(0, false);
-            SlidingTabLayout.setViewPager(mViewpager);
+            mTabLayout.setViewPager(mViewpager);
         } else {
             T("数据异常");
         }
@@ -152,7 +152,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
             mSelectedDatas = event.selectedDatas;
             mUnSelectedDatas = event.unSelectedDatas;
             mChannelPagerAdapter.updateChannel(mSelectedDatas);
-            SlidingTabLayout.notifyDataSetChanged();
+            mTabLayout.notifyDataSetChanged();
             ChannelDao.saveChannels(event.allChannels);
 
             List<String> integers = new ArrayList<>();
@@ -173,7 +173,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     }
 
     @Subscriber
-    private void selectChannelEvent(SelectChannelEvent selectChannelEvent) {
+    private void selectChannel(SelectChannelEvent selectChannelEvent) {
         if (selectChannelEvent == null) return;
         List<String> integers = new ArrayList<>();
         for (Channel channel : mSelectedDatas) {

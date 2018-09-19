@@ -6,7 +6,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.JdDetailBean;
+import com.wecent.weixun.model.JdDetailBean;
 import com.wecent.weixun.utils.DateUtil;
 import com.wecent.weixun.utils.ShareUtils;
 

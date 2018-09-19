@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_arrow_left_grey600_24dp" />
+            android:src="@drawable/ic_back_black" />
 
         <ImageView
             android:id="@+id/iv_share"
@@ -130,16 +130,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="8dp"
-            android:src="@drawable/ic_share_variant_grey600_24dp" />
-
-        <ImageView
-            android:id="@+id/iv_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@id/iv_share"
-            android:src="@drawable/ic_comment_grey600_24dp" />
+            android:src="@drawable/ic_share" />
 
     </RelativeLayout>
 

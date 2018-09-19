@@ -1,7 +1,7 @@
 package com.wecent.weixun.ui.jandan;
 
-import com.wecent.weixun.bean.FreshNewsBean;
-import com.wecent.weixun.bean.JdDetailBean;
+import com.wecent.weixun.model.FreshNewsBean;
+import com.wecent.weixun.model.JdDetailBean;
 import com.wecent.weixun.ui.base.BaseContract;
 
 /**

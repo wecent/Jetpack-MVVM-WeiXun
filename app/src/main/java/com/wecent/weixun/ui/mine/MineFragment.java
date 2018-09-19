@@ -1,7 +1,5 @@
 package com.wecent.weixun.ui.mine;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +11,8 @@ import android.widget.TextView;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseFragment;
-import com.wecent.weixun.widget.trans.TranslucentScrollView;
 import com.wecent.weixun.widget.trans.ToolBarClickListener;
+import com.wecent.weixun.widget.trans.TranslucentScrollView;
 import com.wecent.weixun.widget.trans.TranslucentToolBar;
 
 import butterknife.BindView;
@@ -108,7 +106,9 @@ public class MineFragment extends BaseFragment implements ToolBarClickListener, 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         //初始actionBar
-        toolTrans.setData("wecent", 0, null, 0, null, null);
+        toolTrans.setTitle("个人中心");
+        toolTrans.setLeftIcon(R.drawable.ic_back_white);
+        toolTrans.setRight("设置");
         //开启渐变
         toolTrans.setNeedTranslucent();
         //设置状态栏高度
@@ -126,12 +126,6 @@ public class MineFragment extends BaseFragment implements ToolBarClickListener, 
     @Override
     public void bindData() {
 
-    }
-
-    private void toWeb(String url) {
-        Uri weburl = Uri.parse(url);
-        Intent web_Intent = new Intent(Intent.ACTION_VIEW, weburl);
-        getActivity().startActivity(web_Intent);
     }
 
     @Override
@@ -160,6 +154,8 @@ public class MineFragment extends BaseFragment implements ToolBarClickListener, 
 
     @Override
     public void onTranslucentChanged(int transAlpha) {
-        toolTrans.tvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);
+        toolTrans.mTransTitle.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+        toolTrans.mTransLeft.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+        toolTrans.mTransRight.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
     }
 }

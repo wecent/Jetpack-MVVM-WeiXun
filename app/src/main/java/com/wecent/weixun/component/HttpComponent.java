@@ -1,9 +1,10 @@
 package com.wecent.weixun.component;
 
 import com.wecent.weixun.ui.jandan.DetailFragment;
-import com.wecent.weixun.ui.news.ArticleReadActivity;
-import com.wecent.weixun.ui.news.ImageBrowseActivity;
+import com.wecent.weixun.ui.news.NewsArticleActivity;
+import com.wecent.weixun.ui.news.NewsImageActivity;
 import com.wecent.weixun.ui.news.NewsFragment;
+import com.wecent.weixun.ui.news.WeiXunFragment;
 import com.wecent.weixun.ui.video.VideoFragment;
 
 import dagger.Component;
@@ -22,12 +23,14 @@ public interface HttpComponent {
 
     void inject(DetailFragment detailFragment);
 
-    void inject(ImageBrowseActivity imageBrowseActivity);
+    void inject(NewsImageActivity newsImageActivity);
 
     void inject(com.wecent.weixun.ui.news.DetailFragment detailFragment);
 
-    void inject(ArticleReadActivity articleReadActivity);
+    void inject(NewsArticleActivity newsArticleActivity);
 
     void inject(NewsFragment newsFragment);
+
+    void inject(WeiXunFragment weixunFragment);
 
 }

@@ -68,6 +68,7 @@ dependencies {
     compile rootProject.ext.dependencies["tablayout"]
     compile rootProject.ext.dependencies["androideventbus"]
     compile rootProject.ext.dependencies["gif-drawable"]
+    compile rootProject.ext.dependencies["klog"]
 
     compile rootProject.ext.dependencies["litepal"]
     testCompile 'junit:junit:4.12'

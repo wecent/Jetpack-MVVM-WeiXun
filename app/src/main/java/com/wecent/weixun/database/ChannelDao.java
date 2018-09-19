@@ -1,6 +1,6 @@
 package com.wecent.weixun.database;
 
-import com.wecent.weixun.bean.Channel;
+import com.wecent.weixun.model.Channel;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.crud.callback.SaveCallback;

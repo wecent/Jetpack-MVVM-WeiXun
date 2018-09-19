@@ -91,7 +91,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -125,7 +125,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -159,7 +159,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -193,7 +193,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -227,7 +227,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -261,7 +261,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -295,7 +295,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -329,7 +329,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -363,7 +363,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -397,7 +397,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 
@@ -432,7 +432,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_menu_more" />
+                    android:src="@drawable/ic_into" />
 
             </RelativeLayout>
 

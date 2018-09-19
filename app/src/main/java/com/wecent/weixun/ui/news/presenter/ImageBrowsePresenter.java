@@ -1,6 +1,6 @@
 package com.wecent.weixun.ui.news.presenter;
 
-import com.wecent.weixun.bean.NewsArticleBean;
+import com.wecent.weixun.model.NewsArticleBean;
 import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BasePresenter;

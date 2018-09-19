@@ -9,7 +9,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.VideoDetailBean;
+import com.wecent.weixun.model.VideoDetailBean;
 import com.wecent.weixun.utils.ImageLoaderUtil;
 
 import java.math.RoundingMode;

@@ -9,12 +9,11 @@
 
     <ImageView
         android:id="@+id/icon_collapse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:padding="10.0dip"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_margin="14dp"
         android:scaleType="center"
-        android:src="@drawable/ic_channel_close"/>
+        android:src="@drawable/ic_news_dismiss"/>
 
     <FrameLayout
         android:layout_width="match_parent"

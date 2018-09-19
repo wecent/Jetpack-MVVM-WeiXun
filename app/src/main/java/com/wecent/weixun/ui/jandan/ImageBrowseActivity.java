@@ -32,7 +32,7 @@ import com.wecent.weixun.widget.SwipeBackLayout;
 import butterknife.BindView;
 
 public class ImageBrowseActivity extends BaseActivity {
-    private static final String TAG = "ImageBrowseActivity";
+    private static final String TAG = "NewsImageActivity";
     @BindView(R.id.view_pager)
     HackyViewPager mViewPager;
     @BindView(R.id.page_text)

@@ -1,6 +1,6 @@
 package com.wecent.weixun.network;
 
-import com.wecent.weixun.bean.NewsDetail;
+import com.wecent.weixun.model.NewsDetail;
 
 /**
  * desc:

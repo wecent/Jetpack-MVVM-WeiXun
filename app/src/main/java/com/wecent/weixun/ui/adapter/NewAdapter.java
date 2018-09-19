@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.Channel;
+import com.wecent.weixun.model.Channel;
 import com.wecent.weixun.ui.inter.OnChannelListener;
 
 import java.util.List;

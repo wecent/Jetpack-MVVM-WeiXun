@@ -7,6 +7,7 @@ import com.wecent.weixun.module.ApplicationModule;
 import com.wecent.weixun.module.HttpModule;
 import com.wecent.weixun.network.JanDanApi;
 import com.wecent.weixun.network.NewsApi;
+import com.wecent.weixun.network.WeiXunApi;
 
 import dagger.Component;
 
@@ -23,6 +24,8 @@ public interface ApplicationComponent {
     NewsApi getNetEaseApi();
 
     JanDanApi getJanDanApi();
+
+    WeiXunApi getWeiXunApi();
 
     Context getContext();
 

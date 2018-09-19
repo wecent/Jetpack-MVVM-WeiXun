@@ -2,8 +2,8 @@ package com.wecent.weixun.ui.jandan;
 
 import android.util.Log;
 
-import com.wecent.weixun.bean.FreshNewsBean;
-import com.wecent.weixun.bean.JdDetailBean;
+import com.wecent.weixun.model.FreshNewsBean;
+import com.wecent.weixun.model.JdDetailBean;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.JanDanApi;
 import com.wecent.weixun.network.RxSchedulers;

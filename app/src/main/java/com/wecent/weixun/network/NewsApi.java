@@ -2,17 +2,16 @@ package com.wecent.weixun.network;
 
 import android.support.annotation.StringDef;
 
-import com.wecent.weixun.bean.NewsArticleBean;
-import com.wecent.weixun.bean.NewsDetail;
-import com.wecent.weixun.bean.VideoChannelBean;
-import com.wecent.weixun.bean.VideoDetailBean;
+import com.wecent.weixun.model.NewsArticleBean;
+import com.wecent.weixun.model.NewsDetail;
+import com.wecent.weixun.model.VideoChannelBean;
+import com.wecent.weixun.model.VideoDetailBean;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 import io.reactivex.Observable;
-
 
 /**
  * desc:

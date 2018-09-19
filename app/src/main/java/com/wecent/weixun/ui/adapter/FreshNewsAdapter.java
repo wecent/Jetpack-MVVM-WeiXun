@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.bean.FreshNewsBean;
+import com.wecent.weixun.model.FreshNewsBean;
 import com.wecent.weixun.utils.ImageLoaderUtil;
 
 import java.util.List;

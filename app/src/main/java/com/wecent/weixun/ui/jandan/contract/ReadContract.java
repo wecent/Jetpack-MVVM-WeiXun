@@ -1,6 +1,6 @@
 package com.wecent.weixun.ui.jandan.contract;
 
-import com.wecent.weixun.bean.NewsArticleBean;
+import com.wecent.weixun.model.NewsArticleBean;
 import com.wecent.weixun.ui.base.BaseContract;
 
 /**
