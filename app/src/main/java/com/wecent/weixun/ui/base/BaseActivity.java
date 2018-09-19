@@ -16,7 +16,7 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.ui.inter.IBase;
 import com.wecent.weixun.utils.DialogHelper;
 import com.wecent.weixun.utils.StatusBarUtils;
-import com.wecent.weixun.utils.T;
+import com.wecent.weixun.utils.ToastUtils;
 import com.wecent.weixun.widget.MultiStateView;
 import com.wecent.weixun.widget.SimpleMultiStateView;
 
@@ -206,7 +206,7 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
     }
 
     protected void T(String string) {
-        T.showShort(WXApplication.getContext(), string);
+        ToastUtils.showShort(WXApplication.getContext(), string);
     }
 
     @Override

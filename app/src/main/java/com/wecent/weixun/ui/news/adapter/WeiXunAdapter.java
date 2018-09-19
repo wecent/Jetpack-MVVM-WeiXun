@@ -1,29 +1,24 @@
 package com.wecent.weixun.ui.news.adapter;
 
 import android.content.Context;
-import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.NewsDetail;
 import com.wecent.weixun.model.entity.News;
-import com.wecent.weixun.utils.ImageLoaderUtil;
-
 
 import java.util.List;
 
 /**
- * @author ChayChan
- * @description: 新闻列表的适配器
- * @date 2018/3/22  11
+ * desc: 新闻列表的适配器 .
+ * author: wecent .
+ * date: 2017/9/19 .
  */
-
-public class WeiXunListAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHolder> {
+public class WeiXunAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHolder> {
 
     private Context mContext;
 
-    public WeiXunListAdapter(List<News> data, Context context) {
+    public WeiXunAdapter(List<News> data, Context context) {
         super(data);
         this.mContext = context;
         addItemType(News.TYPE_TEXT_NEWS, R.layout.item_news_text);

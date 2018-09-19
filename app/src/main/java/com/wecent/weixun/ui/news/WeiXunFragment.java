@@ -1,11 +1,8 @@
 package com.wecent.weixun.ui.news;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,18 +14,16 @@ import com.flyco.animation.SlideEnter.SlideRightEnter;
 import com.flyco.animation.SlideExit.SlideRightExit;
 import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
-import com.wecent.weixun.WXApplication;
+import com.socks.library.KLog;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.NewsDetail;
 import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.ui.base.BaseFragment;
-import com.wecent.weixun.ui.news.adapter.WeiXunListAdapter;
+import com.wecent.weixun.ui.news.adapter.WeiXunAdapter;
 import com.wecent.weixun.ui.news.contract.WeiXunContract;
 import com.wecent.weixun.ui.news.presenter.WeiXunPresenter;
-import com.wecent.weixun.utils.ContextUtils;
 import com.wecent.weixun.widget.CustomLoadMoreView;
 import com.wecent.weixun.widget.NewsDelPop;
 import com.wecent.weixun.widget.PtrWeiXunHeader;
@@ -42,12 +37,11 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 
 /**
- * desc: .
+ * desc: 头条新闻分类页 .
  * author: wecent .
- * date: 2017/9/8 .
+ * date: 2017/9/19 .
  */
 public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements WeiXunContract.View {
-    private static final String TAG = "DetailFragment";
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
@@ -61,16 +55,16 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
     private NewsDelPop newsDelPop;
     private String channelCode;
     private List<News> beanList;
-    private WeiXunListAdapter detailAdapter;
+    private WeiXunAdapter detailAdapter;
     private int upPullNum = 1;
     private int downPullNum = 1;
     private boolean isRemoveHeaderView = false;
     private PtrWeiXunHeader mHeader;
     private PtrFrameLayout mFrame;
 
-    public static WeiXunFragment newInstance(String newsid) {
+    public static WeiXunFragment newInstance(String channelCode) {
         Bundle args = new Bundle();
-        args.putString("newsid", newsid);
+        args.putString("channelCode", channelCode);
         WeiXunFragment fragment = new WeiXunFragment();
         fragment.setArguments(args);
         return fragment;
@@ -103,7 +97,7 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                Log.i(TAG, "onRefreshBegin: " + downPullNum);
+                KLog.e("onRefreshBegin: " + downPullNum);
                 mFrame = frame;
                 isRemoveHeaderView = true;
                 mPresenter.getData(channelCode, NewsApi.ACTION_DOWN);
@@ -111,14 +105,14 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
         });
         beanList = new ArrayList<>();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(detailAdapter = new WeiXunListAdapter(beanList, getActivity()));
+        mRecyclerView.setAdapter(detailAdapter = new WeiXunAdapter(beanList, getActivity()));
         detailAdapter.setEnableLoadMore(true);
         detailAdapter.setLoadMoreView(new CustomLoadMoreView());
         detailAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         detailAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                Log.i(TAG, "onLoadMoreRequested: " + upPullNum);
+                KLog.e("onLoadMoreRequested: " + upPullNum);
                 mPresenter.getData(channelCode, NewsApi.ACTION_UP);
 
             }
@@ -127,8 +121,8 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
         mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                NewsDetail.ItemBean itemBean = (NewsDetail.ItemBean) baseQuickAdapter.getItem(i);
-                toRead(itemBean);
+//                NewsDetail.ItemBean itemBean = (NewsDetail.ItemBean) baseQuickAdapter.getItem(i);
+//                toRead(itemBean);
 
             }
         });
@@ -211,7 +205,7 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
                 mHeader.refreshComplete(true, mFrame);
             }
             showSuccess();
-            Log.i(TAG, "loadData: " + newsList.toString());
+            KLog.e("loadData: " + newsList.toString());
         }
     }
 
@@ -223,7 +217,7 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
             upPullNum++;
             detailAdapter.addData(newsList);
             detailAdapter.loadMoreComplete();
-            Log.i(TAG, "loadMoreData: " + newsList.toString());
+            KLog.e("loadMoreData: " + newsList.toString());
         }
     }
 
@@ -248,30 +242,30 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
                     }
                 });
     }
-
-    private void toRead(NewsDetail.ItemBean itemBean) {
-        if (itemBean == null) {
-            return;
-        }
-        switch (itemBean.getItemType()) {
-            case NewsDetail.ItemBean.TYPE_DOC_TITLEIMG:
-            case NewsDetail.ItemBean.TYPE_DOC_SLIDEIMG:
-                Intent intent = new Intent(getActivity(), NewsArticleActivity.class);
-                intent.putExtra("aid", itemBean.getDocumentId());
-                startActivity(intent);
-                break;
-            case NewsDetail.ItemBean.TYPE_SLIDE:
-                NewsImageActivity.launch(getActivity(), itemBean);
-                break;
-            case NewsDetail.ItemBean.TYPE_ADVERT_TITLEIMG:
-            case NewsDetail.ItemBean.TYPE_ADVERT_SLIDEIMG:
-            case NewsDetail.ItemBean.TYPE_ADVERT_LONGIMG:
-                NewsAdvertActivity.launch(getActivity(), itemBean.getLink().getWeburl());
-                break;
-            case NewsDetail.ItemBean.TYPE_PHVIDEO:
-                T("TYPE_PHVIDEO");
-                break;
-        }
-    }
+//
+//    private void toRead(NewsDetail.ItemBean itemBean) {
+//        if (itemBean == null) {
+//            return;
+//        }
+//        switch (itemBean.getItemType()) {
+//            case NewsDetail.ItemBean.TYPE_DOC_TITLEIMG:
+//            case NewsDetail.ItemBean.TYPE_DOC_SLIDEIMG://
+//                Intent intent = new Intent(getActivity(), NewsArticleActivity.class);
+//                intent.putExtra("aid", itemBean.getDocumentId());
+//                startActivity(intent);
+//                break;
+//            case NewsDetail.ItemBean.TYPE_SLIDE:
+//                NewsImageActivity.launch(getActivity(), itemBean);
+//                break;
+//            case NewsDetail.ItemBean.TYPE_ADVERT_TITLEIMG:
+//            case NewsDetail.ItemBean.TYPE_ADVERT_SLIDEIMG:
+//            case NewsDetail.ItemBean.TYPE_ADVERT_LONGIMG:
+//                NewsAdvertActivity.launch(getActivity(), itemBean.getLink().getWeburl());
+//                break;
+//            case NewsDetail.ItemBean.TYPE_PHVIDEO:
+//                ToastUtils("TYPE_PHVIDEO");
+//                break;
+//        }
+//    }
 
 }

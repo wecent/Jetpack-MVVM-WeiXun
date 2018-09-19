@@ -1,6 +1,6 @@
 package com.wecent.weixun.network;
 
-import com.wecent.weixun.model.NewsDetail;
+import com.wecent.weixun.model.entity.NewsDetail;
 import com.wecent.weixun.model.response.CommentResponse;
 import com.wecent.weixun.model.response.NewsResponse;
 import com.wecent.weixun.model.response.ResultResponse;
