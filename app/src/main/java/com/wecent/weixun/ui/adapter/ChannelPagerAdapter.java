@@ -31,7 +31,7 @@ public class ChannelPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public BaseFragment getItem(int position) {
-//        return DetailFragment.newInstance(mChannels.get(position).getChannelId(), position);
+//        return DetailFragment.newInstance(mChannels.get(position).getChannelCode(), position);
         return WeiXunFragment.newInstance(mChannels.get(position).getChannelCode());
     }
 

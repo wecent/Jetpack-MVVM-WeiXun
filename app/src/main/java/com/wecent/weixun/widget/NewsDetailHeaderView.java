@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
 
 public class NewsDetailHeaderView extends FrameLayout {
 
-    private static final String NICK = "chaychan";
     @BindView(R.id.tvTitle)
     TextView tvTitle;
     @BindView(R.id.iv_avatar)

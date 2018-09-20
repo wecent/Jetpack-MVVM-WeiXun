@@ -92,12 +92,7 @@ public class WeiXunAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHolde
                         baseViewHolder.setText(R.id.tv_bottom_right, news.gallary_image_count + "图");//设置图片数
                     }
                     //中间图片使用image_list第一张
-                    KLog.e(new Gson().toJson(news));
-                    if (news.image_list == null) {
-                        ImageLoaderUtil.LoadImage(mContext, news.middle_image.url, (ImageView) baseViewHolder.getView(R.id.iv_img));
-                    } else {
-                        ImageLoaderUtil.LoadImage(mContext, news.image_list.get(0).url.replace("list/300x196", "large"), (ImageView) baseViewHolder.getView(R.id.iv_img));
-                    }
+                    ImageLoaderUtil.LoadImage(mContext, news.image_list.get(0).url.replace("list/300x196", "large"), (ImageView) baseViewHolder.getView(R.id.iv_img));
                 }
                 break;
             case News.TYPE_RIGHT_PIC_NEWS:
@@ -108,7 +103,7 @@ public class WeiXunAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHolde
                 } else {
                     baseViewHolder.setVisible(R.id.ll_duration, false);//隐藏时长
                 }
-                ImageLoaderUtil.LoadImage(mContext, news.middle_image.url, (ImageView) baseViewHolder.getView(R.id.iv_img));//右侧图片或视频的图片使用middle_image
+                ImageLoaderUtil.LoadImage(mContext,news.middle_image.url, (ImageView) baseViewHolder.getView(R.id.iv_img));
                 break;
             case News.TYPE_THREE_PIC_NEWS:
                 //三张图片的新闻

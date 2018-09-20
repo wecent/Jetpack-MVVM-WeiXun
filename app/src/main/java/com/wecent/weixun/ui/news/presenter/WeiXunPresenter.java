@@ -64,37 +64,7 @@ public class WeiXunPresenter extends BasePresenter<WeiXunContract.View> implemen
                         if (data != null && data.size() != 0){
                             for (NewsData newsData : data) {
                                 News news = new Gson().fromJson(newsData.content, News.class);
-                                if (news.has_video) {
-                                    //如果有视频
-                                    if (news.video_style == 0) {
-                                        //右侧视频
-                                        if (news.middle_image == null || TextUtils.isEmpty(news.middle_image.url)) {
-                                            news.itemType = News.TYPE_TEXT_NEWS;
-                                        }
-                                        news.itemType = News.TYPE_RIGHT_PIC_NEWS;
-                                    } else if (news.video_style == 2) {
-                                        //居中视频
-                                        news.itemType = News.TYPE_CENTER_PIC_NEWS;
-                                    }
-                                } else {
-                                    //非视频新闻
-                                    if (!news.has_image) {
-                                        //纯文字新闻
-                                        news.itemType = News.TYPE_TEXT_NEWS;
-                                    } else {
-                                        if (news.image_list == null || news.image_list.size() == 0) {
-                                            //图片列表为空，则是右侧图片
-                                            news.itemType = News.TYPE_RIGHT_PIC_NEWS;
-                                        }
-
-                                        if (news.gallary_image_count == 3) {
-                                            //图片数为3，则为三图
-                                            news.itemType = News.TYPE_THREE_PIC_NEWS;
-                                        }
-                                        //中间大图，右下角显示图数
-                                        news.itemType = News.TYPE_CENTER_PIC_NEWS;
-                                    }
-                                }
+                                news.itemType = getNewsType(news);
                                 newsList.add(news);
                             }
                         }
@@ -121,5 +91,41 @@ public class WeiXunPresenter extends BasePresenter<WeiXunContract.View> implemen
                         }
                     }
                 });
+    }
+
+    private int getNewsType(News news) {
+        if (news.has_video) {
+            //如果有视频
+            if (news.video_style == 0) {
+                //右侧视频
+                if (news.middle_image == null || TextUtils.isEmpty(news.middle_image.url)) {
+                    return News.TYPE_TEXT_NEWS;
+                }
+                return News.TYPE_RIGHT_PIC_NEWS;
+            } else if (news.video_style == 2) {
+                //居中视频
+                return News.TYPE_CENTER_PIC_NEWS;
+            }
+        } else {
+            //非视频新闻
+            if (!news.has_image) {
+                //纯文字新闻
+                return News.TYPE_TEXT_NEWS;
+            } else {
+                if (news.image_list == null || news.image_list.size() == 0) {
+                    //图片列表为空，则是右侧图片
+                    return News.TYPE_RIGHT_PIC_NEWS;
+                }
+
+                if (news.gallary_image_count == 3) {
+                    //图片数为3，则为三图
+                    return News.TYPE_THREE_PIC_NEWS;
+                }
+
+                //中间大图，右下角显示图数
+                return News.TYPE_CENTER_PIC_NEWS;
+            }
+        }
+        return News.TYPE_TEXT_NEWS;
     }
 }

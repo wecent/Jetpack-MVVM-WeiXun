@@ -132,37 +132,12 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
                 StringBuffer urlSb = new StringBuffer("http://m.toutiao.com/i");
                 urlSb.append(itemId).append("/info/");
                 String url = urlSb.toString();//http://m.toutiao.com/i6412427713050575361/info/
-                Intent intent = null;
-                if (news.has_video) {
-                    //视频新闻
-//                    intent = new Intent(getActivity(), WeiXunDetailActivity.class);
-//                    if (JCVideoPlayerManager.getCurrentJcvd() != null) {
-//                        JCVideoPlayerStandard videoPlayer = (JCVideoPlayerStandard) JCVideoPlayerManager.getCurrentJcvd();
-//                        //传递进度
-//                        int progress = JCMediaManager.instance().mediaPlayer.getCurrentPosition();
-//                        if (progress != 0) {
-//                            intent.putExtra(VideoDetailActivity.PROGRESS, progress);
-//                        }
-//                    }
-                } else {
-                    //非视频新闻
-                    if (news.article_type == 1) {
-                        //如果article_type为1，则是使用WebViewActivity打开
-//                        intent = new Intent(mActivity, WebViewActivity.class);
-//                        intent.putExtra(WebViewActivity.URL, news.article_url);
-//                        startActivity(intent);
-                        return;
-                    }
-                    //其他新闻
-                    intent = new Intent(getActivity(), WeiXunDetailActivity.class);
-                }
-
+                Intent intent = new Intent(getActivity(), WeiXunDetailActivity.class);
                 intent.putExtra(WeiXunDetailActivity.CHANNEL_CODE, channelCode);
                 intent.putExtra(WeiXunDetailActivity.POSITION, i);
                 intent.putExtra(WeiXunDetailActivity.DETAIL_URL, url);
                 intent.putExtra(WeiXunDetailActivity.GROUP_ID, news.group_id);
                 intent.putExtra(WeiXunDetailActivity.ITEM_ID, itemId);
-
                 startActivity(intent);
             }
         });
