@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -14,40 +14,81 @@
              android:id="@+id/tv_tag"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
+             android:layout_marginRight="8dp"
              android:text="置顶"
              android:textSize="10sp"
-             android:textColor="#F96B6B" />
+             android:textColor="#F96B6B"/>
 
         <TextView
             android:id="@+id/tv_author"
-            android:layout_marginLeft="5dp"
             style="@style/text_news_buttom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
             android:text="中新网移动版"
-            android:textColor="@color/config_color_gray_9"
-            android:textSize="11sp" />
+            android:textColor="@color/config_color_gray_6"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_comment_num"
             style="@style/text_news_buttom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
             android:text="1020评论"
-            android:textColor="@color/config_color_gray_9"
-            android:textSize="11sp" />
+            android:textColor="@color/config_color_gray_6"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_time"
             style="@style/text_news_buttom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
             android:text="5分钟前"
-            android:textColor="@color/config_color_gray_9"
-            android:textSize="11sp" />
+            android:textColor="@color/config_color_gray_6"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_content_none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_author_none"
+            style="@style/text_news_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="中新网移动版"
+            android:textColor="@color/config_color_gray_6"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_comment_num_none"
+            style="@style/text_news_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="1020评论"
+            android:textColor="@color/config_color_gray_6"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_time_none"
+            style="@style/text_news_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="5分钟前"
+            android:textColor="@color/config_color_gray_6"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

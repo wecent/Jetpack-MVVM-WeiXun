@@ -47,11 +47,11 @@ public class SimpleMultiStateView extends MultiStateView {
     public SimpleMultiStateView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.msv_SimpleMultiStateView);
-        resIdEmpty = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_emptyView, -1);
-        resIdLoading = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_loadingView, -1);
-        resIdFail = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_failView, -1);
-        resIdNonet = typedArray.getResourceId(R.styleable.msv_SimpleMultiStateView_msv_nonetView, -1);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleMultiStateView);
+        resIdEmpty = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_emptyView, -1);
+        resIdLoading = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_loadingView, -1);
+        resIdFail = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_failView, -1);
+        resIdNonet = typedArray.getResourceId(R.styleable.SimpleMultiStateView_msv_nonetView, -1);
         typedArray.recycle();
         if (typedArray != null) {
             if (resIdEmpty != -1) {

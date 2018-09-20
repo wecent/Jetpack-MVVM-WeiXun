@@ -36,7 +36,7 @@ public class NewsDetailHeaderView extends FrameLayout {
     @BindView(R.id.tv_time)
     TextView tvTime;
     @BindView(R.id.ll_info)
-    LinearLayout llInfo;
+    public LinearLayout llInfo;
     @BindView(R.id.wv_content)
     WebView wvContent;
 
@@ -94,7 +94,6 @@ public class NewsDetailHeaderView extends FrameLayout {
         String htmlPart2 = "</body></html>";
 
         String html = htmlPart1 + detail.content + htmlPart2;
-
 
         wvContent.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
         wvContent.setWebViewClient(new WebViewClient() {

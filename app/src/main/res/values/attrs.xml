@@ -2,7 +2,7 @@
 <resources>
     <attr name="rightPadding" format="dimension"/>
 
-    <declare-styleable name="msv_SimpleMultiStateView">
+    <declare-styleable name="SimpleMultiStateView">
         <attr name="msv_emptyView" format="reference"/>
         <attr name="msv_loadingView" format="reference"/>
         <attr name="msv_failView" format="reference"/>

@@ -41,8 +41,6 @@ import butterknife.Unbinder;
  */
 public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsContract.View {
 
-    private static final String TAG = "NewsFragment";
-
     @BindView(R.id.viewpager)
     CustomViewPager mViewpager;
     @BindView(R.id.iv_edit)

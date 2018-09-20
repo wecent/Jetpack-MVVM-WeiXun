@@ -22,7 +22,7 @@ public class Channel extends DataSupport implements Serializable, MultiItemEntit
     @Column(ignore = true)
     public int itemtype;
 
-    private String channelId;
+    private String channelCode;
     private String channelName;
     /**
      * 0 可移除，1不可移除
@@ -39,12 +39,12 @@ public class Channel extends DataSupport implements Serializable, MultiItemEntit
         return itemtype;
     }
 
-    public String getChannelId() {
-        return channelId;
+    public String getChannelCode() {
+        return channelCode;
     }
 
-    public void setChannelId(String channelId) {
-        this.channelId = channelId;
+    public void setChannelCode(String channelCode) {
+        this.channelCode = channelCode;
     }
 
     public String getChannelName() {

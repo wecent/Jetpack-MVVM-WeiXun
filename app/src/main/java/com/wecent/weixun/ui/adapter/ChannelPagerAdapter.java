@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.wecent.weixun.model.Channel;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.news.DetailFragment;
+import com.wecent.weixun.ui.news.WeiXunFragment;
 
 import java.util.List;
 
@@ -30,7 +31,8 @@ public class ChannelPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public BaseFragment getItem(int position) {
-        return DetailFragment.newInstance(mChannels.get(position).getChannelId(), position);
+//        return DetailFragment.newInstance(mChannels.get(position).getChannelId(), position);
+        return WeiXunFragment.newInstance(mChannels.get(position).getChannelCode());
     }
 
     @Override

@@ -1,5 +1,9 @@
 package com.wecent.weixun.ui.news.presenter;
 
+import android.text.TextUtils;
+
+import com.google.gson.reflect.TypeToken;
+import com.socks.library.KLog;
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.R;
 import com.wecent.weixun.model.Channel;
@@ -37,18 +41,18 @@ public class NewsPresenter extends BasePresenter<NewsContract.View> implements N
         channelList = ChannelDao.getChannels();
         if (channelList.size() < 1) {
             List<String> channelName = Arrays.asList(WXApplication.getContext().getResources()
-                    .getStringArray(R.array.news_channel));
-            List<String> channelId = Arrays.asList(WXApplication.getContext().getResources()
-                    .getStringArray(R.array.news_channel_id));
+                    .getStringArray(R.array.weixun_channel));
+            List<String> channelCode = Arrays.asList(WXApplication.getContext().getResources()
+                    .getStringArray(R.array.weixun_channel_code));
             List<Channel> channels = new ArrayList<>();
 
             for (int i = 0; i < channelName.size(); i++) {
                 Channel channel = new Channel();
-                channel.setChannelId(channelId.get(i));
+                channel.setChannelCode(channelCode.get(i));
                 channel.setChannelName(channelName.get(i));
                 channel.setChannelType(i < 1 ? 1 : 0);
-                channel.setChannelSelect(i < channelId.size() - 3);
-                if (i < channelId.size() - 3) {
+                channel.setChannelSelect(i < channelCode.size() - 3);
+                if (i < channelCode.size() - 3) {
                     myChannels.add(channel);
                 } else {
                     otherChannels.add(channel);

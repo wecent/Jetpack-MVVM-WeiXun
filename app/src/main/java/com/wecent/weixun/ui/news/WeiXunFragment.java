@@ -1,8 +1,8 @@
 package com.wecent.weixun.ui.news;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,19 +19,22 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
-import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.news.adapter.WeiXunAdapter;
 import com.wecent.weixun.ui.news.contract.WeiXunContract;
 import com.wecent.weixun.ui.news.presenter.WeiXunPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
 import com.wecent.weixun.widget.NewsDelPop;
+import com.wecent.weixun.widget.PowerfulRecyclerView;
 import com.wecent.weixun.widget.PtrWeiXunHeader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import fm.jiecao.jcvideoplayer_lib.JCMediaManager;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -44,7 +47,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements WeiXunContract.View {
 
     @BindView(R.id.mRecyclerView)
-    RecyclerView mRecyclerView;
+    PowerfulRecyclerView mRecyclerView;
     @BindView(R.id.mPtrFrameLayout)
     PtrFrameLayout mPtrFrameLayout;
     @BindView(R.id.tv_toast)
@@ -85,6 +88,9 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
+        if (getArguments() == null) return;
+        channelCode = getArguments().getString("channelCode");
+
         mPtrFrameLayout.disableWhenHorizontalMove(true);
         mHeader = new PtrWeiXunHeader(mContext);
         mPtrFrameLayout.setHeaderView(mHeader);
@@ -100,12 +106,12 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
                 KLog.e("onRefreshBegin: " + downPullNum);
                 mFrame = frame;
                 isRemoveHeaderView = true;
-                mPresenter.getData(channelCode, NewsApi.ACTION_DOWN);
+                mPresenter.getData(channelCode, WeiXunPresenter.ACTION_DOWN);
             }
         });
         beanList = new ArrayList<>();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(detailAdapter = new WeiXunAdapter(beanList, getActivity()));
+        mRecyclerView.setAdapter(detailAdapter = new WeiXunAdapter(beanList, channelCode, getActivity()));
         detailAdapter.setEnableLoadMore(true);
         detailAdapter.setLoadMoreView(new CustomLoadMoreView());
         detailAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
@@ -113,17 +119,51 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
             @Override
             public void onLoadMoreRequested() {
                 KLog.e("onLoadMoreRequested: " + upPullNum);
-                mPresenter.getData(channelCode, NewsApi.ACTION_UP);
-
+                mPresenter.getData(channelCode, WeiXunPresenter.ACTION_UP);
             }
         }, mRecyclerView);
 
         mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-//                NewsDetail.ItemBean itemBean = (NewsDetail.ItemBean) baseQuickAdapter.getItem(i);
-//                toRead(itemBean);
+                News news = beanList.get(i);
 
+                String itemId = news.item_id;
+                StringBuffer urlSb = new StringBuffer("http://m.toutiao.com/i");
+                urlSb.append(itemId).append("/info/");
+                String url = urlSb.toString();//http://m.toutiao.com/i6412427713050575361/info/
+                Intent intent = null;
+                if (news.has_video) {
+                    //视频新闻
+//                    intent = new Intent(getActivity(), WeiXunDetailActivity.class);
+//                    if (JCVideoPlayerManager.getCurrentJcvd() != null) {
+//                        JCVideoPlayerStandard videoPlayer = (JCVideoPlayerStandard) JCVideoPlayerManager.getCurrentJcvd();
+//                        //传递进度
+//                        int progress = JCMediaManager.instance().mediaPlayer.getCurrentPosition();
+//                        if (progress != 0) {
+//                            intent.putExtra(VideoDetailActivity.PROGRESS, progress);
+//                        }
+//                    }
+                } else {
+                    //非视频新闻
+                    if (news.article_type == 1) {
+                        //如果article_type为1，则是使用WebViewActivity打开
+//                        intent = new Intent(mActivity, WebViewActivity.class);
+//                        intent.putExtra(WebViewActivity.URL, news.article_url);
+//                        startActivity(intent);
+                        return;
+                    }
+                    //其他新闻
+                    intent = new Intent(getActivity(), WeiXunDetailActivity.class);
+                }
+
+                intent.putExtra(WeiXunDetailActivity.CHANNEL_CODE, channelCode);
+                intent.putExtra(WeiXunDetailActivity.POSITION, i);
+                intent.putExtra(WeiXunDetailActivity.DETAIL_URL, url);
+                intent.putExtra(WeiXunDetailActivity.GROUP_ID, news.group_id);
+                intent.putExtra(WeiXunDetailActivity.ITEM_ID, itemId);
+
+                startActivity(intent);
             }
         });
 
@@ -175,9 +215,7 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
 
     @Override
     public void bindData() {
-        if (getArguments() == null) return;
-        channelCode = getArguments().getString("channelCode");
-        mPresenter.getData(channelCode, NewsApi.ACTION_DEFAULT);
+        mPresenter.getData(channelCode, WeiXunPresenter.ACTION_DEFAULT);
     }
 
     @Override
@@ -198,6 +236,7 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
             if (isRemoveHeaderView) {
                 detailAdapter.removeAllHeaderView();
             }
+            beanList.addAll(newsList);
             detailAdapter.setNewData(newsList);
             showToast(newsList.size(), true);
             mPtrFrameLayout.refreshComplete();
@@ -215,6 +254,7 @@ public class WeiXunFragment extends BaseFragment<WeiXunPresenter> implements Wei
             detailAdapter.loadMoreFail();
         } else {
             upPullNum++;
+            beanList.addAll(newsList);
             detailAdapter.addData(newsList);
             detailAdapter.loadMoreComplete();
             KLog.e("loadMoreData: " + newsList.toString());

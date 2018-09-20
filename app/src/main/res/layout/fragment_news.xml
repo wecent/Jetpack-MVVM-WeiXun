@@ -16,15 +16,62 @@
         android:layout_height="45dp"
         android:background="@color/app_color_blue">
 
+        <ImageView
+            android:id="@+id/iv_news_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_weixun_icon"/>
+
+        <TextView
+            android:id="@+id/tv_news_wei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_news_icon"
+            android:text="微"
+            android:textSize="22sp"
+            android:textColor="@color/config_color_white"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_news_xun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_news_wei"
+            android:layout_marginLeft="2dp"
+            android:text="讯"
+            android:textSize="22sp"
+            android:textColor="@color/config_color_white"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@+id/tv_news_xun"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/shape_weixun_search"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/config_color_white">
+
         <com.flyco.tablayout.SlidingTabLayout
             android:id="@+id/SlidingTabLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/iv_edit"
             tl:tl_tab_width="48dp"
-            tl:tl_indicator_color="@color/config_color_white"
-            tl:tl_textSelectColor="@color/config_color_white"
-            tl:tl_indicator_style="NORMAL"
+            tl:tl_textSelectColor="@color/app_color_blue"
+            tl:tl_textUnselectColor="@color/config_color_base_6"
+            tl:tl_indicator_style="TRIANGLE"
             tl:tl_indicator_width="36dp"
             tl:tl_textsize="16sp"
             tl:tl_textBold="SELECT"/>
@@ -34,15 +81,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp"
+            android:background="@drawable/bg_weixun_shadow_add"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:src="@drawable/ic_news_add"/>
+            android:src="@drawable/ic_weixun_add_channel"/>
 
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/color_line" />
+
 
     <com.wecent.weixun.widget.CustomViewPager
         android:id="@+id/viewpager"

@@ -4,6 +4,8 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.socks.library.KLog;
+import com.wecent.weixun.R;
+import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.model.entity.NewsData;
 import com.wecent.weixun.model.response.NewsResponse;
@@ -62,46 +64,49 @@ public class WeiXunPresenter extends BasePresenter<WeiXunContract.View> implemen
                         if (data != null && data.size() != 0){
                             for (NewsData newsData : data) {
                                 News news = new Gson().fromJson(newsData.content, News.class);
-                                newsList.add(news);
-                            }
-                        }
-                        for (int i = 0; i < newsList.size(); i++) {
-                            if (newsList.get(i).has_video) {
-                                //如果有视频
-                                if (newsList.get(i).video_style == 0) {
-                                    //右侧视频
-                                    if (newsList.get(i).middle_image == null || TextUtils.isEmpty(newsList.get(i).middle_image.url)) {
-                                        newsList.get(i).itemType = News.TYPE_TEXT_NEWS;
+                                if (news.has_video) {
+                                    //如果有视频
+                                    if (news.video_style == 0) {
+                                        //右侧视频
+                                        if (news.middle_image == null || TextUtils.isEmpty(news.middle_image.url)) {
+                                            news.itemType = News.TYPE_TEXT_NEWS;
+                                        }
+                                        news.itemType = News.TYPE_RIGHT_PIC_NEWS;
+                                    } else if (news.video_style == 2) {
+                                        //居中视频
+                                        news.itemType = News.TYPE_CENTER_PIC_NEWS;
                                     }
-                                    newsList.get(i).itemType = News.TYPE_RIGHT_PIC_NEWS;
-                                } else if (newsList.get(i).video_style == 2) {
-                                    //居中视频
-                                    newsList.get(i).itemType = News.TYPE_CENTER_PIC_NEWS;
-                                }
-                            } else {
-                                //非视频新闻
-                                if (!newsList.get(i).has_image) {
-                                    //纯文字新闻
-                                    newsList.get(i).itemType = News.TYPE_TEXT_NEWS;
                                 } else {
-                                    if (newsList.get(i).image_list == null || newsList.get(i).image_list.size() == 0) {
-                                        //图片列表为空，则是右侧图片
-                                        newsList.get(i).itemType = News.TYPE_RIGHT_PIC_NEWS;
-                                    }
+                                    //非视频新闻
+                                    if (!news.has_image) {
+                                        //纯文字新闻
+                                        news.itemType = News.TYPE_TEXT_NEWS;
+                                    } else {
+                                        if (news.image_list == null || news.image_list.size() == 0) {
+                                            //图片列表为空，则是右侧图片
+                                            news.itemType = News.TYPE_RIGHT_PIC_NEWS;
+                                        }
 
-                                    if (newsList.get(i).gallary_image_count == 3) {
-                                        //图片数为3，则为三图
-                                        newsList.get(i).itemType = News.TYPE_THREE_PIC_NEWS;
+                                        if (news.gallary_image_count == 3) {
+                                            //图片数为3，则为三图
+                                            news.itemType = News.TYPE_THREE_PIC_NEWS;
+                                        }
+                                        //中间大图，右下角显示图数
+                                        news.itemType = News.TYPE_CENTER_PIC_NEWS;
                                     }
-                                    //中间大图，右下角显示图数
-                                    newsList.get(i).itemType = News.TYPE_CENTER_PIC_NEWS;
                                 }
+                                newsList.add(news);
                             }
                         }
                         KLog.e(newsList);
                         if (!action.equals(NewsApi.ACTION_UP)) {
                             mView.loadData(newsList);
                         } else {
+                            String[] channelCodes = WXApplication.getContext().getResources().getStringArray(R.array.weixun_channel_code);
+                            if (channelCode.equals(channelCodes[0])) {
+                                //如果是推荐频道
+                                newsList.remove(0);//移除第一个，因为第一个是置顶新闻，重复
+                            }
                             mView.loadMoreData(newsList);
                         }
                     }
