@@ -77,10 +77,10 @@ public class NewsDelPop extends BasePopup<NewsDelPop> {
     @Override
     public View onCreatePopupView() {
         Log.i(TAG, "onCreatePopupView: ");
-        View inflate = View.inflate(mContext, R.layout.popup_newsdel, null);
+        View inflate = View.inflate(mContext, R.layout.layout_popup_newsdel, null);
         ButterKnife.bind(this, inflate);
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
-        recyclerView.setAdapter(adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_newsdelpop_del, backreason) {
+        recyclerView.setAdapter(adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_news_delpop_del, backreason) {
             @Override
             protected void convert(BaseViewHolder helper, String s) {
                 helper.setText(R.id.tv_backreason, s);

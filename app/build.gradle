@@ -61,7 +61,6 @@ dependencies {
     compile rootProject.ext.dependencies["viewanimator"]
     compile rootProject.ext.dependencies["FlycoDialog"]
     compile rootProject.ext.dependencies["PhotoView"]
-    compile rootProject.ext.dependencies["videoplayer"]
     compile rootProject.ext.dependencies["lottie"]
     compile rootProject.ext.dependencies["progressbar"]
     compile rootProject.ext.dependencies["swipebacklayout"]
@@ -71,6 +70,7 @@ dependencies {
     compile rootProject.ext.dependencies["klog"]
 
     compile rootProject.ext.dependencies["litepal"]
+    compile project(':jcvideoplayer-lib')
     testCompile 'junit:junit:4.12'
 }
 repositories {

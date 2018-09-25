@@ -2,7 +2,7 @@ package com.wecent.weixun.ui.jandan;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -12,8 +12,9 @@ import com.wecent.weixun.model.FreshNewsBean;
 import com.wecent.weixun.model.JdDetailBean;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
-import com.wecent.weixun.network.JanDanApi;
 import com.wecent.weixun.ui.base.BaseFragment;
+import com.wecent.weixun.ui.jandan.contract.JanDanContract;
+import com.wecent.weixun.ui.jandan.presenter.JanDanPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
 import com.wecent.weixun.widget.PtrWeiXunHeader;
 
@@ -56,7 +57,7 @@ public class DetailFragment extends BaseFragment<JanDanPresenter> implements Jan
 
     @Override
     public int getContentLayout() {
-        return R.layout.fragment_jd_detail;
+        return R.layout.fragment_detail_jiandan;
     }
 
     @Override
@@ -88,7 +89,7 @@ public class DetailFragment extends BaseFragment<JanDanPresenter> implements Jan
             }
         });
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setEnableLoadMore(true);
         mAdapter.setPreLoadNumber(1);
@@ -100,14 +101,6 @@ public class DetailFragment extends BaseFragment<JanDanPresenter> implements Jan
                 mPresenter.getData(type, pageNum);
             }
         }, mRecyclerView);
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                if (type.equals(JanDanApi.TYPE_FRESH)){
-                    ReadActivity.launch(getActivity(), (FreshNewsBean.PostsBean) adapter.getItem(position));
-                }
-            }
-        });
     }
 
     @Override

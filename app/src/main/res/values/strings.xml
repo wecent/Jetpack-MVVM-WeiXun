@@ -16,6 +16,7 @@
     <string name="news_commentsize">%1$s评论</string>
     <string name="detail_header_tv">下拉一下，看点儿不一样的</string>
     <string name="news_toast">已为您推荐了%1$s条新资讯</string>
+    <string name="video_toast">已为您推荐了%1$s条短视频</string>
     <string name="finish">完成</string>
     <string name="edit">编辑</string>
     <string name="willUrl">http://will-ls.top/</string>

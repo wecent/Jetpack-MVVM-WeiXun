@@ -1,8 +1,10 @@
 package com.wecent.weixun.ui.video.contract;
 
+import com.wecent.weixun.model.Channel;
 import com.wecent.weixun.model.VideoChannelBean;
 import com.wecent.weixun.model.VideoDetailBean;
 import com.wecent.weixun.ui.base.BaseContract;
+import com.wecent.weixun.ui.news.contract.NewsContract;
 
 import java.util.List;
 
@@ -13,29 +15,17 @@ import java.util.List;
  */
 public interface VideoContract {
 
-    interface View extends BaseContract.BaseView {
+    interface View extends BaseContract.BaseView{
 
-        void loadVideoChannel(List<VideoChannelBean> channelBean);
-
-        void loadVideoDetails(List<VideoDetailBean> detailBean);
-
-        void loadMoreVideoDetails(List<VideoDetailBean> detailBean);
+        void loadData(List<Channel> channels);
 
     }
 
-    interface Presenter extends BaseContract.BasePresenter<View> {
+    interface Presenter extends BaseContract.BasePresenter<VideoContract.View>{
         /**
-         * 获取视频频道列表
+         * 初始化频道
          */
-        void getVideoChannel();
+        void getChannel();
 
-        /**
-         * 获取视频列表
-         *
-         * @param page     页码
-         * @param listType 默认list
-         * @param typeId   频道id
-         */
-        void getVideoDetails(int page, String listType, String typeId);
     }
 }

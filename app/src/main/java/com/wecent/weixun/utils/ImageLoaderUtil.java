@@ -51,15 +51,16 @@ public class ImageLoaderUtil {
 
     /**
      * 自定义RequestOptions使用
-     *
-     * @param fragment
+     *  @param fragment
      * @param url            图片链接
-     * @param requestOptions
      * @param imageView      目标view
+     * @param requestOptions
      */
-    public static void LoadImage(android.support.v4.app.Fragment fragment, Object url, ImageView imageView, RequestOptions requestOptions) {
+    public static void LoadImage(Context fragment, Object url, ImageView imageView, int requestOptions) {
+        RequestOptions options = new RequestOptions();
+        options.placeholder(requestOptions);
         Glide.with(fragment).load(url)
-                .apply(requestOptions)
+                .apply(options)
                 .transition(new DrawableTransitionOptions().crossFade(800))
                 .into(imageView);
     }
@@ -96,8 +97,4 @@ public class ImageLoaderUtil {
                 .listener(listener)
                 .into(imageView);
     }
-
-
-
-
 }

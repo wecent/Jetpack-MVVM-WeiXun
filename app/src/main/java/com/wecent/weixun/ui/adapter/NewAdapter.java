@@ -40,9 +40,9 @@ public class NewAdapter extends BaseMultiItemQuickAdapter<Channel, BaseViewHolde
         mIsEdit = false;
         this.mItemTouchHelper = helper;
         addItemType(Channel.TYPE_MY, R.layout.item_channel_title);
-        addItemType(Channel.TYPE_MY_CHANNEL, R.layout.channel_rv_item);
+        addItemType(Channel.TYPE_MY_CHANNEL, R.layout.item_news_channel);
         addItemType(Channel.TYPE_OTHER, R.layout.item_channel_title);
-        addItemType(Channel.TYPE_OTHER_CHANNEL, R.layout.channel_rv_item);
+        addItemType(Channel.TYPE_OTHER_CHANNEL, R.layout.item_news_channel);
     }
 
     @Override

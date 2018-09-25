@@ -56,7 +56,7 @@ public class NewsDetailHeaderView extends FrameLayout {
     }
 
     private void initView() {
-        inflate(getContext(), R.layout.layout_weixun_detail_header, this);
+        inflate(getContext(), R.layout.layout_detail_header, this);
         ButterKnife.bind(this, this);
     }
 

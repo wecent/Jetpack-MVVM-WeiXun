@@ -1,19 +1,16 @@
 package com.wecent.weixun.ui.video.presenter;
 
-import com.wecent.weixun.model.VideoChannelBean;
-import com.wecent.weixun.model.VideoDetailBean;
-import com.wecent.weixun.network.NewsApi;
-import com.wecent.weixun.network.RxSchedulers;
+import com.wecent.weixun.R;
+import com.wecent.weixun.WXApplication;
+import com.wecent.weixun.model.Channel;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.video.contract.VideoContract;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 
 /**
  * desc: .
@@ -21,71 +18,31 @@ import io.reactivex.disposables.Disposable;
  * date: 2017/9/10 .
  */
 public class VideoPresenter extends BasePresenter<VideoContract.View> implements VideoContract.Presenter {
-    private NewsApi mNewsApi;
 
     @Inject
-    VideoPresenter(NewsApi newsApi) {
-        this.mNewsApi = newsApi;
-    }
-
-    @Override
-    public void getVideoChannel() {
-        mNewsApi.getVideoChannel()
-                .compose(RxSchedulers.<List<VideoChannelBean>>applySchedulers())
-                .compose(mView.<List<VideoChannelBean>>bindToLife())
-                .subscribe(new Observer<List<VideoChannelBean>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull List<VideoChannelBean> channelBean) {
-                        mView.loadVideoChannel(channelBean);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+    VideoPresenter() {
 
     }
 
     @Override
-    public void getVideoDetails(final int page, String listType, String typeId) {
-        mNewsApi.getVideoDetail(page, listType, typeId)
-                .compose(RxSchedulers.<List<VideoDetailBean>>applySchedulers())
-                .compose(mView.<List<VideoDetailBean>>bindToLife())
-                .subscribe(new Observer<List<VideoDetailBean>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
+    public void getChannel() {
+        List<Channel> channelList;
+        List<String> channelName = Arrays.asList(WXApplication.getContext().getResources()
+                .getStringArray(R.array.video_channel));
+        List<String> channelCode = Arrays.asList(WXApplication.getContext().getResources()
+                .getStringArray(R.array.video_channel_code));
+        List<Channel> channels = new ArrayList<>();
 
-                    }
-
-                    @Override
-                    public void onNext(@NonNull List<VideoDetailBean> videoDetailBean) {
-                        if (page > 1) {
-                            mView.loadMoreVideoDetails(videoDetailBean);
-                        } else {
-                            mView.loadVideoDetails(videoDetailBean);
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        // Log.i(TAG, "onError: "+e.getMessage().toString());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+        for (int i = 0; i < channelName.size(); i++) {
+            Channel channel = new Channel();
+            channel.setChannelCode(channelCode.get(i));
+            channel.setChannelName(channelName.get(i));
+            channel.setChannelType(i < 1 ? 1 : 0);
+            channel.setChannelSelect(i < channelCode.size() - 3);
+            channels.add(channel);
+        }
+        channelList = new ArrayList<>();
+        channelList.addAll(channels);
+        mView.loadData(channelList);
     }
 }

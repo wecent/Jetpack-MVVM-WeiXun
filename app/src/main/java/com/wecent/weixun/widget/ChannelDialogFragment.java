@@ -63,7 +63,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
             //添加动画
             dialog.getWindow().setWindowAnimations(R.style.dialogSlideAnim);
         }
-        return inflater.inflate(R.layout.dialog_channel, null);
+        return inflater.inflate(R.layout.layout_dialog_channel, null);
     }
 
     @Override

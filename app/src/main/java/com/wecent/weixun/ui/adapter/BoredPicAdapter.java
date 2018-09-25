@@ -38,69 +38,95 @@ public class BoredPicAdapter extends BaseMultiItemQuickAdapter<JdDetailBean.Comm
 
     public BoredPicAdapter(Activity context, @Nullable List<JdDetailBean.CommentsBean> data) {
         super(data);
-        addItemType(JdDetailBean.CommentsBean.TYPE_MULTIPLE, R.layout.item_jandan_pic);
-        addItemType(JdDetailBean.CommentsBean.TYPE_SINGLE, R.layout.item_jandan_pic_single);
+        addItemType(JdDetailBean.CommentsBean.TYPE_MULTIPLE, R.layout.item_meizi_picture);
+        addItemType(JdDetailBean.CommentsBean.TYPE_SINGLE, R.layout.item_meizi_picture);
         this.mContext = context;
     }
 
     @Override
     protected void convert(final BaseViewHolder viewHolder, final JdDetailBean.CommentsBean commentsBean) {
-        viewHolder.setText(R.id.tv_author, commentsBean.getComment_author());
+        viewHolder.setText(R.id.tv_meizi_author, commentsBean.getComment_author());
+        viewHolder.setText(R.id.tv_meizi_time, DateUtil.getTimestampString(DateUtil.string2Date(commentsBean.getComment_date(), "yyyy-MM-dd HH:mm:ss")));
+        viewHolder.setText(R.id.tv_meizi_like, commentsBean.getVote_negative() + "赞");
 
-        if (!TextUtils.isEmpty(commentsBean.getComment_agent())){
-            if (commentsBean.getComment_agent().contains("Android")) {
-                viewHolder.setText(R.id.tv_from, "来自 Android 客户端");
-                viewHolder.setVisible(R.id.tv_from, true);
-            } else {
-                viewHolder.setVisible(R.id.tv_from, false);
-            }
-        }else {
-            viewHolder.setVisible(R.id.tv_from, false);
-        }
+//        if (!TextUtils.isEmpty(commentsBean.getComment_agent())){
+//            if (commentsBean.getComment_agent().contains("Android")) {
+//                viewHolder.setText(R.id.tv_from, "来自 Android 客户端");
+//                viewHolder.setVisible(R.id.tv_from, true);
+//            } else {
+//                viewHolder.setVisible(R.id.tv_from, false);
+//            }
+//        }else {
+//            viewHolder.setVisible(R.id.tv_from, false);
+//        }
 
-        viewHolder.setText(R.id.tv_time, DateUtil.getTimestampString(DateUtil.string2Date(commentsBean.getComment_date(), "yyyy-MM-dd HH:mm:ss")));
 
-        if (TextUtils.isEmpty(commentsBean.getText_content())) {
-            viewHolder.setVisible(R.id.tv_content, false);
-        } else {
-            viewHolder.setVisible(R.id.tv_content, true);
-            String content = commentsBean.getText_content().replace(" ", "").replace("\r", "").replace("\n", "");
-            viewHolder.setText(R.id.tv_content, content);
-            Log.i(TAG, "convert: author=" + commentsBean.getComment_author() + " content= " + commentsBean.getText_content());
-        }
 
-        viewHolder.setVisible(R.id.img_gif, commentsBean.getPics().get(0).contains("gif"));
-        viewHolder.setVisible(R.id.progress, commentsBean.getPics().get(0).contains("gif"));
-        viewHolder.setText(R.id.tv_like, commentsBean.getVote_negative());
-        viewHolder.setText(R.id.tv_unlike, commentsBean.getVote_positive());
-        viewHolder.setText(R.id.tv_comment_count, commentsBean.getSub_comment_count());
-        viewHolder.addOnClickListener(R.id.img_share);
+//        if (TextUtils.isEmpty(commentsBean.getText_content())) {
+//            viewHolder.setVisible(R.id.tv_content, false);
+//        } else {
+//            viewHolder.setVisible(R.id.tv_content, true);
+//            String content = commentsBean.getText_content().replace(" ", "").replace("\r", "").replace("\n", "");
+//            viewHolder.setText(R.id.tv_content, content);
+//            Log.i(TAG, "convert: author=" + commentsBean.getComment_author() + " content= " + commentsBean.getText_content());
+//        }
+
+//        viewHolder.setVisible(R.id.img_gif, commentsBean.getPics().get(0).contains("gif"));
+//        viewHolder.setVisible(R.id.progress, commentsBean.getPics().get(0).contains("gif"));
+//        viewHolder.setText(R.id.tv_like, commentsBean.getVote_negative());
+//        viewHolder.setText(R.id.tv_unlike, commentsBean.getVote_positive());
+//        viewHolder.setText(R.id.tv_comment_count, commentsBean.getSub_comment_count());
+//        viewHolder.addOnClickListener(R.id.img_share);
 
         switch (viewHolder.getItemViewType()) {
             case JdDetailBean.CommentsBean.TYPE_MULTIPLE:
-                MultiImageView multiImageView = viewHolder.getView(R.id.img);
-                viewHolder.setVisible(R.id.img_gif, false);
-                multiImageView.setList(commentsBean.getPics());
-                multiImageView.setOnItemClickListener(new MultiImageView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        String[] imageUrls = new String[commentsBean.getPics().size()];
-                        for (int i = 0; i < commentsBean.getPics().size(); i++) {
-                            imageUrls[i] = commentsBean.getPics().get(i);
-                        }
-                        ImageBrowseActivity.launch(mContext, imageUrls, position);
-                    }
-                });
-                viewHolder.getView(R.id.img_share).setOnClickListener(new View.OnClickListener() {
+//                MultiImageView multiImageView = viewHolder.getView(R.id.iv_meizi_picture);
+//                viewHolder.setVisible(R.id.img_gif, false);
+//                multiImageView.setList(commentsBean.getPics());
+//                multiImageView.setOnItemClickListener(new MultiImageView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(View view, int position) {
+//                        String[] imageUrls = new String[commentsBean.getPics().size()];
+//                        for (int i = 0; i < commentsBean.getPics().size(); i++) {
+//                            imageUrls[i] = commentsBean.getPics().get(i);
+//                        }
+//                        ImageBrowseActivity.launch(mContext, imageUrls, position);
+//                    }
+//                });
+//                viewHolder.getView(R.id.img_share).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        ShareUtils.shareSingleImage(mContext, commentsBean.getPics().get(0));
+//                    }
+//                });
+                ShowMaxImageView imageView1 = viewHolder.getView(R.id.iv_meizi_picture);
+                imageView1.getLayoutParams().height = ContextUtils.dip2px(WXApplication.getContext(), 250);
+
+                imageView1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ShareUtils.shareSingleImage(mContext, commentsBean.getPics().get(0));
-
+                        String[] imageUrls = new String[commentsBean.getPics().size()];
+                        imageUrls[0] = commentsBean.getPics().get(0);
+                        ImageBrowseActivity.launch(mContext, imageUrls, 0);
                     }
                 });
+                ImageLoaderUtil.LoadImage(mContext, commentsBean.getPics().get(0),
+                        new DrawableImageViewTarget((ImageView) viewHolder.getView(R.id.iv_meizi_picture)) {
+                            @Override
+                            public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                super.onResourceReady(resource, transition);
+                                int pmWidth = ContextUtils.getSreenWidth(WXApplication.getContext());
+                                int pmHeight = ContextUtils.getSreenHeight(WXApplication.getContext());
+                                float sal = (float) pmHeight / pmWidth;
+                                int actualHeight = (int) Math.ceil(sal * resource.getIntrinsicWidth());
+                                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//                                viewHolder.getView(R.id.iv_meizi_picture).setLayoutParams(params);
+//                                viewHolder.setVisible(R.id.img_gif, false);
+                            }
+                        });
                 break;
             case JdDetailBean.CommentsBean.TYPE_SINGLE:
-                ShowMaxImageView imageView = viewHolder.getView(R.id.img);
+                ShowMaxImageView imageView = viewHolder.getView(R.id.iv_meizi_picture);
                 imageView.getLayoutParams().height = ContextUtils.dip2px(WXApplication.getContext(), 250);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +138,7 @@ public class BoredPicAdapter extends BaseMultiItemQuickAdapter<JdDetailBean.Comm
                     }
                 });
                 ImageLoaderUtil.LoadImage(mContext, commentsBean.getPics().get(0),
-                        new DrawableImageViewTarget((ImageView) viewHolder.getView(R.id.img)) {
+                        new DrawableImageViewTarget((ImageView) viewHolder.getView(R.id.iv_meizi_picture)) {
                             @Override
                             public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
                                 super.onResourceReady(resource, transition);
@@ -121,16 +147,16 @@ public class BoredPicAdapter extends BaseMultiItemQuickAdapter<JdDetailBean.Comm
                                 float sal = (float) pmHeight / pmWidth;
                                 int actualHeight = (int) Math.ceil(sal * resource.getIntrinsicWidth());
                                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, actualHeight);
-                                viewHolder.getView(R.id.img).setLayoutParams(params);
-                                viewHolder.setVisible(R.id.img_gif, false);
+                                viewHolder.getView(R.id.iv_meizi_picture).setLayoutParams(params);
+//                                viewHolder.setVisible(R.id.img_gif, false);
                             }
                         });
-                viewHolder.getView(R.id.img_share).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ShareUtils.shareText(mContext, "http://jandan.net/pic/");
-                    }
-                });
+//                viewHolder.getView(R.id.img_share).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        ShareUtils.shareText(mContext, "http://jandan.net/pic/");
+//                    }
+//                });
                 break;
         }
 

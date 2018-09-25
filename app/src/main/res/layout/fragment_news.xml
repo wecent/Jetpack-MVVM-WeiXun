@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/iv_news_icon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginLeft="8dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_weixun_icon"/>
@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/iv_news_icon"
             android:text="微"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/config_color_white"
             android:textStyle="bold"/>
 
@@ -43,13 +43,13 @@
             android:layout_toRightOf="@+id/tv_news_wei"
             android:layout_marginLeft="2dp"
             android:text="讯"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/config_color_white"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="30dp"
             android:layout_toRightOf="@+id/tv_news_xun"
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"

@@ -1,20 +1,20 @@
 package com.wecent.weixun.ui.video;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.flyco.tablayout.SlidingTabLayout;
+import com.socks.library.KLog;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.VideoChannelBean;
-import com.wecent.weixun.model.VideoDetailBean;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
-import com.wecent.weixun.ui.adapter.VideoPagerAdapter;
+import com.wecent.weixun.model.Channel;
 import com.wecent.weixun.ui.base.BaseFragment;
+import com.wecent.weixun.ui.news.adapter.NewsPagerAdapter;
+import com.wecent.weixun.ui.video.adapter.VideoPagerAdapter;
 import com.wecent.weixun.ui.video.contract.VideoContract;
 import com.wecent.weixun.ui.video.presenter.VideoPresenter;
 
@@ -30,14 +30,15 @@ import butterknife.Unbinder;
  * date: 2017/9/2 .
  */
 public class VideoFragment extends BaseFragment<VideoPresenter> implements VideoContract.View {
-    private static final String TAG = "VideoFragment";
-    @BindView(R.id.tablayout)
-    TabLayout mTablayout;
+
     @BindView(R.id.viewpager)
     ViewPager mViewpager;
     @BindView(R.id.fake_status_bar)
     View fakeStatusBar;
+    @BindView(R.id.SlidingTabLayout)
+    SlidingTabLayout mTabLayout;
     Unbinder unbinder;
+
     private VideoPagerAdapter mVideoPagerAdapter;
 
     public static VideoFragment newInstance() {
@@ -68,7 +69,7 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     @Override
     public void bindData() {
         setStatusBarHeight(getStatusBarHeight());
-        mPresenter.getVideoChannel();
+        mPresenter.getChannel();
     }
 
     /**
@@ -88,23 +89,17 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     }
 
     @Override
-    public void loadVideoChannel(List<VideoChannelBean> channelBean) {
-        Log.i(TAG, "loadVideoChannel: " + channelBean.toString());
-        mVideoPagerAdapter = new VideoPagerAdapter(getChildFragmentManager(), channelBean.get(0));
-        mViewpager.setAdapter(mVideoPagerAdapter);
-        mViewpager.setOffscreenPageLimit(1);
-        mViewpager.setCurrentItem(0, false);
-        mTablayout.setupWithViewPager(mViewpager, true);
-    }
-
-    @Override
-    public void loadMoreVideoDetails(List<VideoDetailBean> detailBean) {
-
-    }
-
-    @Override
-    public void loadVideoDetails(List<VideoDetailBean> detailBean) {
-
+    public void loadData(List<Channel> channels) {
+        if (channels != null) {
+            KLog.e("loadVideoChannel: " + channels.toString());
+            mVideoPagerAdapter = new VideoPagerAdapter(getChildFragmentManager(), channels);
+            mViewpager.setAdapter(mVideoPagerAdapter);
+            mViewpager.setOffscreenPageLimit(1);
+            mViewpager.setCurrentItem(0, false);
+            mTabLayout.setViewPager(mViewpager);
+        } else {
+            T("数据异常");
+        }
     }
 
     @Override

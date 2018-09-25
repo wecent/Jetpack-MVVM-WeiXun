@@ -41,7 +41,7 @@ public final class TranslucentToolBar extends LinearLayout {
 
     private void initTransContent() {
         setOrientation(HORIZONTAL);
-        View contentView = inflate(getContext(), R.layout.toolbar_trans, this);
+        View contentView = inflate(getContext(), R.layout.layout_toolbar_trans, this);
         mTransRoot = (LinearLayout) contentView.findViewById(R.id.ll_trans_root);
         mTransStatus = contentView.findViewById(R.id.v_trans_status);
         mTransTitle = (TextView) contentView.findViewById(R.id.tv_trans_title);

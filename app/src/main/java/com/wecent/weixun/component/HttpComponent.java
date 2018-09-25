@@ -1,12 +1,12 @@
 package com.wecent.weixun.component;
 
 import com.wecent.weixun.ui.jandan.DetailFragment;
-import com.wecent.weixun.ui.news.NewsArticleActivity;
-import com.wecent.weixun.ui.news.NewsImageActivity;
 import com.wecent.weixun.ui.news.NewsFragment;
-import com.wecent.weixun.ui.news.WeiXunDetailActivity;
-import com.wecent.weixun.ui.news.WeiXunFragment;
+import com.wecent.weixun.ui.news.NewsDetailActivity;
+import com.wecent.weixun.ui.news.NewsListFragment;
+import com.wecent.weixun.ui.video.VideoDetailActivity;
 import com.wecent.weixun.ui.video.VideoFragment;
+import com.wecent.weixun.ui.video.VideoListFragment;
 
 import dagger.Component;
 
@@ -18,22 +18,18 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class)
 public interface HttpComponent {
 
-    void inject(VideoFragment videoFragment);
-
-    void inject(com.wecent.weixun.ui.video.DetailFragment detailFragment);
-
-    void inject(DetailFragment detailFragment);
-
-    void inject(NewsImageActivity newsImageActivity);
-
-    void inject(com.wecent.weixun.ui.news.DetailFragment detailFragment);
-
-    void inject(NewsArticleActivity newsArticleActivity);
-
     void inject(NewsFragment newsFragment);
 
-    void inject(WeiXunFragment weixunFragment);
+    void inject(NewsListFragment weixunFragment);
 
-    void inject(WeiXunDetailActivity weiXunDetailActivity);
+    void inject(NewsDetailActivity newsDetailActivity);
+
+    void inject(VideoFragment videoFragment);
+
+    void inject(VideoListFragment weixunFragment);
+
+    void inject(VideoDetailActivity videoDetailActivity);
+
+    void inject(DetailFragment detailFragment);
 
 }

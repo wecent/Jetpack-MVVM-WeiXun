@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -62,8 +61,6 @@ public class ImageBrowseActivity extends BaseActivity {
     public void initInjector(ApplicationComponent appComponent) {
 
     }
-
-
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
@@ -122,10 +119,9 @@ public class ImageBrowseActivity extends BaseActivity {
         }
     }
 
-
     private class ViewPagerAdapter extends PagerAdapter {
+
         private PhotoView mPhotoView;
-        private ProgressBar mProgressBar;
         private String[] imageUrls;
 
         private ViewPagerAdapter(String[] imageUrls) {
@@ -135,10 +131,9 @@ public class ImageBrowseActivity extends BaseActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = LayoutInflater.from(ImageBrowseActivity.this).inflate(
-                    R.layout.loadimage, null);
+                    R.layout.layout_load_image, null);
             mPhotoView = (PhotoView) view.findViewById(R.id.photoview);
-            mProgressBar = (ProgressBar) view.findViewById(R.id.loading);
-            mProgressBar.setVisibility(View.GONE);
+
             mPhotoView.setOnPhotoTapListener(new OnPhotoTapListener() {
                 @Override
                 public void onPhotoTap(ImageView imageView, float v, float v1) {
@@ -158,28 +153,24 @@ public class ImageBrowseActivity extends BaseActivity {
                         public void onLoadStarted(@Nullable Drawable placeholder) {
                             super.onLoadStarted(placeholder);
                             Log.i(TAG, "onLoadStarted: ");
-                            mProgressBar.setVisibility(View.GONE);
                         }
 
                         @Override
                         public void onLoadFailed(@Nullable Drawable errorDrawable) {
                             super.onLoadFailed(errorDrawable);
                             Log.i(TAG, "onLoadFailed: ");
-                            mProgressBar.setVisibility(View.GONE);
                         }
 
                         @Override
                         public void onLoadCleared(@Nullable Drawable placeholder) {
                             super.onLoadCleared(placeholder);
                             Log.i(TAG, "onLoadCleared: ");
-                            mProgressBar.setVisibility(View.GONE);
                         }
 
                         @Override
                         public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
                             super.onResourceReady(resource, transition);
                             Log.i(TAG, "onResourceReady: ");
-                            mProgressBar.setVisibility(View.GONE);
 
                         }
                     });

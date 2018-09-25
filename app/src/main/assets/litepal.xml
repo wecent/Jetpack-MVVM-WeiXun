@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
 
-    <dbname value="weiyuedb">
+    <dbname value="weixundb">
     </dbname>
     <version value="2">
     </version>

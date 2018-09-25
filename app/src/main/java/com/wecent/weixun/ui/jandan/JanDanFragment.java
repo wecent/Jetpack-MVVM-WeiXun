@@ -13,8 +13,6 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.network.JanDanApi;
 import com.wecent.weixun.ui.adapter.BoredPicAdapter;
-import com.wecent.weixun.ui.adapter.FreshNewsAdapter;
-import com.wecent.weixun.ui.adapter.JokesAdapter;
 import com.wecent.weixun.ui.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -65,10 +63,10 @@ public class JanDanFragment extends BaseFragment {
     public void bindData() {
         setStatusBarHeight(getStatusBarHeight());
         List<String> strings = new ArrayList<>();
-        strings.add("头条");
+//        strings.add("头条");
         strings.add("内涵");
         strings.add("妹子");
-        strings.add("段子");
+//        strings.add("段子");
         mJanDanPagerAdapter = new JanDanPagerAdapter(getChildFragmentManager(), strings);
         mViewpager.setAdapter(mJanDanPagerAdapter);
         mViewpager.setOffscreenPageLimit(1);
@@ -117,14 +115,14 @@ public class JanDanFragment extends BaseFragment {
         @Override
         public BaseFragment getItem(int position) {
             switch (position) {
+//                case 0:
+//                    return DetailFragment.newInstance(JanDanApi.TYPE_FRESH, new FreshNewsAdapter(getActivity(), null));
                 case 0:
-                    return DetailFragment.newInstance(JanDanApi.TYPE_FRESH, new FreshNewsAdapter(getActivity(), null));
-                case 1:
                     return DetailFragment.newInstance(JanDanApi.TYPE_BORED, new BoredPicAdapter(getActivity(), null));
-                case 2:
+                case 1:
                     return DetailFragment.newInstance(JanDanApi.TYPE_GIRLS, new BoredPicAdapter(getActivity(), null));
-                case 3:
-                    return DetailFragment.newInstance(JanDanApi.TYPE_Duan, new JokesAdapter(null));
+//                case 3:
+//                    return DetailFragment.newInstance(JanDanApi.TYPE_Duan, new JokesAdapter(null));
             }
             return null;
         }

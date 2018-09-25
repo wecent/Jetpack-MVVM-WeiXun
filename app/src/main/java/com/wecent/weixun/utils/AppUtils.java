@@ -6,7 +6,11 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+
+import com.wecent.weixun.WXApplication;
 
 import java.util.List;
 
@@ -239,5 +243,113 @@ public class AppUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 得到上下文
+     *
+     * @return
+     */
+    public static Context getContext() {
+        return WXApplication.getContext();
+    }
+
+    /**
+     * 得到resources对象
+     *
+     * @return
+     */
+    public static Resources getResource() {
+        return getContext().getResources();
+    }
+
+    /**
+     * 得到string.xml中的字符串
+     *
+     * @param resId
+     * @return
+     */
+    public static String getString(int resId) {
+        return getResource().getString(resId);
+    }
+
+    /**
+     * 得到string.xml中的字符串，带点位符
+     *
+     * @return
+     */
+    public static String getString(int id, Object... formatArgs) {
+        return getResource().getString(id, formatArgs);
+    }
+
+    /**
+     * 得到string.xml中和字符串数组
+     *
+     * @param resId
+     * @return
+     */
+    public static String[] getStrings(int resId) {
+        return getResource().getStringArray(resId);
+    }
+
+    /**
+     * 得到colors.xml中的颜色
+     *
+     * @param colorId
+     * @return
+     */
+    public static int getColor(int colorId) {
+        return getResource().getColor(colorId);
+    }
+
+    /**
+     * 得到主线程Handler
+     *
+     * @return
+     */
+    public static Handler getMainThreadHandler() {
+        return WXApplication.getMainHandler();
+    }
+
+    /**
+     * 得到主线程id
+     *
+     * @return
+     */
+    public static long getMainThreadId() {
+        return WXApplication.getMainThreadId();
+    }
+
+    /**
+     * 安全的执行一个任务
+     *
+     * @param task
+     */
+    public static void postTaskSafely(Runnable task) {
+        int curThreadId = android.os.Process.myTid();
+        // 如果当前线程是主线程
+        if (curThreadId == getMainThreadId()) {
+            task.run();
+        } else {
+            // 如果当前线程不是主线程
+            getMainThreadHandler().post(task);
+        }
+    }
+
+    /**
+     * 延迟执行任务
+     *
+     * @param task
+     * @param delayMillis
+     */
+    public static void postTaskDelay(Runnable task, int delayMillis) {
+        getMainThreadHandler().postDelayed(task, delayMillis);
+    }
+
+    /**
+     * 移除任务
+     */
+    public static void removeTask(Runnable task) {
+        getMainThreadHandler().removeCallbacks(task);
     }
 }

@@ -16,7 +16,7 @@ import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.database.ChannelDao;
 import com.wecent.weixun.model.event.NewChannelEvent;
 import com.wecent.weixun.model.event.SelectChannelEvent;
-import com.wecent.weixun.ui.adapter.ChannelPagerAdapter;
+import com.wecent.weixun.ui.news.adapter.NewsPagerAdapter;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.news.contract.NewsContract;
 import com.wecent.weixun.ui.news.presenter.NewsPresenter;
@@ -51,7 +51,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     View fakeStatusBar;
     Unbinder unbinder;
 
-    private ChannelPagerAdapter mChannelPagerAdapter;
+    private NewsPagerAdapter mNewsPagerAdapter;
 
     private List<Channel> mSelectedDatas;
     private List<Channel> mUnSelectedDatas;
@@ -133,8 +133,8 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
             mSelectedDatas.addAll(channels);
             mUnSelectedDatas.clear();
             mUnSelectedDatas.addAll(unSelectedDatas);
-            mChannelPagerAdapter = new ChannelPagerAdapter(getChildFragmentManager(), channels);
-            mViewpager.setAdapter(mChannelPagerAdapter);
+            mNewsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager(), channels);
+            mViewpager.setAdapter(mNewsPagerAdapter);
             mViewpager.setOffscreenPageLimit(2);
             mViewpager.setCurrentItem(0, false);
             mTabLayout.setViewPager(mViewpager);
@@ -149,7 +149,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
         if (event.selectedDatas != null && event.unSelectedDatas != null) {
             mSelectedDatas = event.selectedDatas;
             mUnSelectedDatas = event.unSelectedDatas;
-            mChannelPagerAdapter.updateChannel(mSelectedDatas);
+            mNewsPagerAdapter.updateChannel(mSelectedDatas);
             mTabLayout.notifyDataSetChanged();
             ChannelDao.saveChannels(event.allChannels);
 
