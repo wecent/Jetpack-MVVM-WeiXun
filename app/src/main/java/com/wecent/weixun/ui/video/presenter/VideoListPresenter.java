@@ -10,7 +10,6 @@ import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.model.entity.NewsData;
 import com.wecent.weixun.model.response.NewsResponse;
 import com.wecent.weixun.network.BaseObserver;
-import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.network.WeiXunApi;
 import com.wecent.weixun.ui.base.BasePresenter;
@@ -69,7 +68,7 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
                             }
                         }
                         KLog.e(newsList);
-                        if (!action.equals(NewsApi.ACTION_UP)) {
+                        if (!action.equals(WeiXunApi.ACTION_UP)) {
                             mView.loadData(newsList);
                         } else {
                             String[] channelCodes = WXApplication.getContext().getResources().getStringArray(R.array.weixun_channel_code);
@@ -84,7 +83,7 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
                     @Override
                     public void onFail(Throwable e) {
                         KLog.e(e.getLocalizedMessage());
-                        if (!action.equals(NewsApi.ACTION_UP)) {
+                        if (!action.equals(WeiXunApi.ACTION_UP)) {
                             mView.loadData(null);
                         } else {
                             mView.loadMoreData(null);

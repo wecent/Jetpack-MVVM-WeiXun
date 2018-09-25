@@ -6,7 +6,6 @@ import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.module.ApplicationModule;
 import com.wecent.weixun.module.HttpModule;
 import com.wecent.weixun.network.JanDanApi;
-import com.wecent.weixun.network.NewsApi;
 import com.wecent.weixun.network.WeiXunApi;
 
 import dagger.Component;
@@ -21,12 +20,10 @@ public interface ApplicationComponent {
 
     WXApplication getApplication();
 
-    NewsApi getNetEaseApi();
-
-    JanDanApi getJanDanApi();
+    Context getContext();
 
     WeiXunApi getWeiXunApi();
 
-    Context getContext();
+    JanDanApi getJanDanApi();
 
 }

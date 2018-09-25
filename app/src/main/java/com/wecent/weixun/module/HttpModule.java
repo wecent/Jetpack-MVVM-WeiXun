@@ -4,8 +4,6 @@ import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.network.ApiConstants;
 import com.wecent.weixun.network.JanDanApi;
 import com.wecent.weixun.network.JanDanApiService;
-import com.wecent.weixun.network.NewsApi;
-import com.wecent.weixun.network.NewsApiService;
 import com.wecent.weixun.network.RetrofitConfig;
 import com.wecent.weixun.network.WeiXunApi;
 import com.wecent.weixun.network.WeiXunApiService;
@@ -51,17 +49,16 @@ public class HttpModule {
 //    }
 
     @Provides
-    NewsApi provideNetEaseApis(OkHttpClient.Builder builder) {
-        builder.addInterceptor(RetrofitConfig.sQueryParameterInterceptor);
+    WeiXunApi provideWeiXunApis(OkHttpClient.Builder builder) {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(builder.build());
 
-        return NewsApi.getInstance(retrofitBuilder
-                .baseUrl(ApiConstants.sIFengApi)
-                .build().create(NewsApiService.class));
+        return WeiXunApi.getInstance(retrofitBuilder
+                .baseUrl(ApiConstants.mWeiXunApi)
+                .build().create(WeiXunApiService.class));
     }
 
     @Provides
@@ -75,19 +72,6 @@ public class HttpModule {
         return JanDanApi.getInstance(retrofitBuilder
                 .baseUrl(ApiConstants.mJanDanApi)
                 .build().create(JanDanApiService.class));
-    }
-
-    @Provides
-    WeiXunApi provideWeiXunApis(OkHttpClient.Builder builder) {
-
-        Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(builder.build());
-
-        return WeiXunApi.getInstance(retrofitBuilder
-                .baseUrl(ApiConstants.mWeiXunApi)
-                .build().create(WeiXunApiService.class));
     }
 
 }

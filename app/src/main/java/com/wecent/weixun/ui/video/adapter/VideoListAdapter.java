@@ -92,7 +92,7 @@ public class VideoListAdapter extends BaseQuickAdapter<News,BaseViewHolder> {
                         AppUtils.postTaskSafely(new Runnable() {
                             @Override
                             public void run() {
-                                videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST,news.title);
+                                videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.title);
                                 videoPlayer.seekToInAdvance = news.video_detail_info.progress;
                                 videoPlayer.startVideo();
                             }

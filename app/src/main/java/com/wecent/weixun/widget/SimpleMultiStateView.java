@@ -7,10 +7,10 @@ import android.util.AttributeSet;
 
 import com.wecent.weixun.R;
 
-
 /**
  * 状态视图
  */
+
 public class SimpleMultiStateView extends MultiStateView {
 
     private static final String TAG = SimpleMultiStateView.class.getSimpleName();

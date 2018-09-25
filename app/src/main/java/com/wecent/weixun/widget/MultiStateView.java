@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 
 import com.wecent.weixun.R;
 
-
 public class MultiStateView extends FrameLayout {
 
     private static final String TAG = MultiStateView.class.getSimpleName();

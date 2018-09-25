@@ -2,6 +2,7 @@ package com.wecent.weixun.ui.video;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -81,6 +82,8 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     @BindView(R.id.fl_comment_icon)
     FrameLayout flCommentIcon;
 
+    private SensorManager mSensorManager;
+    private JCVideoPlayer.JCAutoFullscreenListener mSensorEventListener;
     private List<CommentData> mCommentList = new ArrayList<>();
     private CommentAdapter mCommentAdapter;
     private String mDetalUrl;
@@ -106,6 +109,9 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     public void bindView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this);
         setStatusBarColor(Color.parseColor("#000000"), 100);
+
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mSensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
     }
 
     @Override
@@ -131,10 +137,14 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
         videoPlayer.setPosition(mPosition);
     }
 
-    @OnClick({R.id.fl_comment_icon})
+    @OnClick({R.id.iv_back, R.id.fl_comment_icon})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.fl_comment_icon:
+            case R.id.iv_back:
+                //底部评论的图标
+                finish();
+                break;
+                case R.id.fl_comment_icon:
                 //底部评论的图标
                 RecyclerView.LayoutManager layoutManager = rvComment.getLayoutManager();
                 if (layoutManager instanceof LinearLayoutManager) {
@@ -155,32 +165,27 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
 
     @Override
     public void loadNewsData(final ResultResponse<NewsDetail> news) {
-        videoPlayer.setOnVideoClickListener(new OnVideoClickListener() {
+        VideoPathDecoder decoder = new VideoPathDecoder() {
             @Override
-            public void onVideoClickToStart() {
-                //点击播放
-                VideoPathDecoder decoder = new VideoPathDecoder() {
+            public void onDecodeSuccess(final String url) {
+                KLog.i("Video url:" + url);
+                AppUtils.postTaskSafely(new Runnable() {
                     @Override
-                    public void onDecodeSuccess(final String url) {
-                        KLog.i("Video url:" + url);
-                        AppUtils.postTaskSafely(new Runnable() {
-                            @Override
-                            public void run() {
-                                videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.data.title);
-                                videoPlayer.seekToInAdvance = mProgress;//设置进度
-                                videoPlayer.startVideo();
-                            }
-                        });
+                    public void run() {
+                        videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.data.title);
+                        videoPlayer.seekToInAdvance = mProgress;//设置进度
+                        videoPlayer.startVideo();
                     }
-
-                    @Override
-                    public void onDecodeFailure() {
-
-                    }
-                };
-                decoder.decodePath(news.data.url);
+                });
             }
-        });
+
+            @Override
+            public void onDecodeFailure() {
+
+            }
+        };
+        decoder.decodePath(news.data.url);
+        KLog.i("Video url:" + news.data.url);
 
         if (news.data.media_user == null) {
             //如果没有用户信息
@@ -228,6 +233,20 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     @Override
     public void onLoadMoreRequested() {
         mPresenter.getConmentData(mGroupId, mItemId, mCommentList.size() / 20 + 1);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(mSensorEventListener);
+        JCVideoPlayer.releaseAllVideos();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Sensor accelerometerSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(mSensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     /**

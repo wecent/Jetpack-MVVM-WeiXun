@@ -24,6 +24,7 @@ import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.news.adapter.CommentAdapter;
 import com.wecent.weixun.ui.news.contract.NewsDetailContract;
 import com.wecent.weixun.ui.news.presenter.NewsDetailPresenter;
+import com.wecent.weixun.utils.DateUtils;
 import com.wecent.weixun.utils.ImageLoaderUtil;
 import com.wecent.weixun.widget.NewsDetailHeaderView;
 import com.wecent.weixun.widget.PowerfulRecyclerView;
@@ -89,7 +90,13 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this);
+        showLoading();
         setStatusBarColor(Color.parseColor("#BDBDBD"),30);
+
+        // 解决默认位置不是最顶部
+        getView().setFocusable(true);
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
     }
 
     @Override
@@ -169,6 +176,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
                     if (news.data.media_user != null){
                         ImageLoaderUtil.LoadImage(getBaseContext(), news.data.media_user.avatar_url, ivTopLogo);
                         tvTopname.setText(news.data.media_user.screen_name);
+                        tvTopUpdateTime.setText(DateUtils.getShortTime(news.data.publish_time * 1000L));
                     }
                     showSuccess();
                 }

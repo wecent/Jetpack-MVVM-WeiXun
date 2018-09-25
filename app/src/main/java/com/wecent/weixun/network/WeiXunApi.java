@@ -15,6 +15,10 @@ import io.reactivex.Observable;
  */
 public class WeiXunApi {
 
+    public static final String ACTION_DEFAULT = "default";
+    public static final String ACTION_DOWN = "down";
+    public static final String ACTION_UP = "up";
+
     public static WeiXunApi mInstance;
 
     private WeiXunApiService mService;
