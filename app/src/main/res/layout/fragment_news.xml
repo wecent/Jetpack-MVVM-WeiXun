@@ -52,9 +52,22 @@
             android:layout_height="30dp"
             android:layout_toRightOf="@+id/tv_news_xun"
             android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="32dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            android:background="@drawable/shape_weixun_search"/>
+            android:background="@drawable/shape_weixun_search"
+            android:text="想装逼，上微讯"
+            android:textSize="14sp"
+            android:textColor="@color/config_color_base_9"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@+id/tv_news_xun"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:src="@drawable/ic_search_gray"/>
 
     </RelativeLayout>
 
