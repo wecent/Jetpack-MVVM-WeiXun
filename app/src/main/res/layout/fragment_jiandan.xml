@@ -15,23 +15,36 @@
         android:layout_height="45dp"
         android:background="@color/app_color_blue">
 
-        <android.support.design.widget.TabLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/tablayout"
-            android:layout_width="96dp"
-            android:layout_height="45dp"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/iv_edit"
-            app:tabMaxWidth="0dp"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@android:color/white"
-            app:tabTextColor="#CCE7EF" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="妹子"
+            android:textSize="18sp"
+            android:textColor="@color/config_color_white"/>
 
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/mPtrFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <com.wecent.weixun.widget.SimpleMultiStateView
+            android:id="@+id/SimpleMultiStateView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:scrollbars="vertical" />
+
+        </com.wecent.weixun.widget.SimpleMultiStateView>
+
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 
 </LinearLayout>

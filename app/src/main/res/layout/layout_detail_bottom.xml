@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="5dp"
                 android:scaleType="center"
-                android:src="@drawable/ic_weixun_detail_tabbar"
+                android:src="@drawable/ic_detail_tabbar"
                 android:visibility="gone"/>
 
             <FrameLayout
@@ -57,7 +57,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/ic_weixun_detail_comment"/>
+                    android:src="@drawable/ic_detail_comment"/>
 
                 <TextView
                     android:id="@+id/tv_comment_count"
@@ -86,7 +86,7 @@
             android:layout_gravity="center"
             android:layout_weight="2"
             android:scaleType="center"
-            android:src="@drawable/ic_weixun_detail_like"/>
+            android:src="@drawable/ic_detail_like"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -94,7 +94,7 @@
             android:layout_gravity="center"
             android:layout_weight="2"
             android:scaleType="center"
-            android:src="@drawable/ic_weixun_detail_share"/>
+            android:src="@drawable/ic_detail_share"/>
 
     </LinearLayout>
 

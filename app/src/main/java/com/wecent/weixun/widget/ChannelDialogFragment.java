@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.model.event.NewChannelEvent;
 import com.wecent.weixun.model.event.SelectChannelEvent;
-import com.wecent.weixun.ui.adapter.NewAdapter;
+import com.wecent.weixun.ui.news.adapter.ChannelAdapter;
 import com.wecent.weixun.ui.inter.ItemDragHelperCallBack;
 import com.wecent.weixun.ui.inter.OnChannelListener;
 
@@ -37,7 +37,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
     private ItemTouchHelper mHelper;
     private ImageView miVClose;
     private boolean isUpdate = false;
-    private NewAdapter mAdapter;
+    private ChannelAdapter mAdapter;
     List<Channel> mSelectedDatas;
     List<Channel> mUnSelectedDatas;
 
@@ -119,7 +119,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
         final ItemTouchHelper helper = new ItemTouchHelper(callback);
         helper.attachToRecyclerView(mRecyclerView);
 
-        mAdapter = new NewAdapter(mDatas, helper);
+        mAdapter = new ChannelAdapter(mDatas, helper);
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);

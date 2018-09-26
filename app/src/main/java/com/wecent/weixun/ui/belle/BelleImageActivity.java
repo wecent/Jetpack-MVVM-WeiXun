@@ -1,4 +1,4 @@
-package com.wecent.weixun.ui.jandan;
+package com.wecent.weixun.ui.belle;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,8 +30,10 @@ import com.wecent.weixun.widget.SwipeBackLayout;
 
 import butterknife.BindView;
 
-public class ImageBrowseActivity extends BaseActivity {
+public class BelleImageActivity extends BaseActivity {
+
     private static final String TAG = "NewsImageActivity";
+
     @BindView(R.id.view_pager)
     HackyViewPager mViewPager;
     @BindView(R.id.page_text)
@@ -50,7 +52,7 @@ public class ImageBrowseActivity extends BaseActivity {
     }
 
     public static void launch(Activity context, String[] urls, int selectedIndex) {
-        Intent intent = new Intent(context, ImageBrowseActivity.class);
+        Intent intent = new Intent(context, BelleImageActivity.class);
         intent.putExtra("urls", urls);
         intent.putExtra("selectedIndex", selectedIndex);
         context.startActivity(intent);
@@ -130,7 +132,7 @@ public class ImageBrowseActivity extends BaseActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            View view = LayoutInflater.from(ImageBrowseActivity.this).inflate(
+            View view = LayoutInflater.from(BelleImageActivity.this).inflate(
                     R.layout.layout_load_image, null);
             mPhotoView = (PhotoView) view.findViewById(R.id.photoview);
 
@@ -140,7 +142,7 @@ public class ImageBrowseActivity extends BaseActivity {
                    finish();
                 }
             });
-            ImageLoaderUtil.LoadImage(ImageBrowseActivity.this, imageUrls[position],
+            ImageLoaderUtil.LoadImage(BelleImageActivity.this, imageUrls[position],
                     new DrawableImageViewTarget(mPhotoView) {
                         @Override
                         public void setDrawable(Drawable drawable) {

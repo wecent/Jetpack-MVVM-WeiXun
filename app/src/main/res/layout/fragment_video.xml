@@ -20,7 +20,6 @@
             android:id="@+id/SlidingTabLayout"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_toLeftOf="@+id/iv_edit"
             android:background="@color/app_color_blue"
             tl:tl_tab_width="48dp"
             tl:tl_textSelectColor="@color/config_color_white"
@@ -28,18 +27,6 @@
             tl:tl_indicator_color="@color/app_color_blue"
             tl:tl_textsize="16sp"
             tl:tl_textBold="SELECT"/>
-
-        <ImageView
-            android:id="@id/iv_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:background="@color/app_color_blue"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:src="@drawable/ic_weixun_add_channel"/>
 
     </RelativeLayout>
 

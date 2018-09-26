@@ -1,6 +1,6 @@
 package com.wecent.weixun.ui.news.contract;
 
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.ui.base.BaseContract;
 
 import java.util.List;

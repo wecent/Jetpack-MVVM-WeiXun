@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.database.ChannelDao;

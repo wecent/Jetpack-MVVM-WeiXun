@@ -3,10 +3,9 @@ package com.wecent.weixun.ui.video.adapter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.video.VideoListFragment;
-//import com.wecent.weixun.ui.video.DetailFragment;
 
 import java.util.List;
 
@@ -17,7 +16,6 @@ import java.util.List;
  */
 public class VideoPagerAdapter extends FragmentStatePagerAdapter {
 
-//    private VideoChannelBean videoChannelBean;
     private List<Channel> mChannels;
 
 
@@ -28,7 +26,6 @@ public class VideoPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public BaseFragment getItem(int position) {
-//        return DetailFragment.newInstance("clientvideo_" + videoChannelBean.getTypes().get(position).getId());
         return VideoListFragment.newInstance(mChannels.get(position).getChannelCode());
     }
 

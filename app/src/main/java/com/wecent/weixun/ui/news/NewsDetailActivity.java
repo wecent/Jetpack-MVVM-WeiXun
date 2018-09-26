@@ -90,7 +90,6 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this);
-        showLoading();
         setStatusBarColor(Color.parseColor("#BDBDBD"),30);
 
         // 解决默认位置不是最顶部
@@ -133,10 +132,10 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
                 KLog.i("scrollHeight: " + scrollHeight);
                 KLog.i("llInfoBottom: " + llInfoBottom);
 
-                if (NewsDetailActivity.this.isFinishing()) {
-                    return;
+                if (!NewsDetailActivity.this.isFinishing()) {
+                    //如果滚动超过用户信息一栏，显示标题栏中的用户头像和昵称
+                    rlTop.setVisibility(scrollHeight > llInfoBottom ? View.VISIBLE : View.GONE);
                 }
-                rlTop.setVisibility(scrollHeight > llInfoBottom ? View.VISIBLE : View.GONE);//如果滚动超过用户信息一栏，显示标题栏中的用户头像和昵称
             }
         });
     }

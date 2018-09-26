@@ -101,8 +101,8 @@ public class PtrWeiXunHeader extends View implements PtrUIHandler {
         opt.outWidth = radiusBlue;
         opt.outHeight = radiusBlue;
         // R路径需要重新导
-        bmpSuccess = BitmapFactory.decodeResource(getResources(), R.drawable.ic_weixun_icon, opt);
-        bmpFailure = BitmapFactory.decodeResource(getResources(), R.drawable.ic_weixun_icon, opt);
+        bmpSuccess = BitmapFactory.decodeResource(getResources(), R.drawable.ic_weixun_lucency, opt);
+        bmpFailure = BitmapFactory.decodeResource(getResources(), R.drawable.ic_weixun_lucency, opt);
     }
 
     private Bitmap getRefreshResultBitmap() {

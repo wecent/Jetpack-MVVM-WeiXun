@@ -2,9 +2,7 @@ package com.wecent.weixun.network;
 
 import android.support.annotation.StringDef;
 
-import com.wecent.weixun.model.FreshNewsArticleBean;
-import com.wecent.weixun.model.FreshNewsBean;
-import com.wecent.weixun.model.JdDetailBean;
+import com.wecent.weixun.model.entity.BelleEntity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -45,36 +43,14 @@ public class JanDanApi {
     }
 
     /**
-     * 获取新鲜事列表
-     *
-     * @param page 页码
-     * @return
-     */
-    public Observable<FreshNewsBean> getFreshNews(int page) {
-        return mService.getFreshNews(ApiConstants.mJanDanApi, TYPE_FRESH,
-                "url,date,tags,author,title,excerpt,comment_count,comment_status,custom_fields",
-                page, "thumb_c,views", "1");
-    }
-
-    /**
      * 获取 无聊图，妹子图，段子列表
      *
      * @param type {@link Type}
      * @param page 页码
      * @return
      */
-    public Observable<JdDetailBean> getJdDetails(@Type String type, int page) {
+    public Observable<BelleEntity> getJdDetails(@Type String type, int page) {
         return mService.getDetailData(ApiConstants.mJanDanApi, type, page);
-    }
-
-    /**
-     * 获取新鲜事文章详情
-     *
-     * @param id PostsBean id {@link FreshNewsBean.PostsBean}
-     * @return
-     */
-    public Observable<FreshNewsArticleBean> getFreshNewsArticle(int id) {
-        return mService.getFreshNewsArticle(ApiConstants.mJanDanApi, TYPE_FRESHARTICLE, "content,date,modified", id);
     }
 
 }

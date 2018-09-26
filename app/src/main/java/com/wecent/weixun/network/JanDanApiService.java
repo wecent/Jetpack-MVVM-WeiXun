@@ -1,8 +1,6 @@
 package com.wecent.weixun.network;
 
-import com.wecent.weixun.model.FreshNewsArticleBean;
-import com.wecent.weixun.model.FreshNewsBean;
-import com.wecent.weixun.model.JdDetailBean;
+import com.wecent.weixun.model.entity.BelleEntity;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -17,26 +15,9 @@ import retrofit2.http.Url;
 public interface JanDanApiService {
 
     @GET
-    Observable<FreshNewsBean> getFreshNews(@Url String url,
-                                           @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
-                                           @Query("include") String include,
-                                           @Query("page") int page,
-                                           @Query("custom_fields") String custom_fields,
-                                           @Query("dev") String dev
-    );
-
-
-    @GET
-    Observable<JdDetailBean> getDetailData(@Url String url,
-                                           @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
-                                           @Query("page") int page
-    );
-
-    @GET
-    Observable<FreshNewsArticleBean> getFreshNewsArticle(@Url String url,
-                                                         @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
-                                                         @Query("include") String include,
-                                                         @Query("id") int id
+    Observable<BelleEntity> getDetailData(@Url String url,
+                                          @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
+                                          @Query("page") int page
     );
 
 }

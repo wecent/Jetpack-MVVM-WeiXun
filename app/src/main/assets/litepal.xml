@@ -6,7 +6,7 @@
     <version value="2">
     </version>
     <list>
-        <mapping class="com.wecent.weixun.model.Channel">
+        <mapping class="com.wecent.weixun.model.entity.Channel">
         </mapping>
     </list>
 

@@ -1,4 +1,4 @@
-package com.wecent.weixun.model;
+package com.wecent.weixun.model.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * author: wecent .
  * date: 2017/9/27 .
  */
-public class JdDetailBean {
+public class BelleEntity {
 
     /**
      * status : ok

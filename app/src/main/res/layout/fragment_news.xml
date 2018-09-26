@@ -22,7 +22,7 @@
             android:layout_height="32dp"
             android:layout_marginLeft="8dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_weixun_icon"/>
+            android:src="@drawable/ic_weixun_lucency"/>
 
         <TextView
             android:id="@+id/tv_news_wei"
@@ -81,11 +81,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/bg_weixun_shadow_add"
+            android:background="@color/config_color_75_white"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingLeft="8dp"
-            android:src="@drawable/ic_weixun_add_channel"/>
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:src="@drawable/ic_add_channel"/>
 
     </RelativeLayout>
 

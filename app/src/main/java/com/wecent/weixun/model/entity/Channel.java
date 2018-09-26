@@ -2,34 +2,77 @@ package com.wecent.weixun.model.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import org.litepal.annotation.Column;
+import org.litepal.crud.DataSupport;
+
 import java.io.Serializable;
 
-public class Channel implements MultiItemEntity, Serializable {
+/**
+ * desc: .
+ * author: wecent .
+ * date: 2017/9/3 .
+ */
+public class Channel extends DataSupport implements Serializable, MultiItemEntity {
+
     public static final int TYPE_MY = 1;
     public static final int TYPE_OTHER = 2;
     public static final int TYPE_MY_CHANNEL = 3;
     public static final int TYPE_OTHER_CHANNEL = 4;
 
-    public String title;
-    public String channelCode;
-    public int itemType;
+    @Column(ignore = true)
+    public int itemtype;
 
-    public Channel(String title, String channelCode) {
-        this(TYPE_MY_CHANNEL, title, channelCode);
-    }
+    private String channelCode;
+    private String channelName;
+    /**
+     * 0 可移除，1不可移除
+     */
+    private int channelType;
 
-    public Channel(int type, String title, String channelCode) {
-        this.title = title;
-        this.channelCode = channelCode;
-        itemType = type;
-    }
+    /**
+     * 0 未选中 1 选中
+     */
+    private boolean isChannelSelect;
 
     @Override
     public int getItemType() {
-        return itemType;
+        return itemtype;
     }
 
-    public void setItemType(int itemType) {
-        this.itemType = itemType;
+    public String getChannelCode() {
+        return channelCode;
     }
+
+    public void setChannelCode(String channelCode) {
+        this.channelCode = channelCode;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
+    }
+
+    public int getChannelType() {
+        return channelType;
+    }
+
+    public void setChannelType(int channelType) {
+        this.channelType = channelType;
+    }
+
+    public boolean isChannelSelect() {
+        return isChannelSelect;
+    }
+
+    public void setChannelSelect(boolean channelSelect) {
+        isChannelSelect = channelSelect;
+    }
+
+    public void setItemtype(int itemtype) {
+        this.itemtype = itemtype;
+    }
+
 }

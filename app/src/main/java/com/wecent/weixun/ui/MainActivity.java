@@ -8,7 +8,7 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.base.SupportFragment;
-import com.wecent.weixun.ui.jandan.JanDanFragment;
+import com.wecent.weixun.ui.belle.BelleFragment;
 import com.wecent.weixun.ui.mine.MineFragment;
 import com.wecent.weixun.ui.news.NewsFragment;
 import com.wecent.weixun.ui.video.VideoFragment;
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
         if (savedInstanceState == null) {
             mFragments[0] = NewsFragment.newInstance();
             mFragments[1] = VideoFragment.newInstance();
-            mFragments[2] = JanDanFragment.newInstance();
+            mFragments[2] = BelleFragment.newInstance();
             mFragments[3] = MineFragment.newInstance();
 
             getSupportDelegate().loadMultipleRootFragment(R.id.contentContainer, 0,
@@ -61,13 +61,13 @@ public class MainActivity extends BaseActivity {
         } else {
             mFragments[0] = findFragment(NewsFragment.class);
             mFragments[1] = findFragment(VideoFragment.class);
-            mFragments[2] = findFragment(JanDanFragment.class);
+            mFragments[2] = findFragment(BelleFragment.class);
             mFragments[3] = findFragment(MineFragment.class);
         }
 
         mBottomBar.addItem(new BottomTab(this, R.drawable.ic_news, "新闻"))
                 .addItem(new BottomTab(this, R.drawable.ic_video, "视频"))
-                .addItem(new BottomTab(this, R.drawable.ic_jiandan, "煎蛋"))
+                .addItem(new BottomTab(this, R.drawable.ic_jiandan, "妹子"))
                 .addItem(new BottomTab(this, R.drawable.ic_my, "我的"));
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override

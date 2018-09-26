@@ -54,7 +54,7 @@
                 android:id="@+id/iv_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/icon_video_play"
+                android:background="@drawable/ic_video_play"
                 android:layout_gravity="center"
                 android:visibility="visible" />
 

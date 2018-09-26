@@ -1,7 +1,7 @@
 package com.wecent.weixun.model.event;
 
 
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 
 import java.util.ArrayList;
 import java.util.Iterator;

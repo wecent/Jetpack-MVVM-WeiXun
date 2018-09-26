@@ -2,7 +2,7 @@ package com.wecent.weixun.ui.news.presenter;
 
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.database.ChannelDao;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.news.contract.NewsContract;

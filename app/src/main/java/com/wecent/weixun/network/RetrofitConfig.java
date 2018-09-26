@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.wecent.weixun.WXApplication;
-import com.wecent.weixun.model.Constants;
 import com.wecent.weixun.utils.NetworkUtils;
 
 import java.io.IOException;
@@ -77,8 +76,8 @@ public class RetrofitConfig {
             Request originalRequest = chain.request();
             Request request;
             HttpUrl modifiedUrl = originalRequest.url().newBuilder()
-                    .addQueryParameter("uid", Constants.uid)
-                    .addQueryParameter("devid", Constants.uid)
+                    .addQueryParameter("uid", "864678036850608")
+                    .addQueryParameter("devid", "864678036850608")
                     .addQueryParameter("proid", "ifengnews")
                     .addQueryParameter("vt", "5")
                     .addQueryParameter("publishid", "6103")

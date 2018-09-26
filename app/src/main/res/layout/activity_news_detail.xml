@@ -8,7 +8,8 @@
 
     <include layout="@layout/layout_detail_top"/>
 
-    <FrameLayout
+    <com.wecent.weixun.widget.SimpleMultiStateView
+        android:id="@+id/SimpleMultiStateView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -19,7 +20,7 @@
             android:layout_height="match_parent"
             app:dividerColor="@color/config_color_white" />
 
-    </FrameLayout>
+    </com.wecent.weixun.widget.SimpleMultiStateView>
 
     <include
         android:layout_width="match_parent"

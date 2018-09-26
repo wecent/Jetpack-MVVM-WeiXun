@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.google.gson.Gson;
-import com.socks.library.KLog;
 import com.wecent.weixun.R;
 import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.utils.ImageLoaderUtil;
@@ -88,7 +86,7 @@ public class NewsListAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHol
                     if (news.gallary_image_count == 1){
                         tvBottomRight.setCompoundDrawables(null, null, null, null);//去除TextView左侧图标
                     }else{
-                        tvBottomRight.setCompoundDrawables(mContext.getResources().getDrawable(R.drawable.ic_weixun_detail_picture), null, null, null);//TextView增加左侧图标
+                        tvBottomRight.setCompoundDrawables(mContext.getResources().getDrawable(R.drawable.ic_detail_picture), null, null, null);//TextView增加左侧图标
                         baseViewHolder.setText(R.id.tv_bottom_right, news.gallary_image_count + "图");//设置图片数
                     }
                     //中间图片使用image_list第一张

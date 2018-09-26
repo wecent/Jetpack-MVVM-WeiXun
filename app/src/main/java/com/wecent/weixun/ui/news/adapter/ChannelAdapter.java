@@ -1,4 +1,4 @@
-package com.wecent.weixun.ui.adapter;
+package com.wecent.weixun.ui.news.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.Channel;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.ui.inter.OnChannelListener;
 
 import java.util.List;
@@ -27,7 +27,7 @@ import java.util.List;
  * author: wecent .
  * date: 2017/9/10 .
  */
-public class NewAdapter extends BaseMultiItemQuickAdapter<Channel, BaseViewHolder> {
+public class ChannelAdapter extends BaseMultiItemQuickAdapter<Channel, BaseViewHolder> {
     private boolean mIsEdit;
     private RecyclerView mRecyclerView;
     private ItemTouchHelper mItemTouchHelper;
@@ -35,7 +35,7 @@ public class NewAdapter extends BaseMultiItemQuickAdapter<Channel, BaseViewHolde
     // touch 间隔时间  用于分辨是否是 "点击"
     private static final long SPACE_TIME = 100;
 
-    public NewAdapter(List<Channel> data, ItemTouchHelper helper) {
+    public ChannelAdapter(List<Channel> data, ItemTouchHelper helper) {
         super(data);
         mIsEdit = false;
         this.mItemTouchHelper = helper;

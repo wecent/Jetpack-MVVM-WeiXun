@@ -1,6 +1,6 @@
 package com.wecent.weixun.component;
 
-import com.wecent.weixun.ui.jandan.DetailFragment;
+import com.wecent.weixun.ui.belle.BelleFragment;
 import com.wecent.weixun.ui.news.NewsFragment;
 import com.wecent.weixun.ui.news.NewsDetailActivity;
 import com.wecent.weixun.ui.news.NewsListFragment;
@@ -30,6 +30,6 @@ public interface HttpComponent {
 
     void inject(VideoDetailActivity videoDetailActivity);
 
-    void inject(DetailFragment detailFragment);
+    void inject(BelleFragment belleFragment);
 
 }
