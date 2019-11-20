@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/10 .
+ * date: 2018/9/10 .
  */
 public interface VideoContract {
 

@@ -10,26 +10,26 @@ import io.reactivex.Observable;
 
 /**
  * desc:
- * author: wecent .
- * date: 2017/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
-public class WeiXunApi {
+public class WeiXunApiManager {
 
     public static final String ACTION_DEFAULT = "default";
     public static final String ACTION_DOWN = "down";
     public static final String ACTION_UP = "up";
 
-    public static WeiXunApi mInstance;
+    public static WeiXunApiManager mInstance;
 
     private WeiXunApiService mService;
 
-    public WeiXunApi(WeiXunApiService weiXunApiService) {
+    public WeiXunApiManager(WeiXunApiService weiXunApiService) {
         this.mService = weiXunApiService;
     }
 
-    public static WeiXunApi getInstance(WeiXunApiService weiXunApiService) {
+    public static WeiXunApiManager getInstance(WeiXunApiService weiXunApiService) {
         if (mInstance == null)
-            mInstance = new WeiXunApi(weiXunApiService);
+            mInstance = new WeiXunApiManager(weiXunApiService);
         return mInstance;
     }
 

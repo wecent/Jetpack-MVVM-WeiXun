@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.wecent.weixun.model.entity.BelleEntity;
 import com.wecent.weixun.network.BaseObserver;
-import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.JanDanApiManager;
 import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.belle.contract.BelleContract;
@@ -17,14 +17,14 @@ import io.reactivex.functions.Function;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/27 .
+ * date: 2018/9/27 .
  */
 public class BellePresenter extends BasePresenter<BelleContract.View> implements BelleContract.Presenter {
     private static final String TAG = "BellePresenter";
-    JanDanApi mJanDanApi;
+    JanDanApiManager mJanDanApi;
 
     @Inject
-    public BellePresenter(JanDanApi janDanApi) {
+    public BellePresenter(JanDanApiManager janDanApi) {
         this.mJanDanApi = janDanApi;
     }
 
@@ -59,13 +59,13 @@ public class BellePresenter extends BasePresenter<BelleContract.View> implements
                     }
 
                     @Override
-                    public void onFail(Throwable e) {
+                    public void onFailure(Throwable e) {
                         if (page > 1) {
                             mView.loadMoreDetailData(type, null);
                         } else {
                             mView.loadDetailData(type, null);
                         }
-                        Log.i(TAG, "onFail: " + e.getMessage());
+                        Log.i(TAG, "onFailure: " + e.getMessage());
                     }
                 });
     }

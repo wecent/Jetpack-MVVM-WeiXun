@@ -6,7 +6,7 @@ import com.wecent.weixun.ui.base.BaseContract;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/27 .
+ * date: 2018/9/27 .
  */
 public interface BelleContract {
 

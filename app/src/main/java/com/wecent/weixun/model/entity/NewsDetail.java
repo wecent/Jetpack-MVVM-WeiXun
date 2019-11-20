@@ -1,11 +1,10 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * @author ChayChan
- * @description: 新闻详情
- * @date 2017/6/28  15:25
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class NewsDetail {
 
     /**

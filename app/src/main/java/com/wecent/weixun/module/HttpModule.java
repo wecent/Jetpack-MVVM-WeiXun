@@ -2,10 +2,10 @@ package com.wecent.weixun.module;
 
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.network.ApiConstants;
-import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.JanDanApiManager;
 import com.wecent.weixun.network.JanDanApiService;
 import com.wecent.weixun.network.RetrofitConfig;
-import com.wecent.weixun.network.WeiXunApi;
+import com.wecent.weixun.network.WeiXunApiManager;
 import com.wecent.weixun.network.WeiXunApiService;
 
 import java.io.File;
@@ -21,8 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * desc:
- * author: wecent .
- * date: 2017/9/2 .
+ * author: wecent
+ * date: 2018/9/3
  */
 @Module
 public class HttpModule {
@@ -49,27 +49,27 @@ public class HttpModule {
 //    }
 
     @Provides
-    WeiXunApi provideWeiXunApis(OkHttpClient.Builder builder) {
+    WeiXunApiManager provideWeiXunApis(OkHttpClient.Builder builder) {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(builder.build());
 
-        return WeiXunApi.getInstance(retrofitBuilder
+        return WeiXunApiManager.getInstance(retrofitBuilder
                 .baseUrl(ApiConstants.mWeiXunApi)
                 .build().create(WeiXunApiService.class));
     }
 
     @Provides
-    JanDanApi provideJanDanApis(OkHttpClient.Builder builder) {
+    JanDanApiManager provideJanDanApis(OkHttpClient.Builder builder) {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(builder.build());
 
-        return JanDanApi.getInstance(retrofitBuilder
+        return JanDanApiManager.getInstance(retrofitBuilder
                 .baseUrl(ApiConstants.mJanDanApi)
                 .build().create(JanDanApiService.class));
     }

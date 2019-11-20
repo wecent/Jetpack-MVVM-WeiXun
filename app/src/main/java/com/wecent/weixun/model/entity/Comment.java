@@ -1,10 +1,11 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * Created by Administrator on 2016/11/22 0022.
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
 public class Comment {
-
 
     /**
      * id : 1571509257847810

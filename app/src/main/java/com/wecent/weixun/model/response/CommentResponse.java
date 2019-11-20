@@ -5,7 +5,9 @@ import com.wecent.weixun.model.entity.CommentData;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/11/23 0023.
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
 public class CommentResponse {
 
@@ -22,7 +24,7 @@ public class CommentResponse {
      * show_add_forum : 1
      * stick_comments : []
      * stick_total_number : 0
-     * stick_has_more : false
+     * stick_has_more : false   
      * tab_info : {"current_tab_index":0,"tabs":["热度","时间"]}
      * stable : true
      */

@@ -15,10 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.socks.library.KLog;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
+import com.wecent.weixun.loader.ImageLoader;
 import com.wecent.weixun.model.entity.CommentData;
 import com.wecent.weixun.model.entity.NewsDetail;
 import com.wecent.weixun.model.response.CommentResponse;
@@ -28,8 +29,7 @@ import com.wecent.weixun.ui.video.adapter.CommentAdapter;
 import com.wecent.weixun.ui.video.contract.VideoDetailContract;
 import com.wecent.weixun.ui.video.presenter.VideoDetailPresenter;
 import com.wecent.weixun.utils.AppUtils;
-import com.wecent.weixun.utils.DateUtils;
-import com.wecent.weixun.utils.ImageLoaderUtil;
+import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.PowerfulRecyclerView;
 import com.wecent.weixun.widget.VideoPathDecoder;
 
@@ -41,7 +41,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
-import fm.jiecao.jcvideoplayer_lib.OnVideoClickListener;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -49,7 +48,7 @@ import static android.view.View.VISIBLE;
 /**
  * desc: 头条新闻详情页 .
  * author: wecent .
- * date: 2017/9/19 .
+ * date: 2018/9/19 .
  */
 
 public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> implements VideoDetailContract.View, BaseQuickAdapter.RequestLoadMoreListener {
@@ -108,7 +107,7 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this);
-        setStatusBarColor(Color.parseColor("#000000"), 100);
+        setStatusBarColor(Color.parseColor("#000000"));
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mSensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
@@ -168,7 +167,7 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
         VideoPathDecoder decoder = new VideoPathDecoder() {
             @Override
             public void onDecodeSuccess(final String url) {
-                KLog.i("Video url:" + url);
+                Logger.i("Video url:" + url);
                 AppUtils.postTaskSafely(new Runnable() {
                     @Override
                     public void run() {
@@ -185,19 +184,19 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
             }
         };
         decoder.decodePath(news.data.url);
-        KLog.i("Video url:" + news.data.url);
+        Logger.i("Video url:" + news.data.url);
 
         if (news.data.media_user == null) {
             //如果没有用户信息
             llInfo.setVisibility(GONE);
         } else {
             if (!TextUtils.isEmpty(news.data.media_user.avatar_url)) {
-                ImageLoaderUtil.LoadImage(getBaseContext(), news.data.media_user.avatar_url, ivAvatar);
+                ImageLoader.getInstance().displayImage(getBaseContext(), news.data.media_user.avatar_url, ivAvatar);
             }
             tvAuthor.setText(news.data.media_user.screen_name);
-            tvTime.setText(DateUtils.getShortTime(news.data.publish_time * 1000L));
+            tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(news.data.publish_time * 1000L));
         }
-        KLog.e("onGetNewsDetailSuccess", news.data.url);
+        Logger.e("onGetNewsDetailSuccess", news.data.url);
         showSuccess();
     }
 

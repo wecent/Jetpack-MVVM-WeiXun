@@ -7,11 +7,10 @@ import com.wecent.weixun.model.entity.TipEntity;
 import java.util.List;
 
 /**
- * @author ChayChan
- * @description: TODO
- * @date 2017/7/6  15:03
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class NewsResponse {
 
     public int login_status;

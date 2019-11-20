@@ -1,6 +1,9 @@
 package com.wecent.weixun.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -27,6 +30,11 @@ public class MainActivity extends BaseActivity {
     BottomBar mBottomBar;
 
     private SupportFragment[] mFragments = new SupportFragment[4];
+
+    public static void launch(Activity context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     public int getContentLayout() {

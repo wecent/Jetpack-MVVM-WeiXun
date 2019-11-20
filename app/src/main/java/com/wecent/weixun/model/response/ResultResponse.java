@@ -1,9 +1,9 @@
 package com.wecent.weixun.model.response;
 
 /**
- * @author ChayChan
- * @description: 访问返回的response
- * @date 2017/6/18  19:37
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
 public class ResultResponse<T> {
 

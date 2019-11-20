@@ -24,7 +24,7 @@ import butterknife.OnClick;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/12 .
+ * date: 2018/9/12 .
  */
 public class NewsDelPop extends BasePopup<NewsDelPop> {
     private static final String TAG = "NewsDelPop";

@@ -10,11 +10,11 @@ import java.lang.annotation.RetentionPolicy;
 import io.reactivex.Observable;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/9/27 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/27
  */
-public class JanDanApi {
+public class JanDanApiManager {
 
     public static final String TYPE_FRESH = "get_recent_posts";
     public static final String TYPE_FRESHARTICLE = "get_post";
@@ -28,17 +28,17 @@ public class JanDanApi {
 
     }
 
-    public static JanDanApi sInstance;
+    public static JanDanApiManager sInstance;
 
     private JanDanApiService mService;
 
-    public JanDanApi(JanDanApiService janDanApiService) {
+    public JanDanApiManager(JanDanApiService janDanApiService) {
         this.mService = janDanApiService;
     }
 
-    public static JanDanApi getInstance(JanDanApiService janDanApiService) {
+    public static JanDanApiManager getInstance(JanDanApiService janDanApiService) {
         if (sInstance == null)
-            sInstance = new JanDanApi(janDanApiService);
+            sInstance = new JanDanApiManager(janDanApiService);
         return sInstance;
     }
 

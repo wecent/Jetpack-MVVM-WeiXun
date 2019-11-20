@@ -1,12 +1,12 @@
 package com.wecent.weixun.widget.trans;
 
 /**
- * desc:
+ * desc: TransToolBar点击事件接口回调
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
 
-public interface ToolBarClickListener {
+public interface OnTransClickListener {
 
     void onLeftClick();
 

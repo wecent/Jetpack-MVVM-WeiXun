@@ -9,7 +9,6 @@ import android.view.Window;
 
 import com.wecent.weixun.R;
 
-
 public class DialogHelper {
 
     public static Dialog getLoadingDialog(Context context) {

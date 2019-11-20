@@ -15,15 +15,15 @@ import android.view.WindowManager;
 import android.widget.ScrollView;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.utils.DisplayUtils;
+import com.wecent.weixun.utils.SizeUtils;
 
 /**
  * desc:
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
 
-public class TranslucentScrollView extends ScrollView {
+public class TransScrollView extends ScrollView {
 
     static final String TAG = "TranslucentScrollView";
 
@@ -50,7 +50,7 @@ public class TranslucentScrollView extends ScrollView {
     //渐变结束默认位置，Y轴，300dp
     private final int DFT_TRANSENDY = 300;
 
-    private TranslucentScrollView.TranslucentChangedListener translucentChangedListener;
+    private TransScrollView.TranslucentChangedListener translucentChangedListener;
 
     public interface TranslucentChangedListener {
         /**
@@ -61,19 +61,19 @@ public class TranslucentScrollView extends ScrollView {
         void onTranslucentChanged(int transAlpha);
     }
 
-    public TranslucentScrollView(Context context) {
+    public TransScrollView(Context context) {
         super(context);
     }
 
-    public TranslucentScrollView(Context context, AttributeSet attrs) {
+    public TransScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public TranslucentScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TransScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setTranslucentChangedListener(TranslucentScrollView.TranslucentChangedListener translucentChangedListener) {
+    public void setTranslucentChangedListener(TransScrollView.TranslucentChangedListener translucentChangedListener) {
         this.translucentChangedListener = translucentChangedListener;
     }
 
@@ -89,7 +89,7 @@ public class TranslucentScrollView extends ScrollView {
             zoomView.post(new Runnable() {
                 @Override
                 public void run() {
-                    zoomViewInitHeight = TranslucentScrollView.this.zoomView.getHeight();
+                    zoomViewInitHeight = TransScrollView.this.zoomView.getHeight();
                 }
             });
         }
@@ -101,7 +101,7 @@ public class TranslucentScrollView extends ScrollView {
      * @param transView 渐变的视图
      */
     public void setTransView(View transView) {
-        setTransView(transView, getResources().getColor(R.color.app_color_blue), DisplayUtils.dip2px(getContext(), DFT_TRANSSTARTY), DisplayUtils.dip2px(getContext(), DFT_TRANSENDY));
+        setTransView(transView, getResources().getColor(R.color.color_c9c9c9), SizeUtils.dp2px(DFT_TRANSSTARTY), SizeUtils.dp2px(DFT_TRANSENDY));
     }
 
     /**
@@ -121,9 +121,11 @@ public class TranslucentScrollView extends ScrollView {
      * @param transEndY  渐变结束位置
      */
     public void setTransView(View transView, @ColorInt int transColor, int transStartY, int transEndY) {
-        this.transView = transView;
-        //初始视图-透明
-        this.transView.setBackgroundColor(ColorUtils.setAlphaComponent(transColor, 0));
+        if (transView != null) {
+            this.transView = transView;
+            //初始视图-透明
+            this.transView.setBackgroundColor(ColorUtils.setAlphaComponent(transColor, 0));
+        }
         this.transStartY = transStartY;
         this.transEndY = transEndY;
         this.transColor = transColor;

@@ -1,11 +1,10 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * @author ChayChan
- * @description: TODO
- * @date 2017/7/6  15:31
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class TipEntity {
     /**
      * display_info : 今日头条推荐引擎有15条更新

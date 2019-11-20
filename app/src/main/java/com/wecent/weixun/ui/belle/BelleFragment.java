@@ -11,7 +11,7 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.model.entity.BelleEntity;
-import com.wecent.weixun.network.JanDanApi;
+import com.wecent.weixun.network.JanDanApiManager;
 import com.wecent.weixun.ui.belle.adapter.BellePicAdapter;
 import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.belle.contract.BelleContract;
@@ -28,7 +28,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 /**
  * desc: 煎蛋
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
 public class BelleFragment extends BaseFragment<BellePresenter> implements BelleContract.View {
 
@@ -82,10 +82,10 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
             public void onRefreshBegin(PtrFrameLayout frame) {
                 mFrame = frame;
                 pageNum = 1;
-                mPresenter.getDetailData(JanDanApi.TYPE_GIRLS, pageNum);
+                mPresenter.getDetailData(JanDanApiManager.TYPE_GIRLS, pageNum);
             }
         });
-        mPresenter.getDetailData(JanDanApi.TYPE_GIRLS, pageNum);
+        mPresenter.getDetailData(JanDanApiManager.TYPE_GIRLS, pageNum);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mAdapter = new BellePicAdapter(getActivity(), null);
         mRecyclerView.setAdapter(mAdapter);
@@ -96,7 +96,7 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.getDetailData(JanDanApi.TYPE_GIRLS, pageNum);
+                mPresenter.getDetailData(JanDanApiManager.TYPE_GIRLS, pageNum);
             }
         }, mRecyclerView);
     }

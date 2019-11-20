@@ -3,7 +3,7 @@ package com.wecent.weixun.ui.video.presenter;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.socks.library.KLog;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.model.entity.News;
@@ -11,10 +11,10 @@ import com.wecent.weixun.model.entity.NewsData;
 import com.wecent.weixun.model.response.NewsResponse;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.RxSchedulers;
-import com.wecent.weixun.network.WeiXunApi;
+import com.wecent.weixun.network.WeiXunApiManager;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.video.contract.VideoListContract;
-import com.wecent.weixun.utils.PreUtils;
+import com.wecent.weixun.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.inject.Inject;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/8 .
+ * date: 2018/9/8 .
  */
 public class VideoListPresenter extends BasePresenter<VideoListContract.View> implements VideoListContract.Presenter {
 
@@ -34,16 +34,16 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
 
     private long lastTime;
 
-    WeiXunApi mWeiXunApi;
+    WeiXunApiManager mWeiXunApi;
 
     @Inject
-    public VideoListPresenter(WeiXunApi mWeiXunApi) {
+    public VideoListPresenter(WeiXunApiManager mWeiXunApi) {
         this.mWeiXunApi = mWeiXunApi;
     }
 
     @Override
     public void getData(final String channelCode, final String action) {
-        lastTime = PreUtils.getLong(channelCode,0);//读取对应频道下最后一次刷新的时间戳
+        lastTime = SPUtils.getInstance().getLong(channelCode,0);//读取对应频道下最后一次刷新的时间戳
         if (lastTime == 0){
             //如果为空，则是从来没有刷新过，使用当前时间戳
             lastTime = System.currentTimeMillis() / 1000;
@@ -56,7 +56,7 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
                     @Override
                     public void onSuccess(NewsResponse response) {
                         lastTime = System.currentTimeMillis() / 1000;
-                        PreUtils.putLong(channelCode, lastTime);//保存刷新的时间戳
+                        SPUtils.getInstance().put(channelCode, lastTime);//保存刷新的时间戳
 
                         List<NewsData> data = response.data;
                         List<News> newsList = new ArrayList<>();
@@ -67,8 +67,8 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
                                 newsList.add(news);
                             }
                         }
-                        KLog.e(newsList);
-                        if (!action.equals(WeiXunApi.ACTION_UP)) {
+                        Logger.e(new Gson().toJson(newsList));
+                        if (!action.equals(WeiXunApiManager.ACTION_UP)) {
                             mView.loadData(newsList);
                         } else {
                             String[] channelCodes = WXApplication.getContext().getResources().getStringArray(R.array.weixun_channel_code);
@@ -81,9 +81,9 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
                     }
 
                     @Override
-                    public void onFail(Throwable e) {
-                        KLog.e(e.getLocalizedMessage());
-                        if (!action.equals(WeiXunApi.ACTION_UP)) {
+                    public void onFailure(Throwable e) {
+                        Logger.e(e.getLocalizedMessage());
+                        if (!action.equals(WeiXunApiManager.ACTION_UP)) {
                             mView.loadData(null);
                         } else {
                             mView.loadMoreData(null);

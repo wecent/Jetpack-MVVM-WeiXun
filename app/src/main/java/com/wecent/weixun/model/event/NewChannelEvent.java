@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * desc:
- * author: wecent .
- * date: 2017/9/10 .
+ * author: wecent
+ * date: 2018/9/10
  */
 public class NewChannelEvent {
     public List<Channel> selectedDatas;

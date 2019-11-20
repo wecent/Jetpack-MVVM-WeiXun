@@ -20,6 +20,7 @@ import in.srain.cube.views.ptr.PtrUIHandler;
 import in.srain.cube.views.ptr.indicator.PtrIndicator;
 
 public class PtrWeiXunHeader extends View implements PtrUIHandler {
+
     /** 状态-闲置 */
     public static final byte STATE_IDLE = 0;
     /** 状态-下拉去刷新 */

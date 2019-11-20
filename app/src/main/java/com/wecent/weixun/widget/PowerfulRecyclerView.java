@@ -12,12 +12,12 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.utils.DisplayUtils;
+import com.wecent.weixun.utils.SizeUtils;
 
 /**
  * @author ChayChan
  * @description: 对RecyclerView进行封装
- * @date 2017/6/27  14:10
+ * @date 2018/6/27  14:10
  */
 
 public class PowerfulRecyclerView extends RecyclerView {
@@ -61,7 +61,7 @@ public class PowerfulRecyclerView extends RecyclerView {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PowerfulRecyclerView);
 
         mDividerColor = ta.getColor(R.styleable.PowerfulRecyclerView_dividerColor, Color.parseColor("#ffd8d8d8"));
-        mDividerSize = ta.getDimensionPixelSize(R.styleable.PowerfulRecyclerView_dividerSize, DisplayUtils.dip2px(context,1));
+        mDividerSize = ta.getDimensionPixelSize(R.styleable.PowerfulRecyclerView_dividerSize, SizeUtils.dp2px(1));
 
         mDividerDrawable = ta.getDrawable(R.styleable.PowerfulRecyclerView_dividerDrawable);
 

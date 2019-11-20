@@ -5,7 +5,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 /**
  * desc:
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
 public interface BaseContract {
 

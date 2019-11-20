@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
@@ -23,7 +26,7 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseActivity;
-import com.wecent.weixun.utils.ImageLoaderUtil;
+import com.wecent.weixun.utils.LogUtils;
 import com.wecent.weixun.utils.StatusBarUtils;
 import com.wecent.weixun.widget.HackyViewPager;
 import com.wecent.weixun.widget.SwipeBackLayout;
@@ -142,38 +145,40 @@ public class BelleImageActivity extends BaseActivity {
                    finish();
                 }
             });
-            ImageLoaderUtil.LoadImage(BelleImageActivity.this, imageUrls[position],
-                    new DrawableImageViewTarget(mPhotoView) {
+            Glide.with(BelleImageActivity.this).load(imageUrls[position])
+                    .apply(new RequestOptions()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL))
+                    .transition(new DrawableTransitionOptions().crossFade(800))
+                    .into(new DrawableImageViewTarget(mPhotoView) {
                         @Override
                         public void setDrawable(Drawable drawable) {
                             super.setDrawable(drawable);
-                            Log.i(TAG, "setDrawable: ");
-                           // mProgressBar.setVisibility(View.VISIBLE);
+                            LogUtils.i("setDrawable: ");
+                            // mProgressBar.setVisibility(View.VISIBLE);
                         }
 
                         @Override
                         public void onLoadStarted(@Nullable Drawable placeholder) {
                             super.onLoadStarted(placeholder);
-                            Log.i(TAG, "onLoadStarted: ");
+                            LogUtils.i("onLoadStarted: ");
                         }
 
                         @Override
                         public void onLoadFailed(@Nullable Drawable errorDrawable) {
                             super.onLoadFailed(errorDrawable);
-                            Log.i(TAG, "onLoadFailed: ");
+                            LogUtils.i("onLoadFailed: ");
                         }
 
                         @Override
                         public void onLoadCleared(@Nullable Drawable placeholder) {
                             super.onLoadCleared(placeholder);
-                            Log.i(TAG, "onLoadCleared: ");
+                            LogUtils.i("onLoadCleared: ");
                         }
 
                         @Override
                         public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
                             super.onResourceReady(resource, transition);
-                            Log.i(TAG, "onResourceReady: ");
-
+                            LogUtils.i("onResourceReady: ");
                         }
                     });
             container.addView(view);

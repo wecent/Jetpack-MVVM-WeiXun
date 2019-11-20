@@ -1,9 +1,9 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * @author ChayChan
- * @description: 视频的实体类
- * @date 2017/6/18  19:37
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
 public class Video {
 

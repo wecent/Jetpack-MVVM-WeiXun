@@ -1,23 +1,23 @@
 <resources>
-    <string name="app_name">微讯</string>
+    <string name="app_name" translatable="false">微讯</string>
 
     <!-- 状态视图  -->
-    <string name="text_loading">加载中</string>
-    <string name="text_empty">没有数据</string>
-    <string name="text_nonet">网络异常</string>
-    <string name="text_retry">点击重试</string>
+    <string name="text_loading" translatable="false">加载中</string>
+    <string name="text_empty" translatable="false">没有数据</string>
+    <string name="text_nonet" translatable="false">网络异常</string>
+    <string name="text_retry" translatable="false">点击重试</string>
 
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
     <!-- 新闻 -->
-    <string name="news_commentsize">%1$s评论</string>
-    <string name="detail_header_tv">下拉一下，看点儿不一样的</string>
-    <string name="news_toast">已为您推荐了%1$s条新资讯</string>
-    <string name="video_toast">已为您推荐了%1$s条短视频</string>
-    <string name="finish">完成</string>
-    <string name="edit">编辑</string>
+    <string name="news_comment_size" translatable="false">%1$s评论</string>
+    <string name="detail_header_tv" translatable="false">下拉一下，看点儿不一样的</string>
+    <string name="news_toast" translatable="false">已为您推荐了%1$s条新资讯</string>
+    <string name="video_toast" translatable="false">已为您推荐了%1$s条短视频</string>
+    <string name="finish" translatable="false">完成</string>
+    <string name="edit" translatable="false">编辑</string>
 
 </resources>

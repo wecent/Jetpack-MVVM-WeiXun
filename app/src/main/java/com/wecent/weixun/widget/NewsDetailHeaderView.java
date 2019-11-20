@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wecent.weixun.R;
+import com.wecent.weixun.loader.ImageLoader;
 import com.wecent.weixun.model.entity.NewsDetail;
-import com.wecent.weixun.utils.DateUtils;
-import com.wecent.weixun.utils.ImageLoaderUtil;
+import com.wecent.weixun.utils.TimeUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * @author ChayChan
  * @description: 新闻详情页头部
- * @date 2017/6/28  15:25
+ * @date 2018/6/28  15:25
  */
 
 public class NewsDetailHeaderView extends FrameLayout {
@@ -70,10 +70,10 @@ public class NewsDetailHeaderView extends FrameLayout {
             llInfo.setVisibility(GONE);
         } else {
             if (!TextUtils.isEmpty(detail.media_user.avatar_url)) {
-                ImageLoaderUtil.LoadImage(mContext, detail.media_user.avatar_url, ivAvatar);
+                ImageLoader.getInstance().displayImage(mContext, detail.media_user.avatar_url, ivAvatar);
             }
             tvAuthor.setText(detail.media_user.screen_name);
-            tvTime.setText(DateUtils.getShortTime(detail.publish_time * 1000L));
+            tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(detail.publish_time * 1000L));
         }
 
         if (TextUtils.isEmpty(detail.content))

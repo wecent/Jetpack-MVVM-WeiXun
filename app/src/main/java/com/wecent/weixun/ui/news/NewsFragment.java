@@ -3,41 +3,40 @@ package com.wecent.weixun.ui.news;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.wecent.weixun.R;
-import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
 import com.wecent.weixun.database.ChannelDao;
+import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.model.event.NewChannelEvent;
 import com.wecent.weixun.model.event.SelectChannelEvent;
-import com.wecent.weixun.ui.news.adapter.NewsPagerAdapter;
 import com.wecent.weixun.ui.base.BaseFragment;
+import com.wecent.weixun.ui.news.adapter.NewsPagerAdapter;
 import com.wecent.weixun.ui.news.contract.NewsContract;
 import com.wecent.weixun.ui.news.presenter.NewsPresenter;
 import com.wecent.weixun.widget.ChannelDialogFragment;
 import com.wecent.weixun.widget.CustomViewPager;
 
-import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * desc: 新闻页面 .
- * author: wecent .
- * date: 2017/9/7 .
+ * desc: 新闻页面
+ * author: wecent
+ * date: 2018/9/7
  */
 public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsContract.View {
 
@@ -47,9 +46,6 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     ImageView mIvEdit;
     @BindView(R.id.SlidingTabLayout)
     SlidingTabLayout mTabLayout;
-    @BindView(R.id.fake_status_bar)
-    View fakeStatusBar;
-    Unbinder unbinder;
 
     private NewsPagerAdapter mNewsPagerAdapter;
 
@@ -81,7 +77,8 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        EventBus.getDefault().register(this);
+        setStatusBarColor(R.color.config_color_blue);
+        setStatusBarDark(false);
         mViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -99,26 +96,13 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
 
             }
         });
-
     }
 
     @Override
     public void bindData() {
-        setStatusBarHeight(getStatusBarHeight());
         mSelectedDatas = new ArrayList<>();
         mUnSelectedDatas = new ArrayList<>();
         mPresenter.getChannel();
-    }
-
-    /**
-     * 设置状态栏高度
-     *
-     * @param statusBarHeight
-     */
-    public void setStatusBarHeight(int statusBarHeight) {
-        ViewGroup.LayoutParams params = fakeStatusBar.getLayoutParams();
-        params.height = statusBarHeight;
-        fakeStatusBar.setLayoutParams(params);
     }
 
     @Override
@@ -139,12 +123,12 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
             mViewpager.setCurrentItem(0, false);
             mTabLayout.setViewPager(mViewpager);
         } else {
-            T("数据异常");
+            showShort("数据异常");
         }
     }
 
-    @Subscriber
-    private void updateChannel(NewChannelEvent event) {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUpdateChannel(NewChannelEvent event) {
         if (event == null) return;
         if (event.selectedDatas != null && event.unSelectedDatas != null) {
             mSelectedDatas = event.selectedDatas;
@@ -170,8 +154,8 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
         }
     }
 
-    @Subscriber
-    private void selectChannel(SelectChannelEvent selectChannelEvent) {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSelectChannel(SelectChannelEvent selectChannelEvent) {
         if (selectChannelEvent == null) return;
         List<String> integers = new ArrayList<>();
         for (Channel channel : mSelectedDatas) {
@@ -210,17 +194,14 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     }
 
     @Override
-    public void onDestroyView() {
-        EventBus.getDefault().unregister(this);
-        super.onDestroyView();
-        unbinder.unbind();
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }

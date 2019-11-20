@@ -8,7 +8,7 @@ import com.wecent.weixun.ui.base.BaseContract;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/19 .
+ * date: 2018/9/19 .
  */
 public interface NewsDetailContract {
 

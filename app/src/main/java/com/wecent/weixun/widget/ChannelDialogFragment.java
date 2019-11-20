@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.wecent.weixun.R;
 import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.model.event.NewChannelEvent;
@@ -22,7 +23,7 @@ import com.wecent.weixun.ui.news.adapter.ChannelAdapter;
 import com.wecent.weixun.ui.inter.ItemDragHelperCallBack;
 import com.wecent.weixun.ui.inter.OnChannelListener;
 
-import org.simple.eventbus.EventBus;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,23 +31,34 @@ import java.util.List;
 
 import butterknife.OnClick;
 
-
+/**
+ * desc: 新闻分类弹框
+ * author: wecent
+ * date: 2018/9/7
+ */
 public class ChannelDialogFragment extends DialogFragment implements OnChannelListener {
-    private List<Channel> mDatas = new ArrayList<>();
-    RecyclerView mRecyclerView;
-    private ItemTouchHelper mHelper;
-    private ImageView miVClose;
+
+    private RecyclerView mRecyclerView;
+    private ImageView mClose;
     private boolean isUpdate = false;
     private ChannelAdapter mAdapter;
-    List<Channel> mSelectedDatas;
-    List<Channel> mUnSelectedDatas;
-
+    private List<Channel> mData = new ArrayList<>();
+    private List<Channel> mSelectedData;
+    private List<Channel> mUnSelectedData;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Black_NoTitleBar);
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
 
+//        ImmersionBar.with(this)
+//                .transparentStatusBar()
+//                .fitsSystemWindows(true)
+//                .statusBarColor(R.color.config_color_white)
+//                .statusBarDarkFont(true)
+//                .navigationBarColor(R.color.config_color_base_5)
+//                .keyboardEnable(true)
+//                .init();
     }
 
     private OnChannelListener onChannelListener;
@@ -69,9 +81,9 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        miVClose = (ImageView) view.findViewById(R.id.icon_collapse);
-        miVClose.setOnClickListener(new View.OnClickListener() {
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_channel);
+        mClose = (ImageView) view.findViewById(R.id.iv_close);
+        mClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
@@ -99,27 +111,27 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
         Channel channel = new Channel();
         channel.setItemtype(Channel.TYPE_MY);
         channel.setChannelName("我的频道");
-        mDatas.add(channel);
+        mData.add(channel);
 
         Bundle bundle = getArguments();
-        mSelectedDatas = (List<Channel>) bundle.getSerializable("dataSelected");
-        mUnSelectedDatas = (List<Channel>) bundle.getSerializable("dataUnselected");
-        setDataType(mSelectedDatas, Channel.TYPE_MY_CHANNEL);
-        setDataType(mUnSelectedDatas, Channel.TYPE_OTHER_CHANNEL);
-        mDatas.addAll(mSelectedDatas);
+        mSelectedData = (List<Channel>) bundle.getSerializable("dataSelected");
+        mUnSelectedData = (List<Channel>) bundle.getSerializable("dataUnselected");
+        setDataType(mSelectedData, Channel.TYPE_MY_CHANNEL);
+        setDataType(mUnSelectedData, Channel.TYPE_OTHER_CHANNEL);
+        mData.addAll(mSelectedData);
 
         Channel morechannel = new Channel();
         morechannel.setItemtype(Channel.TYPE_OTHER);
         morechannel.setChannelName("频道推荐");
-        mDatas.add(morechannel);
+        mData.add(morechannel);
 
-        mDatas.addAll(mUnSelectedDatas);
+        mData.addAll(mUnSelectedData);
 
         ItemDragHelperCallBack callback = new ItemDragHelperCallBack(this);
         final ItemTouchHelper helper = new ItemTouchHelper(callback);
         helper.attachToRecyclerView(mRecyclerView);
 
-        mAdapter = new ChannelAdapter(mDatas, helper);
+        mAdapter = new ChannelAdapter(mData, helper);
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
@@ -137,15 +149,21 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
     }
 
 
-    @OnClick(R.id.icon_collapse)
-    public void onClick(View v) {
-        dismiss();
+    @OnClick(R.id.iv_close)
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_close:
+                dismiss();
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
     public void onItemMove(int starPos, int endPos) {
         if (starPos < 0 || endPos < 0) return;
-        if (mDatas.get(endPos).getChannelName().equals("头条")) return;
+        if (mData.get(endPos).getChannelName().equals("头条")) return;
         //我的频道之间移动
         if (onChannelListener != null)
             onChannelListener.onItemMove(starPos - 1, endPos - 1);//去除标题所占的一个index
@@ -157,11 +175,11 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
 
     private void onMove(int starPos, int endPos, boolean isAdd) {
         isUpdate = true;
-        Channel startChannel = mDatas.get(starPos);
+        Channel startChannel = mData.get(starPos);
         //先删除之前的位置
-        mDatas.remove(starPos);
+        mData.remove(starPos);
         //添加到现在的位置
-        mDatas.add(endPos, startChannel);
+        mData.add(endPos, startChannel);
         mAdapter.notifyItemMoved(starPos, endPos);
         if (isAdd) {
             if (TextUtils.isEmpty(firstAddChannelName)) {

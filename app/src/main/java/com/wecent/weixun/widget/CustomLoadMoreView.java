@@ -6,13 +6,13 @@ import com.wecent.weixun.R;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/27 .
+ * date: 2018/9/27 .
  */
 public final class CustomLoadMoreView extends LoadMoreView {
 
     @Override
     public int getLayoutId() {
-        return R.layout.view_load_more;
+        return R.layout.layout_load_more;
     }
 
     /**

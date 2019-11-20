@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
-import com.socks.library.KLog;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
@@ -41,7 +41,7 @@ import static fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.CURRENT_STATE_PLAYING;
 /**
  * desc: 头条新闻分类页 .
  * author: wecent .
- * date: 2017/9/19 .
+ * date: 2018/9/19 .
  */
 public class VideoListFragment extends BaseFragment<VideoListPresenter> implements VideoListContract.View {
 
@@ -101,7 +101,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                KLog.e(": " + downPullNum);
+                Logger.e(": " + downPullNum);
                 mFrame = frame;
                 isRemoveHeaderView = true;
                 mPresenter.getData(channelCode, VideoListPresenter.ACTION_DOWN);
@@ -116,7 +116,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
         detailAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                KLog.e("onLoadMoreRequested: " + upPullNum);
+                Logger.e("onLoadMoreRequested: " + upPullNum);
                 mPresenter.getData(channelCode, VideoListPresenter.ACTION_UP);
             }
         }, mRecyclerView);
@@ -200,7 +200,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
                 mHeader.refreshComplete(true, mFrame);
             }
             showSuccess();
-            KLog.e("loadData: " + newsList.toString());
+            Logger.e("loadData: " + newsList.toString());
         }
     }
 
@@ -213,7 +213,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
             beanList.addAll(newsList);
             detailAdapter.addData(newsList);
             detailAdapter.loadMoreComplete();
-            KLog.e("loadMoreData: " + newsList.toString());
+            Logger.e("loadMoreData: " + newsList.toString());
         }
     }
 

@@ -5,23 +5,24 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.socks.library.KLog;
+import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.model.response.VideoPathResponse;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.RxSchedulers;
-import com.wecent.weixun.network.WeiXunApi;
+import com.wecent.weixun.network.WeiXunApiManager;
 import com.wecent.weixun.utils.AppUtils;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/2/9 0009.
+ * Created by Administrator on 2018/2/9 0009.
  */
 
 public abstract class VideoPathDecoder {
 
-    WeiXunApi mWeiXunApi;
+    WeiXunApiManager mWeiXunApi;
 
     private static final String NICK = "chaychan";
 
@@ -79,7 +80,7 @@ public abstract class VideoPathDecoder {
                 .subscribe(new BaseObserver<VideoPathResponse>() {
                     @Override
                     public void onSuccess(VideoPathResponse response) {
-                        KLog.e(response);
+                        Logger.e(new Gson().toJson(response));
                         String url = "";
                         switch (response.retCode){
                             case 200:
@@ -87,7 +88,7 @@ public abstract class VideoPathDecoder {
                                 List<VideoPathResponse.DataBean.VideoBean.DownloadBean> downloadList = response.data.video.download;
                                 if (downloadList != null && downloadList.size() != 0){
                                     url = downloadList.get(downloadList.size() -1).url;//获取下载地址中最后一个地址，即超清
-                                    KLog.e("videoUrl: ",url);
+                                    Logger.e("videoUrl: ",url);
                                 }
                                 onDecodeSuccess(url);
                                 break;
@@ -98,8 +99,8 @@ public abstract class VideoPathDecoder {
                     }
 
                     @Override
-                    public void onFail(Throwable e) {
-                        KLog.e(e.getLocalizedMessage());
+                    public void onFailure(Throwable e) {
+                        Logger.e(e.getLocalizedMessage());
                         onDecodeFailure();
                     }
                 });

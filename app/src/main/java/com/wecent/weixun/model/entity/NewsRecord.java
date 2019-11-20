@@ -3,11 +3,10 @@ package com.wecent.weixun.model.entity;
 import org.litepal.crud.DataSupport;
 
 /**
- * @author ChayChan
- * @description: 用于记录获取到的新闻,用于上拉加载更多
- * @date 2017/6/26  16:07
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class NewsRecord extends DataSupport {
 
     private String channelCode;

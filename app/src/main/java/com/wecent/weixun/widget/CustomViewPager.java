@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 /**
  * desc: 取消 viewpager 切换动画.
  * author: wecent .
- * date: 2017/10/18 .
+ * date: 2018/10/18 .
  */
 public class CustomViewPager extends ViewPager {
 

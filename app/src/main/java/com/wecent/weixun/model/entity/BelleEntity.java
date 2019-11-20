@@ -5,9 +5,9 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import java.util.List;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/9/27 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/27
  */
 public class BelleEntity {
 

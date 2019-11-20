@@ -5,16 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/fake_status_bar"
-        android:layout_width="match_parent"
-        android:layout_height="1.0dp"
-        android:background="@color/app_color_blue"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/app_color_blue">
+        android:layout_height="50dp"
+        android:background="@color/config_color_blue">
 
         <ImageView
             android:id="@+id/iv_news_icon"
@@ -31,7 +25,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/iv_news_icon"
             android:text="微"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textColor="@color/config_color_white"
             android:textStyle="bold"/>
 
@@ -43,7 +37,7 @@
             android:layout_toRightOf="@+id/tv_news_wei"
             android:layout_marginLeft="2dp"
             android:text="讯"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textColor="@color/config_color_white"
             android:textStyle="bold"/>
 
@@ -58,7 +52,7 @@
             android:layout_marginRight="12dp"
             android:background="@drawable/shape_weixun_search"
             android:text="想装逼，上微讯"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="@color/config_color_base_9"/>
 
         <ImageView
@@ -73,7 +67,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:background="@color/config_color_white">
 
         <com.flyco.tablayout.SlidingTabLayout
@@ -82,7 +76,7 @@
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/iv_edit"
             tl:tl_tab_width="48dp"
-            tl:tl_textSelectColor="@color/app_color_blue"
+            tl:tl_textSelectColor="@color/config_color_blue"
             tl:tl_textUnselectColor="@color/config_color_base_6"
             tl:tl_indicator_style="TRIANGLE"
             tl:tl_indicator_width="36dp"

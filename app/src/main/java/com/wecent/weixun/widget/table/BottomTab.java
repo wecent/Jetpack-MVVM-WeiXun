@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wecent.weixun.R;
-import com.wecent.weixun.utils.ContextUtils;
+import com.wecent.weixun.utils.SizeUtils;
 
 public class BottomTab extends LinearLayout {
 
@@ -49,7 +49,7 @@ public class BottomTab extends LinearLayout {
         int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics());
         LayoutParams imageViewParams = new LayoutParams(size, size);
         imageViewParams.gravity = Gravity.CENTER_HORIZONTAL;
-        imageViewParams.topMargin = ContextUtils.dip2px(context, 3.5f);
+        imageViewParams.topMargin = SizeUtils.dp2px(3.5f);
         mImageView.setImageResource(icon);
         mImageView.setLayoutParams(imageViewParams);
 
@@ -58,10 +58,10 @@ public class BottomTab extends LinearLayout {
         textViewParams.gravity = Gravity.CENTER_HORIZONTAL;
         // textViewParams.addRule(ALIGN_PARENT_BOTTOM);
 //        textViewParams.topMargin = ContextUtils.dip2px(context, 2.5f);
-        textViewParams.bottomMargin = ContextUtils.dip2px(context, 3.5f);
+        textViewParams.bottomMargin = SizeUtils.dp2px(3.5f);
         mTextView = new TextView(context);
         mTextView.setText(title);
-        mTextView.setTextSize(ContextUtils.dip2px(context, 3.5f));
+        mTextView.setTextSize(SizeUtils.dp2px(3.5f));
         mTextView.setLayoutParams(textViewParams);
         mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.color_table));
         addView(mImageView);
@@ -72,8 +72,8 @@ public class BottomTab extends LinearLayout {
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         if (selected) {
-            mImageView.setColorFilter(ContextCompat.getColor(mContext, R.color.app_color_blue));
-            mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.app_color_blue));
+            mImageView.setColorFilter(ContextCompat.getColor(mContext, R.color.config_color_blue));
+            mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.config_color_blue));
         } else {
             mImageView.setColorFilter(ContextCompat.getColor(mContext, R.color.color_table));
             mTextView.setTextColor(ContextCompat.getColor(mContext, R.color.color_table));

@@ -8,9 +8,9 @@ import org.litepal.crud.DataSupport;
 import java.io.Serializable;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/9/3 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
 public class Channel extends DataSupport implements Serializable, MultiItemEntity {
 

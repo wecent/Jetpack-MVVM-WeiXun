@@ -27,13 +27,12 @@ import butterknife.Unbinder;
 /**
  * desc:
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
 public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extends SupportFragment implements IBase, BaseContract.BaseView {
 
     protected Context mContext;
     protected View mRootView;
-    protected Dialog mLoadingDialog = null;
     Unbinder unbinder;
 
     @Nullable
@@ -56,7 +55,6 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
         }
 
         mContext = mRootView.getContext();
-        mLoadingDialog = DialogHelper.getLoadingDialog(getActivity());
         return mRootView;
     }
 
@@ -104,30 +102,12 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
 
     }
 
-    protected void showLoadingDialog() {
-        if (mLoadingDialog != null)
-            mLoadingDialog.show();
-    }
-
-    protected void showLoadingDialog(String str) {
-        if (mLoadingDialog != null) {
-            TextView tv = (TextView) mLoadingDialog.findViewById(R.id.tv_load_dialog);
-            tv.setText(str);
-            mLoadingDialog.show();
-        }
-    }
-
-    protected void hideLoadingDialog() {
-        if (mLoadingDialog != null && mLoadingDialog.isShowing())
-            mLoadingDialog.dismiss();
-    }
-
     private void initStateView() {
         if (mSimpleMultiStateView == null) return;
-        mSimpleMultiStateView.setEmptyResource(R.layout.view_empty)
-                .setRetryResource(R.layout.view_retry)
-                .setLoadingResource(R.layout.view_loading)
-                .setNoNetResource(R.layout.view_nonet)
+        mSimpleMultiStateView.setEmptyResource(R.layout.layout_state_empty)
+                .setRetryResource(R.layout.layout_state_reload)
+                .setLoadingResource(R.layout.layout_state_loading)
+                .setNoNetResource(R.layout.layout_state_nonet)
                 .build()
                 .setonReLoadlistener(new MultiStateView.onReLoadlistener() {
                     @Override
@@ -135,6 +115,66 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
                         onRetry();
                     }
                 });
+    }
+
+    protected void showLoadingDialog(String str) {
+        BaseActivity activity = (BaseActivity) getActivity();
+        activity.showLoadingDialog(str);
+    }
+
+    protected void hideLoadingDialog() {
+        BaseActivity activity = (BaseActivity) getActivity();
+        activity.hideLoadingDialog();
+    }
+
+    protected void showSuccessDialog(String str) {
+        BaseActivity activity = (BaseActivity) getActivity();
+        activity.showSuccessDialog(str);
+    }
+
+    protected void showFailureDialog(String str) {
+        BaseActivity activity = (BaseActivity) getActivity();
+        activity.showFailureDialog(str);
+    }
+
+    /**
+     * 设置顶部状态栏字体颜色为深色
+     *
+     * @param isFits
+     */
+    protected void setFitsSystemWindows(boolean isFits) {
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        baseActivity.setFitsSystemWindows(isFits);
+    }
+
+    /**
+     * 设置顶部状态栏字体颜色为深色
+     *
+     * @param isDark
+     */
+    protected void setStatusBarDark(boolean isDark) {
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        baseActivity.setStatusBarDark(isDark);
+    }
+
+    /**
+     * 设置顶部状态栏颜色
+     *
+     * @param color
+     */
+    protected void setStatusBarColor(int color) {
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        baseActivity.setStatusBarColor(color);
+    }
+
+    /**
+     * 设置底部导航栏颜色
+     *
+     * @param color
+     */
+    protected void setNavigationBarColor(int color) {
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        baseActivity.setNavigationBarColor(color);
     }
 
     @Override
@@ -181,9 +221,14 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
         return 0;
     }
 
-    protected void T(String string) {
-        ToastUtils.showShort(WXApplication.getContext(), string);
+    protected void showShort(String string) {
+        ToastUtils.showShort(string);
     }
+
+    protected void showLong(String string) {
+        ToastUtils.showLong(string);
+    }
+
 
     @Override
     public <T> LifecycleTransformer<T> bindToLife() {

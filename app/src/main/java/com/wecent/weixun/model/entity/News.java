@@ -6,11 +6,10 @@ import com.google.gson.Gson;
 import java.util.List;
 
 /**
- * @author ChayChan
- * @description: TODO
- * @date 2017/7/6  15:11
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class News implements MultiItemEntity {
 
     /**

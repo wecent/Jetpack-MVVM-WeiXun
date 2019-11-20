@@ -1,11 +1,10 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * @author ChayChan
- * @description: 新闻图片的实体类
- * @date 2017/6/18  19:51
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class ImageUrl {
     public String url;
 }

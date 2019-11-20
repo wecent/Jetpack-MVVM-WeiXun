@@ -3,11 +3,10 @@ package com.wecent.weixun.model.entity;
 import java.util.List;
 
 /**
- * @author ChayChan
- * @description: 视频实体类
- * @date 2017/7/9  10:44
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class VideoEntity {
     /**
      * group_flags : 32832

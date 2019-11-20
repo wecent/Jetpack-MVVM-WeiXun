@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_trans_root"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_trans_root"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/app_color_blue"
-    android:orientation="vertical">
+    android:layout_height="50dp"
+    android:background="@color/config_color_white">
+
+    <TextView
+        android:id="@+id/tv_trans_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text=""
+        android:textSize="16dp"
+        android:textColor="@color/config_color_base_3"/>
+
+    <TextView
+        android:id="@+id/tv_trans_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:maxLength="12"
+        android:singleLine="true"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="@color/config_color_base_3"/>
+
+    <TextView
+        android:id="@+id/tv_trans_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text=""
+        android:textSize="16dp"
+        android:textColor="@color/config_color_base_3"/>
 
     <View
-        android:id="@+id/v_trans_status"
+        android:id="@+id/v_trans_bottom"
         android:layout_width="match_parent"
-        android:layout_height="1.0dp" />
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_line"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_trans_left"
-            style="@style/text_white"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical"
-            android:maxLength="2"
-            android:singleLine="true"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:id="@+id/tv_trans_title"
-            style="@style/text_white"
-            android:layout_centerInParent="true"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tv_trans_right"
-            style="@style/text_white"
-            android:layout_height="match_parent"
-            android:layout_marginRight="8dp"
-            android:gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:singleLine="true"
-            android:textSize="16sp"/>
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

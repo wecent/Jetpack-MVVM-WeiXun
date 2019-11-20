@@ -8,12 +8,12 @@
         android:id="@+id/fake_status_bar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/app_color_blue"/>
+        android:background="@color/config_color_blue"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/app_color_blue">
+        android:background="@color/config_color_blue">
 
         <TextView
             android:layout_width="wrap_content"

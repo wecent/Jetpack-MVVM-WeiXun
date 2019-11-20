@@ -1,23 +1,23 @@
 package com.wecent.weixun.ui.video.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.socks.library.KLog;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
-import com.wecent.weixun.WXApplication;
+import com.wecent.weixun.loader.ImageLoader;
 import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.utils.AppUtils;
-import com.wecent.weixun.utils.ImageLoaderUtil;
 import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.VideoPathDecoder;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
@@ -29,7 +29,7 @@ import static android.view.View.VISIBLE;
 /**
  * desc: .视频列表的Adapter .
  * author: wecent .
- * date: 2017/9/10 .
+ * date: 2018/9/10 .
  */
 
 public class VideoListAdapter extends BaseQuickAdapter<News,BaseViewHolder> {
@@ -60,17 +60,17 @@ public class VideoListAdapter extends BaseQuickAdapter<News,BaseViewHolder> {
         }
 
         helper.setText(R.id.tv_watch_count, String.format(format, watchCount + countUnit));//播放次数
-        ImageLoaderUtil.LoadImage(mContext, news.user_info.avatar_url, (ImageView) helper.getView(R.id.iv_avatar));//作者头像
+        ImageLoader.getInstance().displayImage(mContext, news.user_info.avatar_url, (ImageView) helper.getView(R.id.iv_avatar));//作者头像
 
         helper.setVisible(R.id.ll_duration, true)//显示时长
-                .setText(R.id.tv_duration, TimeUtils.secToTime(news.video_duration));//设置时长
+                .setText(R.id.tv_duration, TimeUtils.millis2String(news.video_duration, new SimpleDateFormat("mm:ss", Locale.getDefault())));//设置时长
 
         helper.setText(R.id.tv_author, news.user_info.name)//昵称
                 .setText(R.id.tv_comment_count, String.valueOf(news.comment_count));//评论数
 
 
         final JCVideoPlayerStandard videoPlayer = helper.getView(R.id.video_player);
-        ImageLoaderUtil.LoadImage(mContext, news.video_detail_info.detail_video_large_image.url, videoPlayer.thumbImageView, R.color.color_c0bebe);//设置缩略图
+        ImageLoader.getInstance().displayImage(mContext, news.video_detail_info.detail_video_large_image.url, videoPlayer.thumbImageView, R.color.color_c0bebe);//设置缩略图
 
         videoPlayer.setAllControlsVisible(GONE, GONE, VISIBLE, GONE, VISIBLE, VISIBLE, GONE);
         videoPlayer.tinyBackImageView.setVisibility(GONE);
@@ -88,7 +88,7 @@ public class VideoListAdapter extends BaseQuickAdapter<News,BaseViewHolder> {
                 VideoPathDecoder decoder = new VideoPathDecoder() {
                     @Override
                     public void onDecodeSuccess(final String url) {
-                        KLog.i("Video url:" + url);
+                        Logger.i("Video url:" + url);
                         AppUtils.postTaskSafely(new Runnable() {
                             @Override
                             public void run() {

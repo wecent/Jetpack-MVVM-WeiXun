@@ -6,14 +6,14 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * desc:
- * author: wecent .
- * date: 2017/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 public abstract class BaseObserver<T> implements Observer<T> {
 
     public abstract void onSuccess(T t);
 
-    public abstract void onFail(Throwable e);
+    public abstract void onFailure(Throwable e);
 
     @Override
     public void onSubscribe(@NonNull Disposable d) {
@@ -27,7 +27,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onError(@NonNull Throwable e) {
-        onFail(e);
+        onFailure(e);
     }
 
     @Override

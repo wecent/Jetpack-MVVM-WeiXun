@@ -20,58 +20,65 @@ android {
         }
     }
 
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     buildToolsVersion '26.0.2'
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["support-v4"]
-    compile rootProject.ext.dependencies["cardview"]
-    compile rootProject.ext.dependencies["design"]
-    compile rootProject.ext.dependencies["recyclerview"]
-    compile rootProject.ext.dependencies["retrofit2"]
-    compile rootProject.ext.dependencies["converter-scalars"]
-    compile rootProject.ext.dependencies["converter-gson"]
-    compile rootProject.ext.dependencies["adapter-rxjava2"]
-    compile rootProject.ext.dependencies.rxlifecycle2
-    compile rootProject.ext.dependencies.rxlifecomponents
-    compile rootProject.ext.dependencies["dagger"]
+    implementation rootProject.ext.dependencies["support-v4"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["cardview-v7"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["constraint-layout"]
+
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["converter-scalars"]
+    implementation rootProject.ext.dependencies["converter-gson"]
+    implementation rootProject.ext.dependencies["adapter-rxjava"]
+
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["rxbinding"]
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle-components"]
+
+    implementation rootProject.ext.dependencies["dagger"]
+
+    implementation rootProject.ext.dependencies["eventbus"]
+    implementation rootProject.ext.dependencies["autosize"]
+    implementation rootProject.ext.dependencies["ultra-ptr"]
+    implementation rootProject.ext.dependencies["fragmentation"]
+    implementation rootProject.ext.dependencies["butterknife"]
+    implementation rootProject.ext.dependencies["baseadapter"]
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["glide-okhttp"]
+    implementation rootProject.ext.dependencies["banner"]
+    implementation rootProject.ext.dependencies["viewanimator"]
+    implementation rootProject.ext.dependencies["flycodialog"]
+    implementation rootProject.ext.dependencies["photoview"]
+    implementation rootProject.ext.dependencies["lottie"]
+    implementation rootProject.ext.dependencies["progressbar"]
+    implementation rootProject.ext.dependencies["swipebacklayout"]
+    implementation rootProject.ext.dependencies["tablayout"]
+    implementation rootProject.ext.dependencies["gif-drawable"]
+    implementation rootProject.ext.dependencies["logger"]
+    implementation rootProject.ext.dependencies["immersionbar"]
+    implementation rootProject.ext.dependencies["litepal"]
+    implementation project(':jcvideoplayer-lib')
+
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-
-    compile rootProject.ext.dependencies["rxjava"]
-    compile rootProject.ext.dependencies["rxandroid"]
-    compile rootProject.ext.dependencies["rxbinding2"]
-    compile rootProject.ext.dependencies["constraint-layout"]
-    compile rootProject.ext.dependencies["ultra-ptr"]
-    compile rootProject.ext.dependencies["fragmentation"]
-    compile rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-    compile rootProject.ext.dependencies["BaseAdapterHelper"]
-    compile rootProject.ext.dependencies["glide"]
-    compile rootProject.ext.dependencies["banner"]
-    compile rootProject.ext.dependencies["viewanimator"]
-    compile rootProject.ext.dependencies["FlycoDialog"]
-    compile rootProject.ext.dependencies["PhotoView"]
-    compile rootProject.ext.dependencies["lottie"]
-    compile rootProject.ext.dependencies["progressbar"]
-    compile rootProject.ext.dependencies["swipebacklayout"]
-    compile rootProject.ext.dependencies["tablayout"]
-    compile rootProject.ext.dependencies["androideventbus"]
-    compile rootProject.ext.dependencies["gif-drawable"]
-    compile rootProject.ext.dependencies["klog"]
-
-    compile rootProject.ext.dependencies["litepal"]
-    compile project(':jcvideoplayer-lib')
-    testCompile 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()

@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseFragment;
-import com.wecent.weixun.widget.trans.ToolBarClickListener;
-import com.wecent.weixun.widget.trans.TranslucentScrollView;
-import com.wecent.weixun.widget.trans.TranslucentToolBar;
+import com.wecent.weixun.widget.trans.OnTransClickListener;
+import com.wecent.weixun.widget.trans.TransScrollView;
+import com.wecent.weixun.widget.trans.TransToolBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,9 +22,9 @@ import butterknife.Unbinder;
 /**
  * desc: 个人页面
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
-public class MineFragment extends BaseFragment implements ToolBarClickListener, TranslucentScrollView.TranslucentChangedListener {
+public class MineFragment extends BaseFragment implements OnTransClickListener, TransScrollView.TranslucentChangedListener {
 
     @BindView(R.id.v_status)
     View vStatus;
@@ -81,9 +81,9 @@ public class MineFragment extends BaseFragment implements ToolBarClickListener, 
     @BindView(R.id.tv_reddit)
     TextView tvReddit;
     @BindView(R.id.scrollTrans)
-    TranslucentScrollView scrollTrans;
+    TransScrollView scrollTrans;
     @BindView(R.id.toolTrans)
-    TranslucentToolBar toolTrans;
+    TransToolBar toolTrans;
     Unbinder unbinder;
 
     public static MineFragment newInstance() {
@@ -106,19 +106,19 @@ public class MineFragment extends BaseFragment implements ToolBarClickListener, 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         //初始actionBar
-        toolTrans.setTitle("个人中心");
+        toolTrans.setTitleText("个人中心");
         toolTrans.setLeftIcon(R.drawable.ic_back_white);
-        toolTrans.setRight("设置");
+        toolTrans.setRightText("设置");
         //开启渐变
         toolTrans.setNeedTranslucent();
         //设置状态栏高度
-        toolTrans.setStatusBarHeight(getStatusBarHeight());
+//        toolTrans.setStatusBarHeight(getStatusBarHeight());
         //设置透明度变化监听
         scrollTrans.setTranslucentChangedListener(this);
         //关联需要渐变的视图
         scrollTrans.setTransView(toolTrans);
         //设置ActionBar键渐变颜色
-        scrollTrans.setTransColor(getResources().getColor(R.color.app_color_blue));
+        scrollTrans.setTransColor(getResources().getColor(R.color.config_color_blue));
         //关联伸缩的视图
         scrollTrans.setPullZoomView(llHeader);
     }
@@ -154,8 +154,8 @@ public class MineFragment extends BaseFragment implements ToolBarClickListener, 
 
     @Override
     public void onTranslucentChanged(int transAlpha) {
-        toolTrans.mTransTitle.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
-        toolTrans.mTransLeft.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
-        toolTrans.mTransRight.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+//        toolTrans.mTransTitle.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+//        toolTrans.mTransLeft.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+//        toolTrans.mTransRight.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
     }
 }

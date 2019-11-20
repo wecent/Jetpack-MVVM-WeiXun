@@ -1,9 +1,10 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * Created by Administrator on 2017/2/9 0009.
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class VideoModel {
 
     /**

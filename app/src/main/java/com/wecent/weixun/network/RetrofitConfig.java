@@ -3,7 +3,6 @@ package com.wecent.weixun.network;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.utils.NetworkUtils;
 
 import java.io.IOException;
@@ -20,8 +19,8 @@ import okio.Buffer;
 
 /**
  * desc:
- * author: wecent .
- * date: 2017/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 public class RetrofitConfig {
     private static final String TAG = "RetrofitConfig";
@@ -45,13 +44,13 @@ public class RetrofitConfig {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            if (!NetworkUtils.isNetworkAvailable(WXApplication.getContext())) {
+            if (!NetworkUtils.isAvailable()) {
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
                 Log.e(TAG, "no network");
             }
             Response originalResponse = chain.proceed(request);
 
-            if (NetworkUtils.isNetworkAvailable(WXApplication.getContext())) {
+            if (NetworkUtils.isAvailable()) {
                 //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
                 String cacheControl = request.cacheControl().toString();
                 return originalResponse.newBuilder()

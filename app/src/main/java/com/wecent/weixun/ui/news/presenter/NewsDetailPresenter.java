@@ -1,12 +1,13 @@
 package com.wecent.weixun.ui.news.presenter;
 
-import com.socks.library.KLog;
+import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.model.entity.NewsDetail;
 import com.wecent.weixun.model.response.CommentResponse;
 import com.wecent.weixun.model.response.ResultResponse;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.RxSchedulers;
-import com.wecent.weixun.network.WeiXunApi;
+import com.wecent.weixun.network.WeiXunApiManager;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.news.contract.NewsDetailContract;
 
@@ -15,14 +16,14 @@ import javax.inject.Inject;
 /**
  * desc: .
  * author: wecent .
- * date: 2017/9/19 .
+ * date: 2018/9/19 .
  */
 public class NewsDetailPresenter extends BasePresenter<NewsDetailContract.View> implements NewsDetailContract.Presenter {
 
-    WeiXunApi mWeiXunApi;
+    WeiXunApiManager mWeiXunApi;
 
     @Inject
-    public NewsDetailPresenter(WeiXunApi mWeiXunApi) {
+    public NewsDetailPresenter(WeiXunApiManager mWeiXunApi) {
         this.mWeiXunApi = mWeiXunApi;
     }
 
@@ -34,13 +35,13 @@ public class NewsDetailPresenter extends BasePresenter<NewsDetailContract.View> 
                 .subscribe(new BaseObserver<ResultResponse<NewsDetail>>() {
                     @Override
                     public void onSuccess(ResultResponse<NewsDetail> response) {
-                        KLog.e(response);
+                        Logger.e(new Gson().toJson(response));
                         mView.loadNewsData(response);
                     }
 
                     @Override
-                    public void onFail(Throwable e) {
-                        KLog.e(e.getLocalizedMessage());
+                    public void onFailure(Throwable e) {
+                        Logger.e(e.getLocalizedMessage());
                         mView.loadNewsData(null);
                     }
                 });
@@ -55,13 +56,13 @@ public class NewsDetailPresenter extends BasePresenter<NewsDetailContract.View> 
                 .subscribe(new BaseObserver<CommentResponse>() {
                     @Override
                     public void onSuccess(CommentResponse response) {
-                        KLog.e(response);
+                        Logger.e(new Gson().toJson(response));
                         mView.loadConmentData(response);
                     }
 
                     @Override
-                    public void onFail(Throwable e) {
-                        KLog.e(e.getLocalizedMessage());
+                    public void onFailure(Throwable e) {
+                        Logger.e(e.getLocalizedMessage());
                         mView.loadConmentData(null);
                     }
                 });

@@ -1,11 +1,10 @@
 package com.wecent.weixun.model.entity;
 
 /**
- * @author ChayChan
- * @description: 用户实体类
- * @date 2017/7/9  10:43
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class UserEntity {
     /**
      * verified_content :

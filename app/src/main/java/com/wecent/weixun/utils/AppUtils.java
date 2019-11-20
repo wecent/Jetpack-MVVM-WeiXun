@@ -225,7 +225,7 @@ public class AppUtils {
     }
 
     /**
-     * Judge whether an app is in background
+     * Judge whether an app is in bg_mine_header
      *
      * @param context
      * @return

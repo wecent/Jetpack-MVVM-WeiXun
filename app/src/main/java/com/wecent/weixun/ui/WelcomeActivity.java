@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
+import com.wecent.weixun.loader.ImageLoader;
 import com.wecent.weixun.ui.base.BaseActivity;
-import com.wecent.weixun.utils.ImageLoaderUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,9 +25,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableObserver;
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifImageView;
-
 
 public class WelcomeActivity extends BaseActivity {
 
@@ -39,6 +36,7 @@ public class WelcomeActivity extends BaseActivity {
     TextView tvSkip;
     @BindView(R.id.fl_ad)
     FrameLayout flAd;
+
     CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     @Override
@@ -54,7 +52,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         //必应每日壁纸 来源于 https://www.dujin.org/fenxiang/jiaocheng/3618.html.
-        ImageLoaderUtil.LoadImage(this, "http://api.dujin.org/bing/1920.php", ivAd);
+        ImageLoader.getInstance().displayImage(this, "http://api.dujin.org/bing/1920.php", ivAd);
 
         mCompositeDisposable.add(countDown(3).doOnSubscribe(new Consumer<Disposable>() {
             @Override
@@ -74,7 +72,7 @@ public class WelcomeActivity extends BaseActivity {
 
             @Override
             public void onComplete() {
-                toMain();
+                launchMain();
             }
         }));
     }
@@ -88,13 +86,11 @@ public class WelcomeActivity extends BaseActivity {
         super.onDestroy();
     }
 
-    private void toMain() {
+    private void launchMain() {
         if (mCompositeDisposable != null) {
             mCompositeDisposable.dispose();
         }
-        Intent intent = new Intent();
-        intent.setClass(WelcomeActivity.this, MainActivity.class);
-        startActivity(intent);
+        MainActivity.launch(this);
         finish();
     }
 
@@ -115,7 +111,7 @@ public class WelcomeActivity extends BaseActivity {
 
     @OnClick(R.id.fl_ad)
     public void onViewClicked() {
-        toMain();
+        launchMain();
     }
 
     @Override

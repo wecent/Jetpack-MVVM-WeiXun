@@ -2,12 +2,10 @@ package com.wecent.weixun.ui.video;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.socks.library.KLog;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
@@ -20,23 +18,18 @@ import com.wecent.weixun.ui.video.presenter.VideoPresenter;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
- * desc: 视频页面
- * author: wecent .
- * date: 2017/9/2 .
+ * desc: 视频列表
+ * author: wecent
+ * date: 2018/9/2
  */
 public class VideoFragment extends BaseFragment<VideoPresenter> implements VideoContract.View {
 
-    @BindView(R.id.viewpager)
-    ViewPager mViewpager;
-    @BindView(R.id.fake_status_bar)
-    View fakeStatusBar;
-    @BindView(R.id.SlidingTabLayout)
-    SlidingTabLayout mTabLayout;
-    Unbinder unbinder;
+    @BindView(R.id.vp_video_content)
+    ViewPager vpVideoContent;
+    @BindView(R.id.tb_video_content)
+    SlidingTabLayout tbVideoContent;
 
     private VideoPagerAdapter mVideoPagerAdapter;
 
@@ -62,24 +55,13 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-
+        setStatusBarColor(R.color.config_color_blue);
+        setStatusBarDark(false);
     }
 
     @Override
     public void bindData() {
-        setStatusBarHeight(getStatusBarHeight());
         mPresenter.getChannel();
-    }
-
-    /**
-     * 设置状态栏高度
-     *
-     * @param statusBarHeight
-     */
-    public void setStatusBarHeight(int statusBarHeight) {
-        ViewGroup.LayoutParams params = fakeStatusBar.getLayoutParams();
-        params.height = statusBarHeight;
-        fakeStatusBar.setLayoutParams(params);
     }
 
     @Override
@@ -90,28 +72,14 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     @Override
     public void loadData(List<Channel> channels) {
         if (channels != null) {
-            KLog.e("loadVideoChannel: " + channels.toString());
+            Logger.e("loadVideoChannel: " + channels.toString());
             mVideoPagerAdapter = new VideoPagerAdapter(getChildFragmentManager(), channels);
-            mViewpager.setAdapter(mVideoPagerAdapter);
-            mViewpager.setOffscreenPageLimit(1);
-            mViewpager.setCurrentItem(0, false);
-            mTabLayout.setViewPager(mViewpager);
+            vpVideoContent.setAdapter(mVideoPagerAdapter);
+            vpVideoContent.setOffscreenPageLimit(1);
+            vpVideoContent.setCurrentItem(0, false);
+            tbVideoContent.setViewPager(vpVideoContent);
         } else {
-            T("数据异常");
+            showShort("数据异常!");
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 }

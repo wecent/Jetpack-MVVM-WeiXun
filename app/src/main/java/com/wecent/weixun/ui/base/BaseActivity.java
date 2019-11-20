@@ -1,24 +1,21 @@
 package com.wecent.weixun.ui.base;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle2.LifecycleTransformer;
-import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.R;
+import com.wecent.weixun.WXApplication;
 import com.wecent.weixun.ui.inter.IBase;
-import com.wecent.weixun.utils.DialogHelper;
-import com.wecent.weixun.utils.StatusBarUtils;
 import com.wecent.weixun.utils.ToastUtils;
 import com.wecent.weixun.widget.MultiStateView;
 import com.wecent.weixun.widget.SimpleMultiStateView;
+import com.wecent.weixun.widget.dialog.LoadingDialog;
 
 import javax.inject.Inject;
 
@@ -30,11 +27,19 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 /**
  * desc:
  * author: wecent .
- * date: 2017/9/2 .
+ * date: 2018/9/2 .
  */
 public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extends SupportActivity implements IBase, BaseContract.BaseView, BGASwipeBackHelper.Delegate {
+
     protected View mRootView;
-    protected Dialog mLoadingDialog = null;
+    protected LoadingDialog mLoadingDialog;
+    protected LoadingDialog mSuccessDialog;
+    protected LoadingDialog mFailureDialog;
+    protected Handler mHandler = new Handler();
+    protected boolean mStatusBarDark = true;
+    protected boolean mFitsSystemWindows = true;
+    protected int mStatusBarColor = R.color.config_color_white;
+    protected int mNavigationBarColor = R.color.config_color_blank_3;
     Unbinder unbinder;
 
     @Nullable
@@ -56,8 +61,8 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
         attachView();
         bindView(mRootView, savedInstanceState);
         initStateView();
+        initImmersionBar();
         bindData();
-        mLoadingDialog = DialogHelper.getLoadingDialog(this);
     }
 
     @Override
@@ -80,10 +85,10 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
 
     private void initStateView() {
         if (mSimpleMultiStateView == null) return;
-        mSimpleMultiStateView.setEmptyResource(R.layout.view_empty)
-                .setRetryResource(R.layout.view_retry)
-                .setLoadingResource(R.layout.view_loading)
-                .setNoNetResource(R.layout.view_nonet)
+        mSimpleMultiStateView.setEmptyResource(R.layout.layout_state_empty)
+                .setRetryResource(R.layout.layout_state_reload)
+                .setLoadingResource(R.layout.layout_state_loading)
+                .setNoNetResource(R.layout.layout_state_nonet)
                 .build()
                 .setonReLoadlistener(new MultiStateView.onReLoadlistener() {
                     @Override
@@ -91,6 +96,17 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
                         onRetry();
                     }
                 });
+    }
+
+    private void initImmersionBar() {
+        ImmersionBar.with(this)
+                .transparentStatusBar()
+                .fitsSystemWindows(mFitsSystemWindows)
+                .statusBarColor(mStatusBarColor)
+                .statusBarDarkFont(mStatusBarDark)
+                .navigationBarColor(mNavigationBarColor)
+                .keyboardEnable(true)
+                .init();
     }
 
     /**
@@ -127,33 +143,52 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
     }
 
     /**
-     * 设置状态栏颜色
+     * 设置顶部状态栏字体颜色为深色
      *
-     * @param color
+     * @param isFits
      */
-    protected void setStatusBarColor(@ColorInt int color) {
-        setStatusBarColor(color, StatusBarUtils.DEFAULT_STATUS_BAR_ALPHA);
+    protected void setFitsSystemWindows(boolean isFits) {
+        mFitsSystemWindows = isFits;
+        initImmersionBar();
     }
 
     /**
-     * 设置状态栏颜色
+     * 设置顶部状态栏字体颜色为深色
      *
-     * @param color
-     * @param statusBarAlpha 透明度
+     * @param isDark
      */
-    public void setStatusBarColor(@ColorInt int color, @IntRange(from = 0, to = 255) int statusBarAlpha) {
-        StatusBarUtils.setColorForSwipeBack(this, color, statusBarAlpha);
+    protected void setStatusBarDark(boolean isDark) {
+        mStatusBarDark = isDark;
+        initImmersionBar();
     }
 
-    protected void showLoadingDialog() {
-        if (mLoadingDialog != null)
-            mLoadingDialog.show();
+    /**
+     * 设置顶部状态栏颜色
+     *
+     * @param color
+     */
+    protected void setStatusBarColor(int color) {
+        mStatusBarColor = color;
+        initImmersionBar();
+    }
+
+    /**
+     * 设置底部导航栏颜色
+     *
+     * @param color
+     */
+    protected void setNavigationBarColor(int color) {
+        mNavigationBarColor = color;
+        initImmersionBar();
     }
 
     protected void showLoadingDialog(String str) {
-        if (mLoadingDialog != null) {
-            TextView tv = (TextView) mLoadingDialog.findViewById(R.id.tv_load_dialog);
-            tv.setText(str);
+        mLoadingDialog = new LoadingDialog.Builder(this)
+                .setIconType(LoadingDialog.Builder.ICON_TYPE_LOADING)
+                .setTipWord(str)
+                .create();
+
+        if (!mLoadingDialog.isShowing()) {
             mLoadingDialog.show();
         }
     }
@@ -161,6 +196,47 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
     protected void hideLoadingDialog() {
         if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
             mLoadingDialog.dismiss();
+            mLoadingDialog = null;
+        }
+    }
+
+    protected void showSuccessDialog(String str) {
+        mSuccessDialog = new LoadingDialog.Builder(this)
+                .setIconType(LoadingDialog.Builder.ICON_TYPE_SUCCESS)
+                .setTipWord(str)
+                .create();
+
+        if (!mSuccessDialog.isShowing()) {
+            mSuccessDialog.show();
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (mSuccessDialog != null && mSuccessDialog.isShowing()) {
+                        mSuccessDialog.dismiss();
+                        mSuccessDialog = null;
+                    }
+                }
+            }, 1000);
+        }
+    }
+
+    protected void showFailureDialog(String str) {
+        mFailureDialog = new LoadingDialog.Builder(this)
+                .setIconType(LoadingDialog.Builder.ICON_TYPE_FAIL)
+                .setTipWord(str)
+                .create();
+
+        if (!mFailureDialog.isShowing()) {
+            mFailureDialog.show();
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (mFailureDialog != null && mFailureDialog.isShowing()) {
+                        mFailureDialog.dismiss();
+                        mFailureDialog = null;
+                    }
+                }
+            }, 1000);
         }
     }
 
@@ -205,8 +281,12 @@ public abstract class BaseActivity<T1 extends BaseContract.BasePresenter> extend
         }
     }
 
-    protected void T(String string) {
-        ToastUtils.showShort(WXApplication.getContext(), string);
+    protected void showShort(String string) {
+        ToastUtils.showShort(string);
+    }
+
+    protected void showLong(String string) {
+        ToastUtils.showLong(string);
     }
 
     @Override

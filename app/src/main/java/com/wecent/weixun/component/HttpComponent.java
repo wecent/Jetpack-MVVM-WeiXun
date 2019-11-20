@@ -11,9 +11,9 @@ import com.wecent.weixun.ui.video.VideoListFragment;
 import dagger.Component;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/9/2 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/2
  */
 @Component(dependencies = ApplicationComponent.class)
 public interface HttpComponent {

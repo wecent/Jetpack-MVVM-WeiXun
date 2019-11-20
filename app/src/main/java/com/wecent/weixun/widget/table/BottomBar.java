@@ -13,7 +13,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 
-
 public class BottomBar extends LinearLayout {
     private static final int TRANSLATE_DURATION_MILLIS = 200;
 

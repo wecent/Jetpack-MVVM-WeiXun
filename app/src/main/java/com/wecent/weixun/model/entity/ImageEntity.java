@@ -3,11 +3,10 @@ package com.wecent.weixun.model.entity;
 import java.util.List;
 
 /**
- * @author ChayChan
- * @description: 图片实体类
- * @date 2017/7/9  10:39
+ * desc:
+ * author: wecent
+ * date: 2018/9/3
  */
-
 public class ImageEntity {
     /**
      * url : http://p3.pstatp.com/list/300x196/2c23000095ae9f56b15f.webp

@@ -11,7 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
-import com.socks.library.KLog;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.model.entity.News;
 import com.wecent.weixun.component.ApplicationComponent;
@@ -35,7 +35,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 /**
  * desc: 头条新闻分类页 .
  * author: wecent .
- * date: 2017/9/19 .
+ * date: 2018/9/19 .
  */
 public class NewsListFragment extends BaseFragment<NewsListPresenter> implements NewsListContract.View {
 
@@ -95,7 +95,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                KLog.e("onRefreshBegin: " + downPullNum);
+                Logger.e("onRefreshBegin: " + downPullNum);
                 mFrame = frame;
                 isRemoveHeaderView = true;
                 mPresenter.getData(channelCode, NewsListPresenter.ACTION_DOWN);
@@ -110,7 +110,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
         detailAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                KLog.e("onLoadMoreRequested: " + upPullNum);
+                Logger.e("onLoadMoreRequested: " + upPullNum);
                 mPresenter.getData(channelCode, NewsListPresenter.ACTION_UP);
             }
         }, mRecyclerView);
@@ -166,7 +166,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
                 mHeader.refreshComplete(true, mFrame);
             }
             showSuccess();
-            KLog.e("loadData: " + newsList.toString());
+            Logger.e("loadData: " + newsList.toString());
         }
     }
 
@@ -179,7 +179,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
             beanList.addAll(newsList);
             detailAdapter.addData(newsList);
             detailAdapter.loadMoreComplete();
-            KLog.e("loadMoreData: " + newsList.toString());
+            Logger.e("loadMoreData: " + newsList.toString());
         }
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_color_blue">#00A8E1</color>
-    <color name="app_color_blue_disabled">#8000A8E1</color>
-    <color name="app_color_blue_pressed">#C000A8E1</color>
+    <color name="config_color_blue">#00A8E1</color>
+    <color name="config_color_blue_disabled">#8000A8E1</color>
+    <color name="config_color_blue_pressed">#C000A8E1</color>
 
     <color name="config_color_separator">#DEE0E2</color>
     <color name="config_color_separator_darken">#D4D6D8</color>
@@ -45,6 +45,20 @@
     <color name="config_color_base_7">#777777</color>
     <color name="config_color_base_8">#888888</color>
     <color name="config_color_base_9">#999999</color>
+
+    <color name="config_color_blank_1">#D9D9D9</color>
+    <color name="config_color_blank_2">#E8E8E8</color>
+    <color name="config_color_blank_3">#F5F5F5</color>
+    <color name="config_color_blank_4">#FAFAFA</color>
+    <color name="config_color_blank_5">#CECECE</color>
+
+    <color name="config_color_text_1">#272727</color>
+    <color name="config_color_text_2">#595959</color>
+    <color name="config_color_text_3">#8C8C8C</color>
+    <color name="config_color_text_4">#C7C7C7</color>
+    <color name="config_color_text_5">#BFBFBF</color>
+
+    <color name="config_color_trans">#00000000</color>
 
     <color name="config_color_f9696b">#F9696B</color>
     <color name="config_color_3091d8">#3091D8</color>

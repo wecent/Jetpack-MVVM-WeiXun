@@ -8,9 +8,9 @@ import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/9/27 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/27
  */
 public interface JanDanApiService {
 

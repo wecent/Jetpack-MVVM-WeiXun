@@ -2,8 +2,8 @@ package com.wecent.weixun.network;
 
 /**
  * desc:
- * author: wecent .
- * date: 2017/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 public class ApiConstants {
 
