@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.gyf.immersionbar.ImmersionBar;
 import com.wecent.weixun.R;
 import com.wecent.weixun.model.entity.Channel;
 import com.wecent.weixun.model.event.NewChannelEvent;
@@ -50,15 +49,6 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
-
-//        ImmersionBar.with(this)
-//                .transparentStatusBar()
-//                .fitsSystemWindows(true)
-//                .statusBarColor(R.color.config_color_white)
-//                .statusBarDarkFont(true)
-//                .navigationBarColor(R.color.config_color_base_5)
-//                .keyboardEnable(true)
-//                .init();
     }
 
     private OnChannelListener onChannelListener;

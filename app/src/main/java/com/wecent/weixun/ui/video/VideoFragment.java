@@ -28,8 +28,8 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
 
     @BindView(R.id.vp_video_content)
     ViewPager vpVideoContent;
-    @BindView(R.id.tb_video_content)
-    SlidingTabLayout tbVideoContent;
+    @BindView(R.id.tb_video_chancel)
+    SlidingTabLayout tbVideoChancel;
 
     private VideoPagerAdapter mVideoPagerAdapter;
 
@@ -55,8 +55,7 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        setStatusBarColor(R.color.config_color_blue);
-        setStatusBarDark(false);
+
     }
 
     @Override
@@ -65,7 +64,7 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
         bindData();
     }
 
@@ -77,7 +76,7 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
             vpVideoContent.setAdapter(mVideoPagerAdapter);
             vpVideoContent.setOffscreenPageLimit(1);
             vpVideoContent.setCurrentItem(0, false);
-            tbVideoContent.setViewPager(vpVideoContent);
+            tbVideoChancel.setViewPager(vpVideoContent);
         } else {
             showShort("数据异常!");
         }

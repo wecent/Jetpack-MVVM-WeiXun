@@ -13,9 +13,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/10 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/10
  */
 public class VideoPresenter extends BasePresenter<VideoContract.View> implements VideoContract.Presenter {
 

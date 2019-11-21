@@ -5,9 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 
 /**
- * desc: 取消 viewpager 切换动画.
- * author: wecent .
- * date: 2018/10/18 .
+ * desc: 取消viewpager切换动画
+ * author: wecent
+ * date: 2018/10/18
  */
 public class CustomViewPager extends ViewPager {
 

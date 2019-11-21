@@ -35,8 +35,6 @@ import butterknife.BindView;
 
 public class BelleImageActivity extends BaseActivity {
 
-    private static final String TAG = "NewsImageActivity";
-
     @BindView(R.id.view_pager)
     HackyViewPager mViewPager;
     @BindView(R.id.page_text)
@@ -69,8 +67,9 @@ public class BelleImageActivity extends BaseActivity {
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        //setStatusBarColor(ContextCompat.getColor(this, android.R.color.black),150);
-        StatusBarUtils.setColor(this,ContextCompat.getColor(this, android.R.color.black));
+        setStatusBarColor(R.color.config_color_trans);
+        setStatusBarDark(false);
+        setFitsSystemWindows(false);
         mRlImageBrowse.getBackground().setAlpha(255);
         mSwipeBackLayout.setDragDirectMode(SwipeBackLayout.DragDirectMode.VERTICAL);
         mSwipeBackLayout.setOnSwipeBackListener(new SwipeBackLayout.SwipeBackListener() {
@@ -205,7 +204,7 @@ public class BelleImageActivity extends BaseActivity {
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 

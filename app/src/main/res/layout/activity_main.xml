@@ -3,22 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- This could be your fragment container, or something -->
     <FrameLayout
-        android:id="@+id/contentContainer"
+        android:id="@+id/fl_main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/line" />
+        android:layout_above="@+id/v_main_line" />
 
     <View
-        android:id="@+id/line"
+        android:id="@+id/v_main_line"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
         android:background="@color/color_line"
-        android:layout_above="@+id/bottomBar" />
+        android:layout_above="@+id/bb_main_table" />
 
     <com.wecent.weixun.widget.table.BottomBar
-        android:id="@+id/bottomBar"
+        android:id="@+id/bb_main_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />

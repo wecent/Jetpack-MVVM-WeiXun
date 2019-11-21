@@ -6,9 +6,9 @@ import com.wecent.weixun.model.response.ResultResponse;
 import com.wecent.weixun.ui.base.BaseContract;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/19
  */
 public interface VideoDetailContract {
 

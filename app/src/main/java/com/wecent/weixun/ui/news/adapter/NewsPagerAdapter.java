@@ -11,8 +11,8 @@ import java.util.List;
 
 /**
  * desc:
- * author: wecent .
- * date: 2018/9/7 .
+ * author: wecent
+ * date: 2018/9/7
  */
 public class NewsPagerAdapter extends FragmentStatePagerAdapter {
 

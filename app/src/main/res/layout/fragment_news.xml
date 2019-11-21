@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/config_color_blank_3">
+
+    <View
+        android:id="@+id/sb_news_status"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/config_color_blue"/>
 
     <RelativeLayout
+        android:id="@+id/rl_news_status"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/sb_news_status"
         android:background="@color/config_color_blue">
 
         <ImageView
@@ -66,15 +74,17 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_news_channel"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/rl_news_status"
         android:background="@color/config_color_white">
 
         <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/SlidingTabLayout"
+            android:id="@+id/tb_channel_slide"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toLeftOf="@+id/iv_edit"
+            android:layout_toLeftOf="@+id/iv_channel_edit"
             tl:tl_tab_width="48dp"
             tl:tl_textSelectColor="@color/config_color_blue"
             tl:tl_textUnselectColor="@color/config_color_base_6"
@@ -84,28 +94,27 @@
             tl:tl_textBold="SELECT"/>
 
         <ImageView
-            android:id="@id/iv_edit"
+            android:id="@+id/iv_channel_edit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:background="@color/config_color_75_white"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:src="@drawable/ic_add_channel"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/config_color_blank_3" />
+
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:background="@color/color_line" />
-
-
     <com.wecent.weixun.widget.CustomViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/vp_news_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_news_channel"/>
 
-</LinearLayout>
+</RelativeLayout>

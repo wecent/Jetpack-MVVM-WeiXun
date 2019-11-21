@@ -15,9 +15,9 @@ import com.wecent.weixun.utils.TimeUtils;
 import java.util.List;
 
 /**
- * desc: 新闻详情页评论的适配器 .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc: 新闻详情页评论的适配器
+ * author: wecent
+ * date: 2018/9/19
  */
 public class CommentAdapter extends BaseQuickAdapter<CommentData, BaseViewHolder> {
 

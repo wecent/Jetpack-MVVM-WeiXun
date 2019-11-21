@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wecent.weixun.R;
@@ -17,7 +16,7 @@ import com.wecent.weixun.ui.base.BaseFragment;
 import com.wecent.weixun.ui.belle.contract.BelleContract;
 import com.wecent.weixun.ui.belle.presenter.BellePresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
-import com.wecent.weixun.widget.PtrWeiXunHeader;
+import com.wecent.weixun.widget.CustomRefreshView;
 
 import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -26,14 +25,12 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 
 /**
- * desc: 煎蛋
- * author: wecent .
- * date: 2018/9/2 .
+ * desc: 煎蛋妹子列表
+ * author: wecent
+ * date: 2018/9/2
  */
 public class BelleFragment extends BaseFragment<BellePresenter> implements BelleContract.View {
 
-    @BindView(R.id.fake_status_bar)
-    View fakeStatusBar;
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.mPtrFrameLayout)
@@ -41,7 +38,7 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
 
     private BellePicAdapter mAdapter;
     private int pageNum = 1;
-    private PtrWeiXunHeader mHeader;
+    private CustomRefreshView mHeader;
     private PtrFrameLayout mFrame;
 
     public static BelleFragment newInstance() {
@@ -53,7 +50,7 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
 
     @Override
     public int getContentLayout() {
-        return R.layout.fragment_jiandan;
+        return R.layout.fragment_belle;
     }
 
     @Override
@@ -66,10 +63,8 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        setStatusBarHeight(getStatusBarHeight());
-
         mPtrFrameLayout.disableWhenHorizontalMove(true);
-        mHeader = new PtrWeiXunHeader(mContext);
+        mHeader = new CustomRefreshView(mContext);
         mPtrFrameLayout.setHeaderView(mHeader);
         mPtrFrameLayout.addPtrUIHandler(mHeader);
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
@@ -107,19 +102,8 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
 
     }
 
-    /**
-     * 设置状态栏高度
-     *
-     * @param statusBarHeight
-     */
-    public void setStatusBarHeight(int statusBarHeight) {
-        ViewGroup.LayoutParams params = fakeStatusBar.getLayoutParams();
-        params.height = statusBarHeight;
-        fakeStatusBar.setLayoutParams(params);
-    }
-
     @Override
-    public void onRetry() {
+    public void onReload() {
         bindData();
     }
 
@@ -130,7 +114,7 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
             if (mHeader != null && mFrame != null) {
                 mHeader.refreshComplete(false, mFrame);
             }
-            showFaild();
+            showFailure();
         } else {
             pageNum++;
             mAdapter.setNewData(belleEntity.getComments());
@@ -152,4 +136,5 @@ public class BelleFragment extends BaseFragment<BellePresenter> implements Belle
             mAdapter.loadMoreComplete();
         }
     }
+
 }

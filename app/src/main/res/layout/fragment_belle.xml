@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <View
-        android:id="@+id/fake_status_bar"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/config_color_blue"/>
+        android:layout_height="25dp"
+        android:background="@color/config_color_white"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/config_color_blue">
+        android:background="@color/config_color_white">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="妹子"
-            android:textSize="18sp"
-            android:textColor="@color/config_color_white"/>
+            android:textSize="16dp"
+            android:textColor="@color/config_color_text_1"/>
 
     </RelativeLayout>
 
     <in.srain.cube.views.ptr.PtrClassicFrameLayout
         android:id="@+id/mPtrFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true">
+        android:layout_height="match_parent">
 
         <com.wecent.weixun.widget.SimpleMultiStateView
             android:id="@+id/SimpleMultiStateView"

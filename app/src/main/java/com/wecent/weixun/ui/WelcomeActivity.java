@@ -1,11 +1,8 @@
 package com.wecent.weixun.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wecent.weixun.R;
@@ -28,14 +25,11 @@ import io.reactivex.observers.DisposableObserver;
 
 public class WelcomeActivity extends BaseActivity {
 
-    @BindView(R.id.iv_ad)
-    ImageView ivAd;
-    @BindView(R.id.ll_bottom)
-    RelativeLayout llBottom;
-    @BindView(R.id.tv_skip)
-    TextView tvSkip;
-    @BindView(R.id.fl_ad)
-    FrameLayout flAd;
+    @BindView(R.id.iv_welcome_ad)
+    ImageView ivWelcomeAd;
+    @BindView(R.id.tv_skip_jump)
+    TextView tvSkipJump;
+
 
     CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
@@ -51,18 +45,19 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
+        setFitsSystemWindows(false);
         //必应每日壁纸 来源于 https://www.dujin.org/fenxiang/jiaocheng/3618.html.
-        ImageLoader.getInstance().displayImage(this, "http://api.dujin.org/bing/1920.php", ivAd);
+        ImageLoader.getInstance().displayImage(this, "http://api.dujin.org/bing/1920.php", ivWelcomeAd);
 
         mCompositeDisposable.add(countDown(3).doOnSubscribe(new Consumer<Disposable>() {
             @Override
             public void accept(@NonNull Disposable disposable) throws Exception {
-                tvSkip.setText("跳过 4");
+                tvSkipJump.setText("跳过 4");
             }
         }).subscribeWith(new DisposableObserver<Integer>() {
             @Override
             public void onNext(Integer integer) {
-                tvSkip.setText("跳过 " + (integer + 1));
+                tvSkipJump.setText("跳过 " + (integer + 1));
             }
 
             @Override
@@ -109,7 +104,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
 
-    @OnClick(R.id.fl_ad)
+    @OnClick(R.id.fl_welcome_skip)
     public void onViewClicked() {
         launchMain();
     }
@@ -120,7 +115,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 

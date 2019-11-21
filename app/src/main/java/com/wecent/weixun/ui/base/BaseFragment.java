@@ -26,8 +26,8 @@ import butterknife.Unbinder;
 
 /**
  * desc:
- * author: wecent .
- * date: 2018/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extends SupportFragment implements IBase, BaseContract.BaseView {
 
@@ -98,7 +98,7 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 
@@ -109,10 +109,10 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
                 .setLoadingResource(R.layout.layout_state_loading)
                 .setNoNetResource(R.layout.layout_state_nonet)
                 .build()
-                .setonReLoadlistener(new MultiStateView.onReLoadlistener() {
+                .setOnReloadListener(new MultiStateView.OnReloadListener() {
                     @Override
                     public void onReload() {
-                        onRetry();
+                        onReload();
                     }
                 });
     }
@@ -193,7 +193,7 @@ public abstract class BaseFragment<T1 extends BaseContract.BasePresenter> extend
     }
 
     @Override
-    public void showFaild() {
+    public void showFailure() {
         if (mSimpleMultiStateView != null) {
             mSimpleMultiStateView.showErrorView();
         }

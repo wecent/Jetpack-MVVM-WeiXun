@@ -3,68 +3,68 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="45dp"
-    android:background="@android:color/white">
+    android:background="@color/config_color_white">
 
     <ImageView
-        android:id="@+id/iv_back"
+        android:id="@+id/iv_status_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         android:src="@drawable/ic_back_black" />
 
     <RelativeLayout
-        android:id="@+id/rl_top"
+        android:id="@+id/rl_status_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@id/iv_back"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_status_back"
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/iv_topLogo"
+            android:id="@+id/iv_info_avatar"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_weixun_blanks" />
 
         <TextView
-            android:id="@+id/tv_topname"
+            android:id="@+id/tv_info_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/iv_topLogo"
-            android:layout_marginLeft="8dp"
-            android:layout_toEndOf="@+id/iv_topLogo"
+            android:layout_alignTop="@id/iv_info_avatar"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/iv_info_avatar"
             android:text=""
-            android:textColor="@android:color/black"
+            android:textColor="@color/config_color_text_1"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_TopUpdateTime"
+            android:id="@+id/tv_info_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/iv_topLogo"
-            android:layout_marginLeft="8dp"
-            android:layout_toEndOf="@+id/iv_topLogo"
-            android:textColor="#989898"
-            android:textSize="@dimen/sp_12" />
+            android:layout_alignBottom="@+id/iv_info_avatar"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/iv_info_avatar"
+            android:textColor="@color/config_color_text_3"
+            android:textSize="12dp" />
 
         <Button
             android:layout_width="64dp"
             android:layout_height="28dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="15dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/read_bt_bg"
             android:text="关注"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/config_color_white" />
 
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:background="#e6e6e6" />
+        android:background="@color/config_color_blank_3" />
 
 </RelativeLayout>

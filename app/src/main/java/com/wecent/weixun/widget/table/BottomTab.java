@@ -19,13 +19,10 @@ public class BottomTab extends LinearLayout {
     private ImageView mImageView;
     private TextView mTextView;
     private int mTabPosition = -1;
-    private int icon;
-    private static boolean ifshow = false;
 
     public BottomTab(Context context, @DrawableRes int icon, String title) {
         this(context, null, icon,  title);
     }
-
 
     public BottomTab(Context context, AttributeSet attrs, int icon, String title) {
         this(context, attrs, 0, icon, title);
@@ -38,7 +35,6 @@ public class BottomTab extends LinearLayout {
 
     private void init(Context context, int icon, String title) {
         mContext = context;
-        this.icon =icon;
        /* TypedArray typedArray = context.obtainStyledAttributes(new int[]{R.attr.selectableItemBackgroundBorderless});
         Drawable drawable = typedArray.getDrawable(0);
         setBackgroundDrawable(drawable);

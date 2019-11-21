@@ -19,25 +19,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * @author ChayChan
- * @description: 新闻详情页头部
- * @date 2018/6/28  15:25
+ * desc: 新闻详情页头部
+ * author: wecent
+ * date: 2018/9/2
  */
-
 public class NewsDetailHeaderView extends FrameLayout {
 
-    @BindView(R.id.tvTitle)
-    TextView tvTitle;
-    @BindView(R.id.iv_avatar)
-    ImageView ivAvatar;
-    @BindView(R.id.tv_author)
-    TextView tvAuthor;
-    @BindView(R.id.tv_time)
-    TextView tvTime;
-    @BindView(R.id.ll_info)
-    public LinearLayout llInfo;
-    @BindView(R.id.wv_content)
-    WebView wvContent;
+    @BindView(R.id.tv_detail_title)
+    TextView tvDetailTitle;
+    @BindView(R.id.iv_info_avatar)
+    ImageView ivInfoAvatar;
+    @BindView(R.id.tv_info_name)
+    TextView tvInfoName;
+    @BindView(R.id.tv_info_time)
+    TextView tvInfoTime;
+    @BindView(R.id.ll_detail_info)
+    public LinearLayout llDetailInfo;
+    @BindView(R.id.wv_detail_content)
+    WebView wvDetailContent;
 
     private Context mContext;
 
@@ -63,23 +62,23 @@ public class NewsDetailHeaderView extends FrameLayout {
     public void setDetail(NewsDetail detail, LoadWebListener listener) {
         mWebListener = listener;
 
-        tvTitle.setText(detail.title);
+        tvDetailTitle.setText(detail.title);
 
         if (detail.media_user == null) {
             //如果没有用户信息
-            llInfo.setVisibility(GONE);
+            llDetailInfo.setVisibility(GONE);
         } else {
             if (!TextUtils.isEmpty(detail.media_user.avatar_url)) {
-                ImageLoader.getInstance().displayImage(mContext, detail.media_user.avatar_url, ivAvatar);
+                ImageLoader.getInstance().displayImage(mContext, detail.media_user.avatar_url, ivInfoAvatar);
             }
-            tvAuthor.setText(detail.media_user.screen_name);
-            tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(detail.publish_time * 1000L));
+            tvInfoName.setText(detail.media_user.screen_name);
+            tvInfoTime.setText(TimeUtils.getFriendlyTimeSpanByNow(detail.publish_time * 1000L));
         }
 
         if (TextUtils.isEmpty(detail.content))
-            wvContent.setVisibility(GONE);
+            wvDetailContent.setVisibility(GONE);
 
-        wvContent.getSettings().setJavaScriptEnabled(true);//设置JS可用
+        wvDetailContent.getSettings().setJavaScriptEnabled(true);//设置JS可用
 //        wvContent.addJavascriptInterface(new ShowPicRelation(mContext), NICK);
 
         String htmlPart1 = "<!DOCTYPE HTML html>\n" +
@@ -94,8 +93,8 @@ public class NewsDetailHeaderView extends FrameLayout {
 
         String html = htmlPart1 + detail.content + htmlPart2;
 
-        wvContent.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
-        wvContent.setWebViewClient(new WebViewClient() {
+        wvDetailContent.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
+        wvDetailContent.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 addJs(view);//添加多JS代码，为图片绑定点击函数

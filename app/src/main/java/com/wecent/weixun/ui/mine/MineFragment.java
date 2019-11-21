@@ -21,8 +21,8 @@ import butterknife.Unbinder;
 
 /**
  * desc: 个人页面
- * author: wecent .
- * date: 2018/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 public class MineFragment extends BaseFragment implements OnTransClickListener, TransScrollView.TranslucentChangedListener {
 
@@ -84,7 +84,6 @@ public class MineFragment extends BaseFragment implements OnTransClickListener, 
     TransScrollView scrollTrans;
     @BindView(R.id.toolTrans)
     TransToolBar toolTrans;
-    Unbinder unbinder;
 
     public static MineFragment newInstance() {
         Bundle args = new Bundle();
@@ -106,9 +105,10 @@ public class MineFragment extends BaseFragment implements OnTransClickListener, 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         //初始actionBar
-        toolTrans.setTitleText("个人中心");
-        toolTrans.setLeftIcon(R.drawable.ic_back_white);
+        toolTrans.setTitleText("我的");
+        toolTrans.setTitleTextColor(R.color.config_color_white);
         toolTrans.setRightText("设置");
+        toolTrans.setRightTextColor(R.color.config_color_white);
         //开启渐变
         toolTrans.setNeedTranslucent();
         //设置状态栏高度
@@ -139,23 +139,9 @@ public class MineFragment extends BaseFragment implements OnTransClickListener, 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
-    @Override
     public void onTranslucentChanged(int transAlpha) {
-//        toolTrans.mTransTitle.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
-//        toolTrans.mTransLeft.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
-//        toolTrans.mTransRight.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+        toolTrans.mTransTitle.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+        toolTrans.mTransLeft.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
+        toolTrans.mTransRight.setVisibility(transAlpha > 45 ? View.VISIBLE : View.GONE);
     }
 }

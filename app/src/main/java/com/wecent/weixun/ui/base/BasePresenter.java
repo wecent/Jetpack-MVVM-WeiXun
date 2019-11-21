@@ -2,8 +2,8 @@ package com.wecent.weixun.ui.base;
 
 /**
  * desc:
- * author: wecent .
- * date: 2018/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 
 public class BasePresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {

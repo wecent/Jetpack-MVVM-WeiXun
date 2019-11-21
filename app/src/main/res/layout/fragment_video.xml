@@ -5,17 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/config_color_blank_3">
 
+    <View
+        android:id="@+id/sb_video_status"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/config_color_blue"/>
+
     <RelativeLayout
         android:id="@+id/rl_video_status"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/config_color_white">
+        android:layout_height="45dp"
+        android:layout_below="@+id/sb_video_status"
+        android:background="@color/config_color_blue">
 
         <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/tb_video_content"
+            android:id="@+id/tb_video_chancel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/config_color_blue"
             tl:tl_tab_width="48dp"
             tl:tl_textSelectColor="@color/config_color_white"
             tl:tl_textUnselectColor="#CCE7EF"

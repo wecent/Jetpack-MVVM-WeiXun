@@ -4,8 +4,8 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**
  * desc:
- * author: wecent .
- * date: 2018/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 public interface BaseContract {
 
@@ -26,13 +26,13 @@ public interface BaseContract {
         void showSuccess();
 
         //失败重试
-        void showFaild();
+        void showFailure();
 
         //显示当前网络不可用
         void showNoNet();
 
         //重试
-        void onRetry();
+        void onReload();
 
         /**
          * 绑定生命周期

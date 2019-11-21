@@ -14,9 +14,9 @@ import com.wecent.weixun.ui.news.contract.NewsDetailContract;
 import javax.inject.Inject;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/19
  */
 public class NewsDetailPresenter extends BasePresenter<NewsDetailContract.View> implements NewsDetailContract.Presenter {
 
@@ -48,7 +48,7 @@ public class NewsDetailPresenter extends BasePresenter<NewsDetailContract.View> 
     }
 
     @Override
-    public void getConmentData(String groupId, String itemId, int pageNow) {
+    public void getCommentData(String groupId, String itemId, int pageNow) {
         int offset = (pageNow - 1) * 20;
         mWeiXunApi.getCommentList(groupId, itemId,String.valueOf(offset), "20")
                 .compose(RxSchedulers.<CommentResponse>applySchedulers())
@@ -57,13 +57,13 @@ public class NewsDetailPresenter extends BasePresenter<NewsDetailContract.View> 
                     @Override
                     public void onSuccess(CommentResponse response) {
                         Logger.e(new Gson().toJson(response));
-                        mView.loadConmentData(response);
+                        mView.loadCommentData(response);
                     }
 
                     @Override
                     public void onFailure(Throwable e) {
                         Logger.e(e.getLocalizedMessage());
-                        mView.loadConmentData(null);
+                        mView.loadCommentData(null);
                     }
                 });
     }

@@ -1,12 +1,11 @@
 package com.wecent.weixun.ui.news;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,10 +20,13 @@ import com.wecent.weixun.model.entity.CommentData;
 import com.wecent.weixun.model.entity.NewsDetail;
 import com.wecent.weixun.model.response.CommentResponse;
 import com.wecent.weixun.model.response.ResultResponse;
+import com.wecent.weixun.ui.MainActivity;
 import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.news.adapter.CommentAdapter;
 import com.wecent.weixun.ui.news.contract.NewsDetailContract;
 import com.wecent.weixun.ui.news.presenter.NewsDetailPresenter;
+import com.wecent.weixun.utils.LogUtils;
+import com.wecent.weixun.utils.SizeUtils;
 import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.NewsDetailHeaderView;
 import com.wecent.weixun.widget.PowerfulRecyclerView;
@@ -37,42 +39,43 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * desc: 头条新闻详情页
+ * desc: 新闻详情页
  * author: wecent
  * date: 2018/9/19
  */
-
 public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implements NewsDetailContract.View,BaseQuickAdapter.RequestLoadMoreListener {
 
-    public static final String CHANNEL_CODE = "channelCode";
-    public static final String POSITION = "position";
-    public static final String DETAIL_URL = "detailUrl";
-    public static final String GROUP_ID = "groupId";
-    public static final String ITEM_ID = "itemId";
+    public static final String KEY_DETAIL_URL = "key_detail_url";
+    public static final String KEY_GROUP_ID = "key_group_id";
+    public static final String KEY_ITEM_ID = "key_item_id";
 
-    @BindView(R.id.iv_back)
-    ImageView ivBack;
-    @BindView(R.id.iv_topLogo)
-    ImageView ivTopLogo;
-    @BindView(R.id.tv_topname)
-    TextView tvTopname;
-    @BindView(R.id.tv_TopUpdateTime)
-    TextView tvTopUpdateTime;
-    @BindView(R.id.rl_top)
-    RelativeLayout rlTop;
+    @BindView(R.id.iv_info_avatar)
+    ImageView ivInfoAvatar;
+    @BindView(R.id.tv_info_name)
+    TextView tvInfoName;
+    @BindView(R.id.tv_info_time)
+    TextView tvInfoTime;
+    @BindView(R.id.rl_status_info)
+    RelativeLayout rlStatusInfo;
     @BindView(R.id.rv_comment)
     PowerfulRecyclerView rvComment;
     @BindView(R.id.tv_comment_count)
     TextView tvCommentCount;
-    @BindView(R.id.fl_comment_icon)
-    FrameLayout flCommentIcon;
 
     private List<CommentData> mCommentList = new ArrayList<>();
-    private String mDetalUrl;
+    private String mDetailUrl;
     private String mGroupId;
     private String mItemId;
     private CommentAdapter mCommentAdapter;
     private NewsDetailHeaderView mHeaderView;
+
+    public static void launch(Activity context, String detailUrl, String groupId, String itemId) {
+        Intent intent = new Intent(context, NewsDetailActivity.class);
+        intent.putExtra(KEY_DETAIL_URL, detailUrl);
+        intent.putExtra(KEY_GROUP_ID, groupId);
+        intent.putExtra(KEY_ITEM_ID, itemId);
+        context.startActivity(intent);
+    }
 
     @Override
     public int getContentLayout() {
@@ -90,7 +93,8 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this);
-        setStatusBarColor(Color.parseColor("#BDBDBD"));
+        setStatusBarColor(R.color.config_color_white);
+        setStatusBarDark(true);
 
         // 解决默认位置不是最顶部
         getView().setFocusable(true);
@@ -102,13 +106,13 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     public void bindData() {
         Intent intent = getIntent();
 
-        mDetalUrl = intent.getStringExtra(DETAIL_URL);
-        mGroupId = intent.getStringExtra(GROUP_ID);
-        mItemId = intent.getStringExtra(ITEM_ID);
+        mDetailUrl = intent.getStringExtra(KEY_DETAIL_URL);
+        mGroupId = intent.getStringExtra(KEY_GROUP_ID);
+        mItemId = intent.getStringExtra(KEY_ITEM_ID);
         mItemId = mItemId.replace("i", "");
 
-        mPresenter.getNewsData(mDetalUrl);
-        mPresenter.getConmentData(mGroupId, mItemId, 1);
+        mPresenter.getNewsData(mDetailUrl);
+        mPresenter.getCommentData(mGroupId, mItemId, 1);
 
         mCommentAdapter = new CommentAdapter(this, R.layout.item_detail_comment, mCommentList);
         rvComment.setAdapter(mCommentAdapter);
@@ -119,43 +123,58 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
         mCommentAdapter.setEnableLoadMore(true);
         mCommentAdapter.setOnLoadMoreListener(this, rvComment);
 
-        final int llInfoBottom = mHeaderView.llInfo.getBottom();
+        final int llInfoBottom = SizeUtils.dp2px(80);
         final LinearLayoutManager layoutManager = (LinearLayoutManager) rvComment.getLayoutManager();
-        rvComment.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        rvComment.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                int position = layoutManager.findFirstVisibleItemPosition();
-                View firstVisiableChildView = layoutManager.findViewByPosition(position);
-                int itemHeight = firstVisiableChildView.getHeight();
-                int scrollHeight = (position) * itemHeight - firstVisiableChildView.getTop();
 
-                Logger.i("scrollHeight: " + scrollHeight);
-                Logger.i("llInfoBottom: " + llInfoBottom);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                int position = layoutManager.findFirstVisibleItemPosition();
+                View firstVisibleChildView = layoutManager.findViewByPosition(position);
+                int itemHeight = firstVisibleChildView.getHeight();
+                int scrollHeight = (position) * itemHeight - firstVisibleChildView.getTop();
+
+                LogUtils.e("scrollHeight: " + scrollHeight);
+                LogUtils.e("llInfoBottom: " + llInfoBottom);
 
                 if (!NewsDetailActivity.this.isFinishing()) {
                     //如果滚动超过用户信息一栏，显示标题栏中的用户头像和昵称
-                    rlTop.setVisibility(scrollHeight > llInfoBottom ? View.VISIBLE : View.GONE);
+                    rlStatusInfo.setVisibility(scrollHeight > llInfoBottom ? View.VISIBLE : View.GONE);
                 }
             }
         });
     }
 
-    @OnClick({R.id.fl_comment_icon})
+    @OnClick({R.id.iv_status_back, R.id.fl_comment_icon})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.iv_status_back:
+                //顶部返回图标
+                finish();
+                break;
             case R.id.fl_comment_icon:
-                //底部评论的图标
+                //底部评论图标
                 RecyclerView.LayoutManager layoutManager = rvComment.getLayoutManager();
                 if (layoutManager instanceof LinearLayoutManager) {
                     LinearLayoutManager linearManager = (LinearLayoutManager) layoutManager;
                     int firstPosition = linearManager.findFirstVisibleItemPosition();
-                    int last = linearManager.findLastVisibleItemPosition();
-                    if (firstPosition == 0 && last == 0) {
+                    int lastPosition = linearManager.findLastVisibleItemPosition();
+                    if (firstPosition == 0 && lastPosition == 0) {
                         //处于头部，滚动到第一个条目
                         rvComment.scrollToPosition(1);
+                        if (rlStatusInfo.getVisibility() == View.GONE) {
+                            rlStatusInfo.setVisibility(View.VISIBLE);
+                        }
                     } else {
                         //不是头部，滚动到头部
                         rvComment.scrollToPosition(0);
+                        if (rlStatusInfo.getVisibility() == View.VISIBLE) {
+                            rlStatusInfo.setVisibility(View.GONE);
+                        }
                     }
                 }
                 break;
@@ -165,17 +184,17 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     @Override
     public void loadNewsData(final ResultResponse<NewsDetail> news) {
         if (news.data == null) {
-            showFaild();
+            showFailure();
         } else {
             mHeaderView.setDetail(news.data, new NewsDetailHeaderView.LoadWebListener() {
                 @Override
                 public void onLoadFinished() {
                     //加载完成后，显示内容布局
-                    rlTop.setVisibility(View.GONE);
+                    rlStatusInfo.setVisibility(View.GONE);
                     if (news.data.media_user != null){
-                        ImageLoader.getInstance().displayImage(getBaseContext(), news.data.media_user.avatar_url, ivTopLogo);
-                        tvTopname.setText(news.data.media_user.screen_name);
-                        tvTopUpdateTime.setText(TimeUtils.getFriendlyTimeSpanByNow(news.data.publish_time * 1000L));
+                        ImageLoader.getInstance().displayImage(getBaseContext(), news.data.media_user.avatar_url, ivInfoAvatar);
+                        tvInfoName.setText(news.data.media_user.screen_name);
+                        tvInfoTime.setText(TimeUtils.getFriendlyTimeSpanByNow(news.data.publish_time * 1000L));
                     }
                     showSuccess();
                 }
@@ -184,7 +203,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     }
 
     @Override
-    public void loadConmentData(CommentResponse comment) {
+    public void loadCommentData(CommentResponse comment) {
         if (comment.data == null || comment.data.size() == 0){
             //没有评论了
             mCommentAdapter.loadMoreEnd();
@@ -208,13 +227,13 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 
     @Override
     public void onLoadMoreRequested() {
-        mPresenter.getConmentData(mGroupId, mItemId, mCommentList.size() / 20 + 1);
+        mPresenter.getCommentData(mGroupId, mItemId, mCommentList.size() / 20 + 1);
     }
 
     /**

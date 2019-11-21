@@ -4,9 +4,9 @@ import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.wecent.weixun.R;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/27 .
+ * desc: 自定义上拉加载更多布局
+ * author: wecent
+ * date: 2018/9/27
  */
 public final class CustomLoadMoreView extends LoadMoreView {
 

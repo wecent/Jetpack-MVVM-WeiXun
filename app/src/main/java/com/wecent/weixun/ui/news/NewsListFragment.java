@@ -1,6 +1,5 @@
 package com.wecent.weixun.ui.news;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -22,7 +21,7 @@ import com.wecent.weixun.ui.news.contract.NewsListContract;
 import com.wecent.weixun.ui.news.presenter.NewsListPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
 import com.wecent.weixun.widget.PowerfulRecyclerView;
-import com.wecent.weixun.widget.PtrWeiXunHeader;
+import com.wecent.weixun.widget.CustomRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +32,9 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 
 /**
- * desc: 头条新闻分类页 .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc: 新闻分类页
+ * author: wecent
+ * date: 2018/9/19
  */
 public class NewsListFragment extends BaseFragment<NewsListPresenter> implements NewsListContract.View {
 
@@ -54,7 +53,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
     private int upPullNum = 1;
     private int downPullNum = 1;
     private boolean isRemoveHeaderView = false;
-    private PtrWeiXunHeader mHeader;
+    private CustomRefreshView mHeader;
     private PtrFrameLayout mFrame;
 
     public static NewsListFragment newInstance(String channelCode) {
@@ -84,7 +83,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
         channelCode = getArguments().getString("channelCode");
 
         mPtrFrameLayout.disableWhenHorizontalMove(true);
-        mHeader = new PtrWeiXunHeader(mContext);
+        mHeader = new CustomRefreshView(mContext);
         mPtrFrameLayout.setHeaderView(mHeader);
         mPtrFrameLayout.addPtrUIHandler(mHeader);
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
@@ -123,14 +122,8 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
                 String itemId = news.item_id;
                 StringBuffer urlSb = new StringBuffer("http://m.toutiao.com/i");
                 urlSb.append(itemId).append("/info/");
-                String url = urlSb.toString();//http://m.toutiao.com/i6412427713050575361/info/
-                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
-                intent.putExtra(NewsDetailActivity.CHANNEL_CODE, channelCode);
-                intent.putExtra(NewsDetailActivity.POSITION, position);
-                intent.putExtra(NewsDetailActivity.DETAIL_URL, url);
-                intent.putExtra(NewsDetailActivity.GROUP_ID, news.group_id);
-                intent.putExtra(NewsDetailActivity.ITEM_ID, itemId);
-                startActivity(intent);
+                String url = urlSb.toString();
+                NewsDetailActivity.launch(getActivity(), url, news.group_id, itemId);
             }
         });
     }
@@ -141,7 +134,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
         bindData();
     }
 
@@ -151,7 +144,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
             if (mHeader != null && mFrame != null) {
                 mHeader.refreshComplete(false, mFrame);
             }
-            showFaild();
+            showFailure();
             mPtrFrameLayout.refreshComplete();
         } else {
             downPullNum++;

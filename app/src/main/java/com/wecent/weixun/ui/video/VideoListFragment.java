@@ -22,7 +22,7 @@ import com.wecent.weixun.ui.video.contract.VideoListContract;
 import com.wecent.weixun.ui.video.presenter.VideoListPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
 import com.wecent.weixun.widget.PowerfulRecyclerView;
-import com.wecent.weixun.widget.PtrWeiXunHeader;
+import com.wecent.weixun.widget.CustomRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +39,9 @@ import in.srain.cube.views.ptr.PtrHandler;
 import static fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.CURRENT_STATE_PLAYING;
 
 /**
- * desc: 头条新闻分类页 .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc: 头条新闻分类页
+ * author: wecent
+ * date: 2018/9/19
  */
 public class VideoListFragment extends BaseFragment<VideoListPresenter> implements VideoListContract.View {
 
@@ -60,7 +60,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
     private int upPullNum = 1;
     private int downPullNum = 1;
     private boolean isRemoveHeaderView = false;
-    private PtrWeiXunHeader mHeader;
+    private CustomRefreshView mHeader;
     private PtrFrameLayout mFrame;
 
     public static VideoListFragment newInstance(String channelCode) {
@@ -90,7 +90,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
         channelCode = getArguments().getString("channelCode");
 
         mPtrFrameLayout.disableWhenHorizontalMove(true);
-        mHeader = new PtrWeiXunHeader(mContext);
+        mHeader = new CustomRefreshView(mContext);
         mPtrFrameLayout.setHeaderView(mHeader);
         mPtrFrameLayout.addPtrUIHandler(mHeader);
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
@@ -175,7 +175,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
         bindData();
     }
 
@@ -185,7 +185,7 @@ public class VideoListFragment extends BaseFragment<VideoListPresenter> implemen
             if (mHeader != null && mFrame != null) {
                 mHeader.refreshComplete(false, mFrame);
             }
-            showFaild();
+            showFailure();
             mPtrFrameLayout.refreshComplete();
         } else {
             downPullNum++;

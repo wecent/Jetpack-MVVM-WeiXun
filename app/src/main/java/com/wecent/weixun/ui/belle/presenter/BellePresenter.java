@@ -15,9 +15,9 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/27 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/27
  */
 public class BellePresenter extends BasePresenter<BelleContract.View> implements BelleContract.Presenter {
     private static final String TAG = "BellePresenter";

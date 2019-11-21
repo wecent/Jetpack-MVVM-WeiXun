@@ -3,9 +3,8 @@ package com.wecent.weixun.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
@@ -15,7 +14,8 @@ import com.wecent.weixun.ui.belle.BelleFragment;
 import com.wecent.weixun.ui.mine.MineFragment;
 import com.wecent.weixun.ui.news.NewsFragment;
 import com.wecent.weixun.ui.video.VideoFragment;
-import com.wecent.weixun.utils.StatusBarUtils;
+import com.wecent.weixun.utils.AppUtils;
+import com.wecent.weixun.utils.ToastUtils;
 import com.wecent.weixun.widget.table.BottomBar;
 import com.wecent.weixun.widget.table.BottomTab;
 
@@ -24,11 +24,10 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.contentContainer)
-    FrameLayout mContentContainer;
-    @BindView(R.id.bottomBar)
-    BottomBar mBottomBar;
+    @BindView(R.id.bb_main_table)
+    BottomBar bbMainTable;
 
+    private long exitTime = 0;
     private SupportFragment[] mFragments = new SupportFragment[4];
 
     public static void launch(Activity context) {
@@ -54,14 +53,16 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        StatusBarUtils.setTranslucentForImageViewInFragment(MainActivity.this, 0, null);
+        setStatusBarColor(R.color.config_color_trans);
+        setStatusBarDark(true);
+        setFitsSystemWindows(false);
         if (savedInstanceState == null) {
             mFragments[0] = NewsFragment.newInstance();
             mFragments[1] = VideoFragment.newInstance();
             mFragments[2] = BelleFragment.newInstance();
             mFragments[3] = MineFragment.newInstance();
 
-            getSupportDelegate().loadMultipleRootFragment(R.id.contentContainer, 0,
+            getSupportDelegate().loadMultipleRootFragment(R.id.fl_main_content, 0,
                     mFragments[0],
                     mFragments[1],
                     mFragments[2],
@@ -73,11 +74,11 @@ public class MainActivity extends BaseActivity {
             mFragments[3] = findFragment(MineFragment.class);
         }
 
-        mBottomBar.addItem(new BottomTab(this, R.drawable.ic_news, "新闻"))
+        bbMainTable.addItem(new BottomTab(this, R.drawable.ic_news, "新闻"))
                 .addItem(new BottomTab(this, R.drawable.ic_video, "视频"))
                 .addItem(new BottomTab(this, R.drawable.ic_jiandan, "妹子"))
                 .addItem(new BottomTab(this, R.drawable.ic_my, "我的"));
-        mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
+        bbMainTable.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {
                 getSupportDelegate().showHideFragment(mFragments[position], mFragments[prePosition]);
@@ -102,7 +103,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 
@@ -118,6 +119,21 @@ public class MainActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                ToastUtils.showShort("再按一次退出程序");
+                exitTime = System.currentTimeMillis();
+            } else {
+                AppUtils.exitApp();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

@@ -14,9 +14,9 @@ import com.wecent.weixun.ui.video.contract.VideoDetailContract;
 import javax.inject.Inject;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/19
  */
 public class VideoDetailPresenter extends BasePresenter<VideoDetailContract.View> implements VideoDetailContract.Presenter {
 

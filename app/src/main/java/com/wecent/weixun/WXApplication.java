@@ -25,9 +25,9 @@ import me.jessyan.autosize.onAdaptListener;
 import me.jessyan.autosize.utils.LogUtils;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/2 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/2
  */
 public class WXApplication extends LitePalApplication {
 
@@ -37,22 +37,11 @@ public class WXApplication extends LitePalApplication {
 
     private static Context mContext;//上下文
 
-    private static Thread mMainThread;//主线程
-
-    private static long mMainThreadId;//主线程id
-
-    private static Looper mMainLooper;//循环队列
-
-    private static Handler mHandler;//主线程Handler
-
     @Override
     public void onCreate() {
         super.onCreate();
         mWXApplication = this;
         mContext = getApplicationContext();
-        mMainThread = Thread.currentThread();
-        mMainThreadId = android.os.Process.myTid();
-        mHandler = new Handler();
         BGASwipeBackManager.getInstance().init(this);
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
@@ -91,21 +80,4 @@ public class WXApplication extends LitePalApplication {
     public static Context getContext() {
         return mContext;
     }
-
-    public static Thread getMainThread() {
-        return mMainThread;
-    }
-
-    public static long getMainThreadId() {
-        return mMainThreadId;
-    }
-
-    public static Looper getMainThreadLooper() {
-        return mMainLooper;
-    }
-
-    public static Handler getMainHandler() {
-        return mHandler;
-    }
-
 }

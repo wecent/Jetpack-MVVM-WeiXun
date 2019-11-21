@@ -6,9 +6,9 @@ import com.wecent.weixun.ui.base.BaseContract;
 import java.util.List;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/7 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/7
  */
 public interface VideoListContract {
 

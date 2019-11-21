@@ -15,11 +15,10 @@ import com.wecent.weixun.utils.SizeUtils;
 import java.util.List;
 
 /**
- * @author shoyu
- * @ClassName MultiImageView.java
- * @Description: 显示1~N张图片的View
+ * desc: 显示1~N张图片的View
+ * author: wecent
+ * date: 2018/9/27
  */
-
 public class MultiImageView extends LinearLayout {
     public static int MAX_WIDTH = 0;
 

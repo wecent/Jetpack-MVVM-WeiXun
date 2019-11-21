@@ -40,17 +40,15 @@ import butterknife.Unbinder;
  */
 public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsContract.View {
 
-    @BindView(R.id.viewpager)
-    CustomViewPager mViewpager;
-    @BindView(R.id.iv_edit)
-    ImageView mIvEdit;
-    @BindView(R.id.SlidingTabLayout)
-    SlidingTabLayout mTabLayout;
+    @BindView(R.id.tb_channel_slide)
+    SlidingTabLayout tbChannelSlide;
+    @BindView(R.id.vp_news_content)
+    CustomViewPager vpNewsContent;
 
     private NewsPagerAdapter mNewsPagerAdapter;
 
-    private List<Channel> mSelectedDatas;
-    private List<Channel> mUnSelectedDatas;
+    private List<Channel> mSelectedData;
+    private List<Channel> mUnSelectedData;
 
     private int selectedIndex;
     private String selectedChannel;
@@ -77,9 +75,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        setStatusBarColor(R.color.config_color_blue);
-        setStatusBarDark(false);
-        mViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        vpNewsContent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -88,7 +84,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
             @Override
             public void onPageSelected(int position) {
                 selectedIndex = position;
-                selectedChannel = mSelectedDatas.get(position).getChannelName();
+                selectedChannel = mSelectedData.get(position).getChannelName();
             }
 
             @Override
@@ -100,28 +96,28 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
 
     @Override
     public void bindData() {
-        mSelectedDatas = new ArrayList<>();
-        mUnSelectedDatas = new ArrayList<>();
+        mSelectedData = new ArrayList<>();
+        mUnSelectedData = new ArrayList<>();
         mPresenter.getChannel();
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 
     @Override
     public void loadData(List<Channel> channels, List<Channel> unSelectedDatas) {
         if (channels != null) {
-            mSelectedDatas.clear();
-            mSelectedDatas.addAll(channels);
-            mUnSelectedDatas.clear();
-            mUnSelectedDatas.addAll(unSelectedDatas);
+            mSelectedData.clear();
+            mSelectedData.addAll(channels);
+            mUnSelectedData.clear();
+            mUnSelectedData.addAll(unSelectedDatas);
             mNewsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager(), channels);
-            mViewpager.setAdapter(mNewsPagerAdapter);
-            mViewpager.setOffscreenPageLimit(2);
-            mViewpager.setCurrentItem(0, false);
-            mTabLayout.setViewPager(mViewpager);
+            vpNewsContent.setAdapter(mNewsPagerAdapter);
+            vpNewsContent.setOffscreenPageLimit(2);
+            vpNewsContent.setCurrentItem(0, false);
+            tbChannelSlide.setViewPager(vpNewsContent);
         } else {
             showShort("数据异常");
         }
@@ -131,20 +127,20 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     public void onUpdateChannel(NewChannelEvent event) {
         if (event == null) return;
         if (event.selectedDatas != null && event.unSelectedDatas != null) {
-            mSelectedDatas = event.selectedDatas;
-            mUnSelectedDatas = event.unSelectedDatas;
-            mNewsPagerAdapter.updateChannel(mSelectedDatas);
-            mTabLayout.notifyDataSetChanged();
+            mSelectedData = event.selectedDatas;
+            mUnSelectedData = event.unSelectedDatas;
+            mNewsPagerAdapter.updateChannel(mSelectedData);
+            tbChannelSlide.notifyDataSetChanged();
             ChannelDao.saveChannels(event.allChannels);
 
             List<String> integers = new ArrayList<>();
-            for (Channel channel : mSelectedDatas) {
+            for (Channel channel : mSelectedData) {
                 integers.add(channel.getChannelName());
             }
             if (TextUtils.isEmpty(event.firstChannelName)) {
                 if (!integers.contains(selectedChannel)) {
-                    selectedChannel = mSelectedDatas.get(selectedIndex).getChannelName();
-                    mViewpager.setCurrentItem(selectedIndex, false);
+                    selectedChannel = mSelectedData.get(selectedIndex).getChannelName();
+                    vpNewsContent.setCurrentItem(selectedIndex, false);
                 } else {
                     setViewpagerPosition(integers, selectedChannel);
                 }
@@ -158,7 +154,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
     public void onSelectChannel(SelectChannelEvent selectChannelEvent) {
         if (selectChannelEvent == null) return;
         List<String> integers = new ArrayList<>();
-        for (Channel channel : mSelectedDatas) {
+        for (Channel channel : mSelectedData) {
             integers.add(channel.getChannelName());
         }
         setViewpagerPosition(integers, selectChannelEvent.channelName);
@@ -179,17 +175,17 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsCon
                 break;
             }
         }
-        mViewpager.postDelayed(new Runnable() {
+        vpNewsContent.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewpager.setCurrentItem(selectedIndex, false);
+                vpNewsContent.setCurrentItem(selectedIndex, false);
             }
         }, 100);
     }
 
-    @OnClick(R.id.iv_edit)
+    @OnClick(R.id.iv_channel_edit)
     public void onViewClicked() {
-        ChannelDialogFragment dialogFragment = ChannelDialogFragment.newInstance(mSelectedDatas, mUnSelectedDatas);
+        ChannelDialogFragment dialogFragment = ChannelDialogFragment.newInstance(mSelectedData, mUnSelectedData);
         dialogFragment.show(getChildFragmentManager(), "CHANNEL");
     }
 

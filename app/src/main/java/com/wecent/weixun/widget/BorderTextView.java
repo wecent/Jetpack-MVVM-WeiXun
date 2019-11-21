@@ -14,9 +14,9 @@ import android.util.TypedValue;
 import com.wecent.weixun.R;
 
 /**
- * 用于作为标签显示的TextView
- * 边框默认与文字颜色一致
- * Created by chuxin on 2015/9/11.
+ * desc: 用于作为标签显示的TextView，边框默认与文字颜色一致
+ * author: wecent
+ * date: 2018/9/27
  */
 public class BorderTextView extends android.support.v7.widget.AppCompatTextView {
 

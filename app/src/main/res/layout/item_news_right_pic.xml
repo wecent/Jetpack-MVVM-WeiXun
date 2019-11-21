@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/selecter_news_item"
-    android:padding="10dp">
+    android:padding="16dp">
 
     <RelativeLayout
         android:layout_width="0dp"

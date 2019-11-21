@@ -16,9 +16,9 @@ import com.wecent.weixun.utils.TimeUtils;
 import java.util.List;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/27 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/27
  */
 public class BellePicAdapter extends BaseMultiItemQuickAdapter<BelleEntity.CommentsBean, BaseViewHolder> {
 

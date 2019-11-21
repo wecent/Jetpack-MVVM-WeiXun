@@ -6,9 +6,9 @@ import com.wecent.weixun.model.response.ResultResponse;
 import com.wecent.weixun.ui.base.BaseContract;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/19
  */
 public interface NewsDetailContract {
 
@@ -26,7 +26,7 @@ public interface NewsDetailContract {
          *
          * @param comment
          */
-        void loadConmentData(CommentResponse comment);
+        void loadCommentData(CommentResponse comment);
 
     }
 
@@ -46,7 +46,7 @@ public interface NewsDetailContract {
          * @param itemId
          * @param pageNow
          */
-        void getConmentData(String groupId, String itemId, int pageNow);
+        void getCommentData(String groupId, String itemId, int pageNow);
     }
 
 }

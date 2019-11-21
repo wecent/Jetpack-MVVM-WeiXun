@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * desc: 新闻列表的适配器 .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc: 新闻列表的适配器
+ * author: wecent
+ * date: 2018/9/19
  */
 public class NewsListAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHolder> {
 

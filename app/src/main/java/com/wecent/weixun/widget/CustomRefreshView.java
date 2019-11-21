@@ -19,7 +19,12 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrUIHandler;
 import in.srain.cube.views.ptr.indicator.PtrIndicator;
 
-public class PtrWeiXunHeader extends View implements PtrUIHandler {
+/**
+ * desc: 自定义下拉刷新顶部布局
+ * author: wecent
+ * date: 2018/9/27
+ */
+public class CustomRefreshView extends View implements PtrUIHandler {
 
     /** 状态-闲置 */
     public static final byte STATE_IDLE = 0;
@@ -61,11 +66,11 @@ public class PtrWeiXunHeader extends View implements PtrUIHandler {
     private boolean refreshResult = false;
     private float currPercent;
 
-    public PtrWeiXunHeader(Context context) {
+    public CustomRefreshView(Context context) {
         this(context, null);
     }
 
-    public PtrWeiXunHeader(Context context, AttributeSet attrs) {
+    public CustomRefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -113,7 +118,7 @@ public class PtrWeiXunHeader extends View implements PtrUIHandler {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(0xFFFFFFFF);
+        canvas.drawColor(0xFFF5F5F5);
         paint.setAntiAlias(true);
 
         switch (mState) {

@@ -15,9 +15,9 @@ import me.yokeyword.fragmentation.SupportFragmentDelegate;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/2 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/2
  */
 public class SupportFragment extends RxFragment implements ISupportFragment {
 

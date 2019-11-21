@@ -14,9 +14,9 @@ import me.yokeyword.fragmentation.SupportHelper;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/2 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/2
  */
 public class SupportActivity extends RxAppCompatActivity implements ISupportActivity{
     final SupportActivityDelegate mDelegate = new SupportActivityDelegate(this);

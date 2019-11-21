@@ -1,5 +1,6 @@
 package com.wecent.weixun.widget;
 
+import android.os.Handler;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -12,7 +13,6 @@ import com.wecent.weixun.model.response.VideoPathResponse;
 import com.wecent.weixun.network.BaseObserver;
 import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.network.WeiXunApiManager;
-import com.wecent.weixun.utils.AppUtils;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public abstract class VideoPathDecoder {
             @Override
             public void onPageFinished(WebView view, String url) {
 //                webView.loadUrl("javascript:getParseParam('" + srcUrl + "')");
-                AppUtils.postTaskDelay(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         addJs(webView);

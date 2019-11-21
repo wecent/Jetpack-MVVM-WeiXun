@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.wecent.weixun.R;
 
-public class MultiStateView extends FrameLayout {
+public class  MultiStateView extends FrameLayout {
 
     private static final String TAG = MultiStateView.class.getSimpleName();
 
@@ -26,7 +26,7 @@ public class MultiStateView extends FrameLayout {
     private View mContentView;
     private int mCurrentState = STATE_CONTENT;
     private OnInflateListener mOnInflateListener;
-    private onReLoadlistener mOnReLoadlistener;
+    private OnReloadListener mOnReloadListener;
 
     public MultiStateView(Context context) {
         this(context, null);
@@ -98,8 +98,8 @@ public class MultiStateView extends FrameLayout {
                         bt.setOnClickListener(new OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                if (mOnReLoadlistener != null) {
-                                    mOnReLoadlistener.onReload();
+                                if (mOnReloadListener != null) {
+                                    mOnReloadListener.onReload();
                                     setViewState(STATE_LOADING);
                                 }
                             }
@@ -155,8 +155,8 @@ public class MultiStateView extends FrameLayout {
         mLayoutIDArray.put(status, resLayoutID);
     }
 
-    public void setonReLoadlistener(onReLoadlistener onReLoadlistener) {
-        mOnReLoadlistener = onReLoadlistener;
+    public void setOnReloadListener(OnReloadListener onReloadListener) {
+        mOnReloadListener = onReloadListener;
     }
 
     public void setOnInflateListener(OnInflateListener onInflateListener) {
@@ -192,7 +192,7 @@ public class MultiStateView extends FrameLayout {
     /**
      * 重新加载接口
      */
-    public interface onReLoadlistener {
+    public interface OnReloadListener {
         void onReload();
     }
 }

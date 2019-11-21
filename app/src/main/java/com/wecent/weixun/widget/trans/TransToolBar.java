@@ -23,9 +23,9 @@ public final class TransToolBar extends LinearLayout {
 
     private RelativeLayout mTransRoot;
     private View mTransBottom;
-    private TextView mTransTitle;
-    private TextView mTransLeft;
-    private TextView mTransRight;
+    public TextView mTransTitle;
+    public TextView mTransLeft;
+    public TextView mTransRight;
 
     public TransToolBar(Context context) {
         this(context, null);

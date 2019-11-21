@@ -19,8 +19,8 @@ import com.wecent.weixun.utils.SizeUtils;
 
 /**
  * desc:
- * author: wecent .
- * date: 2018/9/2 .
+ * author: wecent
+ * date: 2018/9/2
  */
 
 public class TransScrollView extends ScrollView {

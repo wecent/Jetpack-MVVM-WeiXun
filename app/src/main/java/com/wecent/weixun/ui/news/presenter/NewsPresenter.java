@@ -18,9 +18,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/7 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/7
  */
 public class NewsPresenter extends BasePresenter<NewsContract.View> implements NewsContract.Presenter {
 

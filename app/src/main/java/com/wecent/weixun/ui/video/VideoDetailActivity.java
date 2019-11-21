@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -28,7 +29,6 @@ import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.video.adapter.CommentAdapter;
 import com.wecent.weixun.ui.video.contract.VideoDetailContract;
 import com.wecent.weixun.ui.video.presenter.VideoDetailPresenter;
-import com.wecent.weixun.utils.AppUtils;
 import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.PowerfulRecyclerView;
 import com.wecent.weixun.widget.VideoPathDecoder;
@@ -46,9 +46,9 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 /**
- * desc: 头条新闻详情页 .
- * author: wecent .
- * date: 2018/9/19 .
+ * desc: 头条新闻详情页
+ * author: wecent
+ * date: 2018/9/19
  */
 
 public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> implements VideoDetailContract.View, BaseQuickAdapter.RequestLoadMoreListener {
@@ -107,7 +107,8 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this);
-        setStatusBarColor(Color.parseColor("#000000"));
+        setStatusBarColor(R.color.config_color_black);
+        setStatusBarDark(false);
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mSensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
@@ -168,12 +169,12 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
             @Override
             public void onDecodeSuccess(final String url) {
                 Logger.i("Video url:" + url);
-                AppUtils.postTaskSafely(new Runnable() {
+                new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.data.title);
-                        videoPlayer.seekToInAdvance = mProgress;//设置进度
-                        videoPlayer.startVideo();
+//                        videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.data.title);
+//                        videoPlayer.seekToInAdvance = mProgress;//设置进度
+//                        videoPlayer.startVideo();
                     }
                 });
             }
@@ -225,7 +226,7 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     }
 
     @Override
-    public void onRetry() {
+    public void onReload() {
 
     }
 

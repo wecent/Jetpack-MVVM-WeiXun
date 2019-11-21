@@ -23,9 +23,9 @@ import com.wecent.weixun.ui.inter.OnChannelListener;
 import java.util.List;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/10 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/10
  */
 public class ChannelAdapter extends BaseMultiItemQuickAdapter<Channel, BaseViewHolder> {
     private boolean mIsEdit;

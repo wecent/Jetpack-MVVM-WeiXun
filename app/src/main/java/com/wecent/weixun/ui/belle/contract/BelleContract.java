@@ -4,9 +4,9 @@ import com.wecent.weixun.model.entity.BelleEntity;
 import com.wecent.weixun.ui.base.BaseContract;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2018/9/27 .
+ * desc:
+ * author: wecent
+ * date: 2018/9/27
  */
 public interface BelleContract {
 

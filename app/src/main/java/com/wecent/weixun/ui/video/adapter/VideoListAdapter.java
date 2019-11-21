@@ -1,6 +1,7 @@
 package com.wecent.weixun.ui.video.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.ImageView;
@@ -11,7 +12,6 @@ import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.loader.ImageLoader;
 import com.wecent.weixun.model.entity.News;
-import com.wecent.weixun.utils.AppUtils;
 import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.VideoPathDecoder;
 
@@ -27,9 +27,9 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 /**
- * desc: .视频列表的Adapter .
- * author: wecent .
- * date: 2018/9/10 .
+ * desc: .视频列表的Adapter
+ * author: wecent
+ * date: 2018/9/10
  */
 
 public class VideoListAdapter extends BaseQuickAdapter<News,BaseViewHolder> {
@@ -89,7 +89,7 @@ public class VideoListAdapter extends BaseQuickAdapter<News,BaseViewHolder> {
                     @Override
                     public void onDecodeSuccess(final String url) {
                         Logger.i("Video url:" + url);
-                        AppUtils.postTaskSafely(new Runnable() {
+                        new Handler().post(new Runnable() {
                             @Override
                             public void run() {
                                 videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.title);
