@@ -8,8 +8,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#e6e6e6" />
+        android:layout_height="1dp"
+        android:background="@color/config_color_blank_3" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,13 +25,13 @@
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:layout_weight="5"
-            android:background="@drawable/shape_weixun_detail_comment"
+            android:background="@drawable/bg_detail_comment"
             android:drawablePadding="6dp"
             android:gravity="center|left"
             android:paddingLeft="12dp"
             android:text="写评论..."
-            android:textColor="@color/color_222222"
-            android:textSize="13sp"/>
+            android:textColor="@color/config_color_text_1"
+            android:textSize="13dp"/>
 
         <FrameLayout
             android:layout_width="0dp"
@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="5dp"
                 android:scaleType="center"
-                android:src="@drawable/ic_detail_tabbar"
+                android:src="@drawable/ic_detail_stick"
                 android:visibility="gone"/>
 
             <FrameLayout
@@ -66,7 +66,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8.5dip"
-                    android:background="@drawable/shape_weixun_detail_badge"
+                    android:background="@drawable/bg_detail_badge"
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:paddingLeft="3dp"

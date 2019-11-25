@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="5dp"
-            android:background="@drawable/shape_video_time"
+            android:background="@drawable/bg_video_time"
             android:padding="5dp">
 
             <TextView

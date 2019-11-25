@@ -10,6 +10,7 @@ import android.widget.ScrollView;
  * date: 2018/12/22
  */
 public class ObservableScrollView extends ScrollView {
+
     public interface ScrollViewListener {
 
         void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy);
@@ -34,6 +35,7 @@ public class ObservableScrollView extends ScrollView {
     public void setScrollViewListener(ScrollViewListener scrollViewListener) {
         this.scrollViewListener = scrollViewListener;
     }
+
     //重写滚动方法
     @Override
     protected void onScrollChanged(int x, int y, int oldx, int oldy) {

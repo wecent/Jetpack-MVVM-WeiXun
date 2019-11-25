@@ -1,14 +1,38 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:windowAnimationStyle">@style/AppAnimation</item>
         <item name="colorPrimary">@color/config_color_blue</item>
         <item name="colorPrimaryDark">@color/config_color_blue</item>
         <item name="colorAccent">@color/config_color_blue_disabled</item>
     </style>
 
-    <!-- 自定义仿IOS的LoadingDialog的样式 -->
+    <!-- Base application animation -->
+    <style name="AppAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_no</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_no</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <!-- Transparent activity theme -->
+    <style name="AppTheme.Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!-- No statusBar activity theme -->
+    <style name="AppTheme.NoStatusBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <!-- 仿IOS的LoadingDialog的样式 -->
     <style name="LoadingDialog" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
@@ -35,72 +59,22 @@
         <item name="android:background">@drawable/bg_loading_dialog</item>
     </style>
 
-    <style name="text_news_buttom">
-        <item name="android:textColor">#AEAEAE</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:lineSpacingExtra">0.0dip</item>
-    </style>
-
     <style name="text_news_title">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/config_color_text_1</item>
     </style>
 
-    <style name="text_white">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/color_write</item>
+    <style name="text_news_bottom">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="text_black">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/color_black</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="text_gray">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/color_666666</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="image_menu">
-        <item name="android:layout_width">24dp</item>
-        <item name="android:layout_height">24dp</item>
-    </style>
-
-    <!-- 用于开启滑动返回功能的 Activity -->
-    <style name="AppTheme.Transparent">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
-
-    <style name="AppTheme.NoBar">
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-    <style name="news_content">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?android:textColorPrimary</item>
-    </style>
-
-    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
-        <item name="android:activityOpenExitAnimation">@anim/anim_no</item>
-        <item name="android:activityCloseEnterAnimation">@anim/anim_no</item>
-        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/config_color_text_3</item>
     </style>
 
 </resources>

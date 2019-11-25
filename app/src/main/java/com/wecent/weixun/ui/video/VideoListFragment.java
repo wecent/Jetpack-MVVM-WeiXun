@@ -21,7 +21,7 @@ import com.wecent.weixun.ui.video.adapter.VideoListAdapter;
 import com.wecent.weixun.ui.video.contract.VideoListContract;
 import com.wecent.weixun.ui.video.presenter.VideoListPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
-import com.wecent.weixun.widget.PowerfulRecyclerView;
+import com.wecent.weixun.widget.SimpleRecyclerView;
 import com.wecent.weixun.widget.CustomRefreshView;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ import static fm.jiecao.jcvideoplayer_lib.JCVideoPlayer.CURRENT_STATE_PLAYING;
 public class VideoListFragment extends BaseFragment<VideoListPresenter> implements VideoListContract.View {
 
     @BindView(R.id.mRecyclerView)
-    PowerfulRecyclerView mRecyclerView;
+    SimpleRecyclerView mRecyclerView;
     @BindView(R.id.mPtrFrameLayout)
     PtrFrameLayout mPtrFrameLayout;
     @BindView(R.id.tv_toast)

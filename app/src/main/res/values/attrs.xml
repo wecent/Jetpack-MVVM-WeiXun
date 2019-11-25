@@ -24,7 +24,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="PowerfulRecyclerView">
+    <declare-styleable name="SimpleRecyclerView">
         <attr name="dividerColor" format="color"/>
         <attr name="dividerSize" format="dimension"/>
         <attr name="dividerDrawable" format="reference"/>

@@ -81,7 +81,7 @@
         <Button
             android:layout_width="64dp"
             android:layout_height="28dp"
-            android:background="@drawable/read_bt_bg"
+            android:background="@drawable/bg_news_follow"
             android:text="关注"
             android:textColor="@color/config_color_white"/>
 
@@ -93,7 +93,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.wecent.weixun.widget.PowerfulRecyclerView
+        <com.wecent.weixun.widget.SimpleRecyclerView
             android:id="@+id/rv_comment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -17,14 +17,14 @@
         android:layout_alignParentBottom="true"
         android:background="@color/config_color_white"
         android:gravity="center_horizontal"
-        android:padding="12dp">
+        android:padding="15dp">
 
         <ImageView
             android:id="@+id/iv_bottom_icon"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -38,9 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="微  讯"
-                android:textSize="20dp"
                 android:textColor="@color/color_black"
-                android:textStyle="bold"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_bottom_message"
@@ -49,8 +49,8 @@
                 android:layout_below="@+id/tv_bottom_name"
                 android:layout_centerHorizontal="true"
                 android:text="装逼使我快乐"
-                android:textSize="10dp"
-                android:textColor="@color/color_black"/>
+                android:textColor="@color/color_black"
+                android:textSize="10dp" />
 
         </RelativeLayout>
 
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:layout_gravity="center"
-            android:background="@drawable/splash_ad_ignore_bg"
+            android:background="@drawable/bg_welcome_skip"
             android:gravity="center"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"

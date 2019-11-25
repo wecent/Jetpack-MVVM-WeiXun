@@ -54,7 +54,7 @@ public class NewsListAdapter extends BaseMultiItemQuickAdapter<News, BaseViewHol
 
         //根据情况显示置顶、广告和热点的标签
         int position = baseViewHolder.getAdapterPosition();
-        String[] channelCodes = mContext.getResources().getStringArray(R.array.weixun_channel_code);
+        String[] channelCodes = mContext.getResources().getStringArray(R.array.news_channel_code);
         boolean isTop = position == 0 && mChannelCode.equals(channelCodes[0]); //属于置顶
         boolean isHot = news.hot == 1;//属于热点新闻
         boolean isAD = !TextUtils.isEmpty(news.tag) && news.tag.equals("ad");//属于广告新闻

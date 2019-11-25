@@ -58,7 +58,7 @@
             android:paddingLeft="32dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            android:background="@drawable/shape_weixun_search"
+            android:background="@drawable/bg_news_search"
             android:text="想装逼，上微讯"
             android:textSize="14dp"
             android:textColor="@color/config_color_base_9"/>

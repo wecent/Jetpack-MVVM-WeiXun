@@ -5,11 +5,11 @@ package com.wecent.weixun.widget;
  * Created by YoKeyword on 15/12/29.
  */
 public interface OnDragVHListener {
+
     /**
      * Item被选中时触发
      */
     void onItemSelected();
-
 
     /**
      * Item在拖拽结束/滑动结束后触发

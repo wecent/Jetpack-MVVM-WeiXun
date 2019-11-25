@@ -20,7 +20,7 @@ import com.wecent.weixun.ui.news.adapter.NewsListAdapter;
 import com.wecent.weixun.ui.news.contract.NewsListContract;
 import com.wecent.weixun.ui.news.presenter.NewsListPresenter;
 import com.wecent.weixun.widget.CustomLoadMoreView;
-import com.wecent.weixun.widget.PowerfulRecyclerView;
+import com.wecent.weixun.widget.SimpleRecyclerView;
 import com.wecent.weixun.widget.CustomRefreshView;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ import in.srain.cube.views.ptr.PtrHandler;
 public class NewsListFragment extends BaseFragment<NewsListPresenter> implements NewsListContract.View {
 
     @BindView(R.id.mRecyclerView)
-    PowerfulRecyclerView mRecyclerView;
+    SimpleRecyclerView mRecyclerView;
     @BindView(R.id.mPtrFrameLayout)
     PtrFrameLayout mPtrFrameLayout;
     @BindView(R.id.tv_toast)

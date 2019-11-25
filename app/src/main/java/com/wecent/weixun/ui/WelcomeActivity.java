@@ -30,7 +30,6 @@ public class WelcomeActivity extends BaseActivity {
     @BindView(R.id.tv_skip_jump)
     TextView tvSkipJump;
 
-
     CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     @Override
@@ -72,15 +71,6 @@ public class WelcomeActivity extends BaseActivity {
         }));
     }
 
-
-    @Override
-    protected void onDestroy() {
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.dispose();
-        }
-        super.onDestroy();
-    }
-
     private void launchMain() {
         if (mCompositeDisposable != null) {
             mCompositeDisposable.dispose();
@@ -103,12 +93,6 @@ public class WelcomeActivity extends BaseActivity {
                 .take(countTime + 1);
     }
 
-
-    @OnClick(R.id.fl_welcome_skip)
-    public void onViewClicked() {
-        launchMain();
-    }
-
     @Override
     public void bindData() {
 
@@ -117,6 +101,19 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     public void onReload() {
 
+    }
+
+    @OnClick(R.id.fl_welcome_skip)
+    public void onViewClicked() {
+        launchMain();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.dispose();
+        }
+        super.onDestroy();
     }
 
 }

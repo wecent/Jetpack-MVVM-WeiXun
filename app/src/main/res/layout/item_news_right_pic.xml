@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/selecter_news_item"
+    android:background="@drawable/bg_custom_shadow"
     android:padding="16dp">
 
     <RelativeLayout
@@ -45,7 +45,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_margin="5dp"
-            android:background="@drawable/shape_video_time"
+            android:background="@drawable/bg_video_time"
             android:padding="5dp"
             android:gravity="center"
             android:visibility="visible">

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_margin="8dp"
-        android:background="@drawable/delpop_tv_bg"
+        android:background="@drawable/bg_news_channel"
         android:text="推荐"
         android:textColor="@android:color/black"
         android:layout_centerInParent="true"

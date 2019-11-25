@@ -74,10 +74,10 @@ public class MainActivity extends BaseActivity {
             mFragments[3] = findFragment(MineFragment.class);
         }
 
-        bbMainTable.addItem(new BottomTab(this, R.drawable.ic_news, "新闻"))
-                .addItem(new BottomTab(this, R.drawable.ic_video, "视频"))
-                .addItem(new BottomTab(this, R.drawable.ic_jiandan, "妹子"))
-                .addItem(new BottomTab(this, R.drawable.ic_my, "我的"));
+        bbMainTable.addItem(new BottomTab(this, R.drawable.ic_tab_news, "新闻"))
+                .addItem(new BottomTab(this, R.drawable.ic_tab_video, "视频"))
+                .addItem(new BottomTab(this, R.drawable.ic_tab_belle, "妹子"))
+                .addItem(new BottomTab(this, R.drawable.ic_tab_mine, "我的"));
         bbMainTable.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {

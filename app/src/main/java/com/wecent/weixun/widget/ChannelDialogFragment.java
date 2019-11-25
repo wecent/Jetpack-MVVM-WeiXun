@@ -43,7 +43,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
     private ChannelAdapter mAdapter;
     private List<Channel> mData = new ArrayList<>();
     private List<Channel> mSelectedData;
-    private List<Channel> mUnSelectedData;
+    private List<Channel> mNormalData;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,9 +105,9 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
 
         Bundle bundle = getArguments();
         mSelectedData = (List<Channel>) bundle.getSerializable("dataSelected");
-        mUnSelectedData = (List<Channel>) bundle.getSerializable("dataUnselected");
+        mNormalData = (List<Channel>) bundle.getSerializable("dataUnselected");
         setDataType(mSelectedData, Channel.TYPE_MY_CHANNEL);
-        setDataType(mUnSelectedData, Channel.TYPE_OTHER_CHANNEL);
+        setDataType(mNormalData, Channel.TYPE_OTHER_CHANNEL);
         mData.addAll(mSelectedData);
 
         Channel morechannel = new Channel();
@@ -115,7 +115,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelLi
         morechannel.setChannelName("频道推荐");
         mData.add(morechannel);
 
-        mData.addAll(mUnSelectedData);
+        mData.addAll(mNormalData);
 
         ItemDragHelperCallBack callback = new ItemDragHelperCallBack(this);
         final ItemTouchHelper helper = new ItemTouchHelper(callback);

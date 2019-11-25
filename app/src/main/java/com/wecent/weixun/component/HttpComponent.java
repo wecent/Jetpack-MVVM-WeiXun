@@ -20,13 +20,13 @@ public interface HttpComponent {
 
     void inject(NewsFragment newsFragment);
 
-    void inject(NewsListFragment weixunFragment);
+    void inject(NewsListFragment newsListFragment);
 
     void inject(NewsDetailActivity newsDetailActivity);
 
     void inject(VideoFragment videoFragment);
 
-    void inject(VideoListFragment weixunFragment);
+    void inject(VideoListFragment videoListFragment);
 
     void inject(VideoDetailActivity videoDetailActivity);
 

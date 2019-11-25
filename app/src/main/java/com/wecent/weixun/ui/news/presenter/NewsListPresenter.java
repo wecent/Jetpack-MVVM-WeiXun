@@ -71,7 +71,7 @@ public class NewsListPresenter extends BasePresenter<NewsListContract.View> impl
                         if (!action.equals(WeiXunApiManager.ACTION_UP)) {
                             mView.loadData(newsList);
                         } else {
-                            String[] channelCodes = WXApplication.getContext().getResources().getStringArray(R.array.weixun_channel_code);
+                            String[] channelCodes = WXApplication.getContext().getResources().getStringArray(R.array.news_channel_code);
                             if (channelCode.equals(channelCodes[0])) {
                                 //如果是推荐频道
                                 newsList.remove(0);//移除第一个，因为第一个是置顶新闻，重复

@@ -1,7 +1,6 @@
 package com.wecent.weixun.ui.video;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -30,7 +29,7 @@ import com.wecent.weixun.ui.video.adapter.CommentAdapter;
 import com.wecent.weixun.ui.video.contract.VideoDetailContract;
 import com.wecent.weixun.ui.video.presenter.VideoDetailPresenter;
 import com.wecent.weixun.utils.TimeUtils;
-import com.wecent.weixun.widget.PowerfulRecyclerView;
+import com.wecent.weixun.widget.SimpleRecyclerView;
 import com.wecent.weixun.widget.VideoPathDecoder;
 
 import java.util.ArrayList;
@@ -73,7 +72,7 @@ public class VideoDetailActivity extends BaseActivity<VideoDetailPresenter> impl
     @BindView(R.id.ll_info)
     LinearLayout llInfo;
     @BindView(R.id.rv_comment)
-    PowerfulRecyclerView rvComment;
+    SimpleRecyclerView rvComment;
     @BindView(R.id.fl_content)
     FrameLayout flContent;
     @BindView(R.id.tv_comment_count)

@@ -21,33 +21,27 @@
 
         <TextView
             android:id="@+id/tv_author"
-            style="@style/text_news_buttom"
+            style="@style/text_news_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="中新网移动版"
-            android:textColor="@color/config_color_gray_6"
-            android:textSize="12sp" />
+            android:text="中新网移动版" />
 
         <TextView
             android:id="@+id/tv_comment_num"
-            style="@style/text_news_buttom"
+            style="@style/text_news_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="1020评论"
-            android:textColor="@color/config_color_gray_6"
-            android:textSize="12sp" />
+            android:text="1020评论" />
 
         <TextView
             android:id="@+id/tv_time"
-            style="@style/text_news_buttom"
+            style="@style/text_news_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="5分钟前"
-            android:textColor="@color/config_color_gray_6"
-            android:textSize="12sp" />
+            android:text="5分钟前"/>
 
     </LinearLayout>
 
@@ -61,33 +55,27 @@
 
         <TextView
             android:id="@+id/tv_author_none"
-            style="@style/text_news_buttom"
+            style="@style/text_news_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="中新网移动版"
-            android:textColor="@color/config_color_gray_6"
-            android:textSize="12sp" />
+            android:text="中新网移动版" />
 
         <TextView
             android:id="@+id/tv_comment_num_none"
-            style="@style/text_news_buttom"
+            style="@style/text_news_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="1020评论"
-            android:textColor="@color/config_color_gray_6"
-            android:textSize="12sp" />
+            android:text="1020评论"/>
 
         <TextView
             android:id="@+id/tv_time_none"
-            style="@style/text_news_buttom"
+            style="@style/text_news_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="5分钟前"
-            android:textColor="@color/config_color_gray_6"
-            android:textSize="12sp" />
+            android:text="5分钟前" />
 
     </LinearLayout>
 

@@ -41,21 +41,25 @@
 
                     <TextView
                         android:id="@+id/tv_name"
-                        style="@style/text_white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/iv_icon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="12dp"
                         android:text="wecent"
-                        android:textSize="16sp" />
+                        android:textSize="16dp"
+                        android:textColor="@color/config_color_white"/>
 
                     <TextView
                         android:id="@+id/tv_phone"
-                        style="@style/text_white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_name"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="8dp"
                         android:text="18310081820"
-                        android:textSize="14sp" />
+                        android:textSize="14dp"
+                        android:textColor="@color/config_color_white"/>
 
                 </RelativeLayout>
 
@@ -65,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -99,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -133,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -167,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -201,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -235,7 +239,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -269,7 +273,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -303,7 +307,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -337,7 +341,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -371,7 +375,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 
@@ -406,7 +410,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:background="@drawable/bg_custom_selecter"
+                android:background="@drawable/bg_custom_shadow"
                 android:clickable="true"
                 android:padding="12dp">
 

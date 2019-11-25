@@ -28,7 +28,7 @@ public class VideoPresenter extends BasePresenter<VideoContract.View> implements
     public void getChannel() {
         List<Channel> channelList;
         List<String> channelName = Arrays.asList(WXApplication.getContext().getResources()
-                .getStringArray(R.array.video_channel));
+                .getStringArray(R.array.video_channel_name));
         List<String> channelCode = Arrays.asList(WXApplication.getContext().getResources()
                 .getStringArray(R.array.video_channel_code));
         List<Channel> channels = new ArrayList<>();

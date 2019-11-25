@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="weixun_channel">
+    <string-array name="news_channel_name">
         <item>推荐</item>
         <item>热点</item>
         <item>社会</item>
@@ -23,7 +23,7 @@
         <item>美文</item>
     </string-array>
 
-    <string-array name="weixun_channel_code">
+    <string-array name="news_channel_code">
         <item></item>
         <item>news_hot</item>
         <item>news_society</item>

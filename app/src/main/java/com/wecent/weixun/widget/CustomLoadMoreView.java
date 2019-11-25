@@ -16,30 +16,32 @@ public final class CustomLoadMoreView extends LoadMoreView {
     }
 
     /**
-     * If you return to true, the data will be loaded more after all the data is loaded.
-     * If you return to false, the data will be displayed after all the getLoadEndViewId () layout
+     * 重写正在加载中布局
+     *
+     * @return 正在加载中布局
      */
-    @Override
-    public boolean isLoadEndGone() {
-        return true;
-    }
-
     @Override
     protected int getLoadingViewId() {
         return R.id.load_more_loading_view;
     }
 
+    /**
+     * 重写加载更多失败布局
+     *
+     * @return 加载更多失败布局
+     */
     @Override
     protected int getLoadFailViewId() {
-        return R.id.load_more_load_fail_view;
+        return R.id.load_more_failure_view;
     }
 
     /**
-     * IsLoadEndGone () for true, you can return 0
-     * IsLoadEndGone () for false, can not return 0
+     * 重写没有更多数据布局
+     *
+     * @return 没有更多数据布局
      */
     @Override
     protected int getLoadEndViewId() {
-        return 0;
+        return R.id.load_more_empty_view;
     }
 }

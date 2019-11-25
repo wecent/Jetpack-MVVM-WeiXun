@@ -37,9 +37,9 @@ public class NewsPresenter extends BasePresenter<NewsContract.View> implements N
         channelList = ChannelDao.getChannels();
         if (channelList.size() < 1) {
             List<String> channelName = Arrays.asList(WXApplication.getContext().getResources()
-                    .getStringArray(R.array.weixun_channel));
+                    .getStringArray(R.array.news_channel_name));
             List<String> channelCode = Arrays.asList(WXApplication.getContext().getResources()
-                    .getStringArray(R.array.weixun_channel_code));
+                    .getStringArray(R.array.news_channel_code));
             List<Channel> channels = new ArrayList<>();
 
             for (int i = 0; i < channelName.size(); i++) {

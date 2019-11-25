@@ -13,14 +13,14 @@
         android:id="@+id/v_main_line"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="@color/color_line"
+        android:background="@color/config_color_blank_3"
         android:layout_above="@+id/bb_main_table" />
 
     <com.wecent.weixun.widget.table.BottomBar
         android:id="@+id/bb_main_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
 

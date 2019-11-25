@@ -1,9 +1,7 @@
 package com.wecent.weixun.ui.mine;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,8 +14,6 @@ import com.wecent.weixun.widget.trans.TransScrollView;
 import com.wecent.weixun.widget.trans.TransToolBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * desc: 个人页面

@@ -15,12 +15,11 @@ import com.wecent.weixun.R;
 import com.wecent.weixun.utils.SizeUtils;
 
 /**
- * @author ChayChan
- * @description: 对RecyclerView进行封装
- * @date 2018/6/27  14:10
+ * desc: 轻量级的RecyclerView，可以设置分割线
+ * author: wecent
+ * date: 2018/9/7
  */
-
-public class PowerfulRecyclerView extends RecyclerView {
+public class SimpleRecyclerView extends RecyclerView {
 
     private Context mContext;
 
@@ -45,33 +44,33 @@ public class PowerfulRecyclerView extends RecyclerView {
     private Drawable mItemDrawable;
 
 
-    public PowerfulRecyclerView(Context context) {
+    public SimpleRecyclerView(Context context) {
         this(context,null);
     }
 
-    public PowerfulRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    public SimpleRecyclerView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public PowerfulRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public SimpleRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         mContext = context;
 
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PowerfulRecyclerView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SimpleRecyclerView);
 
-        mDividerColor = ta.getColor(R.styleable.PowerfulRecyclerView_dividerColor, Color.parseColor("#ffd8d8d8"));
-        mDividerSize = ta.getDimensionPixelSize(R.styleable.PowerfulRecyclerView_dividerSize, SizeUtils.dp2px(1));
+        mDividerColor = ta.getColor(R.styleable.SimpleRecyclerView_dividerColor, Color.parseColor("#ffd8d8d8"));
+        mDividerSize = ta.getDimensionPixelSize(R.styleable.SimpleRecyclerView_dividerSize, SizeUtils.dp2px(1));
 
-        mDividerDrawable = ta.getDrawable(R.styleable.PowerfulRecyclerView_dividerDrawable);
+        mDividerDrawable = ta.getDrawable(R.styleable.SimpleRecyclerView_dividerDrawable);
 
-        mUseStaggerLayout = ta.getBoolean(R.styleable.PowerfulRecyclerView_useStaggerLayout, mUseStaggerLayout);
-        mNumColumns = ta.getInt(R.styleable.PowerfulRecyclerView_numColumns,mNumColumns);
+        mUseStaggerLayout = ta.getBoolean(R.styleable.SimpleRecyclerView_useStaggerLayout, mUseStaggerLayout);
+        mNumColumns = ta.getInt(R.styleable.SimpleRecyclerView_numColumns,mNumColumns);
 
-        mOrientation = ta.getInt(R.styleable.PowerfulRecyclerView_rvOrientation, mOrientation);
+        mOrientation = ta.getInt(R.styleable.SimpleRecyclerView_rvOrientation, mOrientation);
 
-        mMarginLeft = ta.getDimensionPixelSize(R.styleable.PowerfulRecyclerView_dividerMarginLeft, 0);
-        mMarginRight = ta.getDimensionPixelSize(R.styleable.PowerfulRecyclerView_dividerMarginRight, 0);
+        mMarginLeft = ta.getDimensionPixelSize(R.styleable.SimpleRecyclerView_dividerMarginLeft, 0);
+        mMarginRight = ta.getDimensionPixelSize(R.styleable.SimpleRecyclerView_dividerMarginRight, 0);
 
         ta.recycle();
 

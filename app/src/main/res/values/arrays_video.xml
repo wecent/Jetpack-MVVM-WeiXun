@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="video_channel">
+    <string-array name="video_channel_name">
         <item>推荐</item>
         <item>音乐</item>
         <item>搞笑</item>

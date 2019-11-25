@@ -8,9 +8,10 @@ import android.util.AttributeSet;
 import com.wecent.weixun.R;
 
 /**
- * 状态视图
+ * desc: 轻量级的状态视图（可包裹任何布局）
+ * author: wecent
+ * date: 2018/9/7
  */
-
 public class SimpleMultiStateView extends MultiStateView {
 
     private static final String TAG = SimpleMultiStateView.class.getSimpleName();

@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
@@ -20,7 +19,6 @@ import com.wecent.weixun.model.entity.CommentData;
 import com.wecent.weixun.model.entity.NewsDetail;
 import com.wecent.weixun.model.response.CommentResponse;
 import com.wecent.weixun.model.response.ResultResponse;
-import com.wecent.weixun.ui.MainActivity;
 import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.news.adapter.CommentAdapter;
 import com.wecent.weixun.ui.news.contract.NewsDetailContract;
@@ -29,7 +27,7 @@ import com.wecent.weixun.utils.LogUtils;
 import com.wecent.weixun.utils.SizeUtils;
 import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.NewsDetailHeaderView;
-import com.wecent.weixun.widget.PowerfulRecyclerView;
+import com.wecent.weixun.widget.SimpleRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +56,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
     @BindView(R.id.rl_status_info)
     RelativeLayout rlStatusInfo;
     @BindView(R.id.rv_comment)
-    PowerfulRecyclerView rvComment;
+    SimpleRecyclerView rvComment;
     @BindView(R.id.tv_comment_count)
     TextView tvCommentCount;
 
@@ -104,11 +102,9 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
 
     @Override
     public void bindData() {
-        Intent intent = getIntent();
-
-        mDetailUrl = intent.getStringExtra(KEY_DETAIL_URL);
-        mGroupId = intent.getStringExtra(KEY_GROUP_ID);
-        mItemId = intent.getStringExtra(KEY_ITEM_ID);
+        mDetailUrl = getIntent().getStringExtra(KEY_DETAIL_URL);
+        mGroupId = getIntent().getStringExtra(KEY_GROUP_ID);
+        mItemId = getIntent().getStringExtra(KEY_ITEM_ID);
         mItemId = mItemId.replace("i", "");
 
         mPresenter.getNewsData(mDetailUrl);
