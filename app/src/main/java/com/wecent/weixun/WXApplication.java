@@ -19,7 +19,6 @@ import org.litepal.LitePalApplication;
 
 import java.util.Locale;
 
-import cn.bingoogolapple.swipebacklayout.BGASwipeBackManager;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.onAdaptListener;
 import me.jessyan.autosize.utils.LogUtils;
@@ -42,7 +41,6 @@ public class WXApplication extends LitePalApplication {
         super.onCreate();
         mWXApplication = this;
         mContext = getApplicationContext();
-        BGASwipeBackManager.getInstance().init(this);
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .httpModule(new HttpModule())

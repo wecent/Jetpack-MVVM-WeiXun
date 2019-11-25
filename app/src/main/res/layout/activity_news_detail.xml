@@ -22,9 +22,6 @@
 
     </com.wecent.weixun.widget.SimpleMultiStateView>
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        layout="@layout/layout_detail_bottom" />
+    <include layout="@layout/layout_detail_bottom"/>
 
 </LinearLayout>
