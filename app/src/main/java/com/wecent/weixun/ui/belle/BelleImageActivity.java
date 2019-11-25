@@ -90,11 +90,6 @@ public class BelleImageActivity extends BaseActivity {
 
         mViewPager.setAdapter(new ViewPagerAdapter(imageUrls));
         mViewPager.setCurrentItem(selectedIndex);
-        if (selectedIndex == 0){
-            mSwipeBackHelper.setSwipeBackEnable(true);
-        }else {
-            mSwipeBackHelper.setSwipeBackEnable(false);
-        }
 
         if (imageUrls.length > 1) {
             mTvImageSize.setText(selectedIndex + 1 + " / " + imageUrls.length);
@@ -107,12 +102,6 @@ public class BelleImageActivity extends BaseActivity {
                 @Override
                 public void onPageSelected(int position) {
                     mTvImageSize.setText(position + 1 + " / " + imageUrls.length);
-                    if (position == 0){
-                        mSwipeBackHelper.setSwipeBackEnable(true);
-                    }else {
-                        mSwipeBackHelper.setSwipeBackEnable(false);
-                    }
-
                 }
 
                 @Override

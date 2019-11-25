@@ -46,12 +46,6 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public boolean isSupportSwipeBack() {
-        return false;
-    }
-
-
-    @Override
     public void bindView(View view, Bundle savedInstanceState) {
         setStatusBarColor(R.color.config_color_trans);
         setStatusBarDark(true);
