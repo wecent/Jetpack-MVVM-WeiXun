@@ -23,11 +23,10 @@ import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.ui.base.BaseActivity;
-import com.wecent.weixun.utils.LogUtils;
-import com.wecent.weixun.utils.StatusBarUtils;
 import com.wecent.weixun.widget.HackyViewPager;
 import com.wecent.weixun.widget.SwipeBackLayout;
 
@@ -141,32 +140,32 @@ public class BelleImageActivity extends BaseActivity {
                         @Override
                         public void setDrawable(Drawable drawable) {
                             super.setDrawable(drawable);
-                            LogUtils.i("setDrawable: ");
+                            Logger.i("setDrawable: ");
                             // mProgressBar.setVisibility(View.VISIBLE);
                         }
 
                         @Override
                         public void onLoadStarted(@Nullable Drawable placeholder) {
                             super.onLoadStarted(placeholder);
-                            LogUtils.i("onLoadStarted: ");
+                            Logger.i("onLoadStarted: ");
                         }
 
                         @Override
                         public void onLoadFailed(@Nullable Drawable errorDrawable) {
                             super.onLoadFailed(errorDrawable);
-                            LogUtils.i("onLoadFailed: ");
+                            Logger.i("onLoadFailed: ");
                         }
 
                         @Override
                         public void onLoadCleared(@Nullable Drawable placeholder) {
                             super.onLoadCleared(placeholder);
-                            LogUtils.i("onLoadCleared: ");
+                            Logger.i("onLoadCleared: ");
                         }
 
                         @Override
                         public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
                             super.onResourceReady(resource, transition);
-                            LogUtils.i("onResourceReady: ");
+                            Logger.i("onResourceReady: ");
                         }
                     });
             container.addView(view);

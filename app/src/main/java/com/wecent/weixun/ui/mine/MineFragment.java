@@ -117,6 +117,13 @@ public class MineFragment extends BaseFragment implements OnTransClickListener, 
         scrollTrans.setTransColor(getResources().getColor(R.color.config_color_blue));
         //关联伸缩的视图
         scrollTrans.setPullZoomView(llHeader);
+
+        ivIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExpandActivity.launch(getActivity());
+            }
+        });
     }
 
     @Override

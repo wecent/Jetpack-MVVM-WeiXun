@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/config_color_blank_3">
+
+    <com.wecent.weixun.widget.trans.TransToolBar
+        android:id="@+id/tb_expand_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_expand_status">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.wecent.weixun.widget.expand.ExpandableTextView
+                android:id="@+id/tv_expand_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text=""
+                android:textSize="14dp"
+                android:textColor="@color/config_color_text_1"/>
+
+            <com.wecent.weixun.widget.expand.ExpandableTextView
+                android:id="@+id/tv_expand_letter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_expand_number"
+                android:layout_margin="15dp"
+                android:text=""
+                android:textSize="14dp"
+                android:textColor="@color/config_color_blue"/>
+
+            <com.wecent.weixun.widget.expand.StructureTextView
+                android:id="@+id/tv_normal_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_expand_letter"
+                android:layout_margin="15dp"
+                android:text=""
+                android:textSize="14dp"
+                android:textColor="@color/config_color_text_1"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_normal_letter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_normal_number"
+                android:layout_margin="15dp"
+                android:text=""
+                android:textSize="14dp"
+                android:textColor="@color/config_color_text_1"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,50 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="rightPadding" format="dimension"/>
-
-    <!-- LoadingView -->
-    <declare-styleable name="LoadingView">
-        <attr name="loading_view_size" format="dimension"/>
-        <attr name="android:color"/>
-    </declare-styleable>
-    <attr name="LoadingStyle" format="reference"/>
-
-    <declare-styleable name="SimpleMultiStateView">
-        <attr name="msv_emptyView" format="reference"/>
-        <attr name="msv_loadingView" format="reference"/>
-        <attr name="msv_failView" format="reference"/>
-        <attr name="msv_contentView" format="reference"/>
-        <attr name="msv_nonetView" format="reference"/>
-        <attr name="msv_viewState" format="enum">
-            <enum name="content" value="10001"/>
-            <enum name="loading" value="10002"/>
-            <enum name="empty" value="10003"/>
-            <enum name="fail" value="10004"/>
-            <enum name="nonet" value="10005"/>
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="SimpleRecyclerView">
-        <attr name="dividerColor" format="color"/>
-        <attr name="dividerSize" format="dimension"/>
-        <attr name="dividerDrawable" format="reference"/>
-        <attr name="useStaggerLayout" format="boolean"/>
-        <attr name="numColumns" format="integer"/>
-        <attr name="rvOrientation" format="enum">
-            <enum name="HORIZONTAL" value="0"/>
-            <enum name="VERTICAL" value="1"/>
-        </attr>
-        <attr name="dividerMarginLeft" format="dimension"/>
-        <attr name="dividerMarginRight" format="dimension"/>
-    </declare-styleable>
-
-    <declare-styleable name="BorderTextView">
-        <attr name="strokeWidth" format="dimension"/>
-        <attr name="cornerRadius" format="dimension"/>
-        <attr name="strokeColor" format="color"/>
-        <attr name="followTextColor" format="boolean"/>
-    </declare-styleable>
-
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -57,9 +12,90 @@
         <item name="colorAccent">#FFFFFF</item>
     </style>
 
+    <!-- LoadingView -->
     <style name="dialogSlideAnim" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/dialog_bottom_slide_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_bottom_slide_out</item>
     </style>
+    <attr name="rightPadding" format="dimension" />
+
+    <attr name="LoadingStyle" format="reference" />
+
+    <declare-styleable name="LoadingView">
+        <attr name="loading_view_size" format="dimension" />
+        <attr name="android:color" />
+    </declare-styleable>
+
+    -
+    <declare-styleable name="SimpleMultiStateView">
+        <attr name="msv_emptyView" format="reference" />
+        <attr name="msv_loadingView" format="reference" />
+        <attr name="msv_failView" format="reference" />
+        <attr name="msv_contentView" format="reference" />
+        <attr name="msv_nonetView" format="reference" />
+        <attr name="msv_viewState" format="enum">
+            <enum name="content" value="10001" />
+            <enum name="loading" value="10002" />
+            <enum name="empty" value="10003" />
+            <enum name="fail" value="10004" />
+            <enum name="nonet" value="10005" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SimpleRecyclerView">
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerSize" format="dimension" />
+        <attr name="dividerDrawable" format="reference" />
+        <attr name="useStaggerLayout" format="boolean" />
+        <attr name="numColumns" format="integer" />
+        <attr name="rvOrientation" format="enum">
+            <enum name="HORIZONTAL" value="0" />
+            <enum name="VERTICAL" value="1" />
+        </attr>
+        <attr name="dividerMarginLeft" format="dimension" />
+        <attr name="dividerMarginRight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableTextView">
+
+        <attr name="etv_MaxLinesOnShrink" format="reference|integer" />
+        <attr name="etv_EllipsisHint" format="reference|string" />
+        <!--default is ..-->
+        <attr name="etv_ToExpandHint" format="reference|string" />
+        <!--"to expand" hint string, default is "Expand"-->
+        <attr name="etv_ToShrinkHint" format="reference|string" />
+        <!--"to shrink" hint string, default is "Shrink"-->
+        <attr name="etv_GapToExpandHint" format="reference|string" />
+        <!--gap between "toExpandHint" and "trimmed text"-->
+        <attr name="etv_GapToShrinkHint" format="reference|string" />
+        <!--gap between "toShrinkHint" and "trimmed text"-->
+        <attr name="etv_EnableToggle" format="reference|boolean" />
+        <!--if toggle the state when click ExpandTextView-->
+        <attr name="etv_ToExpandHintShow" format="reference|boolean" />
+        <!--if show "toExpandHint"-->
+        <attr name="etv_ToShrinkHintShow" format="reference|boolean" />
+        <!--if show "toShrinkHint"-->
+        <attr name="etv_ToExpandHintColor" format="reference|color" />
+        <!--text color of "toExpandHint"-->
+        <attr name="etv_ToShrinkHintColor" format="reference|color" />
+        <!--text color of "toShrinkHint"-->
+        <attr name="etv_ToExpandHintColorBgPressed" format="reference|color" />
+        <!--background color if "toExpandHint" pressed-->
+        <attr name="etv_ToShrinkHintColorBgPressed" format="reference|color" />
+        <!--background color if "toShrinkHint" pressed-->
+        <attr name="etv_InitState" format="enum">
+            <!--init state, default is shrink-->
+            <enum name="shrink" value="0" />
+            <enum name="expand" value="1" />
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="BorderTextView">
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="strokeColor" format="color" />
+        <attr name="followTextColor" format="boolean" />
+    </declare-styleable>
 
 </resources>

@@ -48,6 +48,7 @@ public class WXApplication extends LitePalApplication {
         LitePal.initialize(this);
 
         bindAutoSize();
+        bindLogger();
     }
 
     private void bindAutoSize() {
@@ -65,6 +66,10 @@ public class WXApplication extends LitePalApplication {
                         LogUtils.d(String.format(Locale.ENGLISH, "%s onAdaptAfter!", target.getClass().getName()));
                     }
                 });
+    }
+
+    private void bindLogger() {
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     public static WXApplication getInstance() {

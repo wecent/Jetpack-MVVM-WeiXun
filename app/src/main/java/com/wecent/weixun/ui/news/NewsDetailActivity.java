@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.orhanobut.logger.Logger;
 import com.wecent.weixun.R;
 import com.wecent.weixun.component.ApplicationComponent;
 import com.wecent.weixun.component.DaggerHttpComponent;
@@ -23,7 +24,6 @@ import com.wecent.weixun.ui.base.BaseActivity;
 import com.wecent.weixun.ui.news.adapter.CommentAdapter;
 import com.wecent.weixun.ui.news.contract.NewsDetailContract;
 import com.wecent.weixun.ui.news.presenter.NewsDetailPresenter;
-import com.wecent.weixun.utils.LogUtils;
 import com.wecent.weixun.utils.SizeUtils;
 import com.wecent.weixun.utils.TimeUtils;
 import com.wecent.weixun.widget.NewsDetailHeaderView;
@@ -134,8 +134,8 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> implem
                 int itemHeight = firstVisibleChildView.getHeight();
                 int scrollHeight = (position) * itemHeight - firstVisibleChildView.getTop();
 
-                LogUtils.e("scrollHeight: " + scrollHeight);
-                LogUtils.e("llInfoBottom: " + llInfoBottom);
+                Logger.e("scrollHeight: " + scrollHeight);
+                Logger.e("llInfoBottom: " + llInfoBottom);
 
                 if (!NewsDetailActivity.this.isFinishing()) {
                     //如果滚动超过用户信息一栏，显示标题栏中的用户头像和昵称

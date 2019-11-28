@@ -14,6 +14,7 @@ import com.wecent.weixun.network.RxSchedulers;
 import com.wecent.weixun.network.WeiXunApiManager;
 import com.wecent.weixun.ui.base.BasePresenter;
 import com.wecent.weixun.ui.video.contract.VideoListContract;
+import com.wecent.weixun.utils.GsonUtils;
 import com.wecent.weixun.utils.SPUtils;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class VideoListPresenter extends BasePresenter<VideoListContract.View> im
                                 newsList.add(news);
                             }
                         }
-                        Logger.e(new Gson().toJson(newsList));
+                        Logger.e(GsonUtils.toJson(newsList));
                         if (!action.equals(WeiXunApiManager.ACTION_UP)) {
                             mView.loadData(newsList);
                         } else {

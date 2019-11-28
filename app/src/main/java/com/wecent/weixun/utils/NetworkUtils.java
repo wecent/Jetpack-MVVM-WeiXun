@@ -16,6 +16,8 @@ import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
+
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
@@ -711,7 +713,7 @@ public final class NetworkUtils {
                     public void run() {
                         NetworkType networkType = NetworkUtils.getNetworkType();
                         if (mType == networkType) return;
-                        LogUtils.e(networkType);
+                        Logger.e(networkType.name());
                         mType = networkType;
                         if (networkType == NetworkType.NETWORK_NO) {
                             for (OnNetworkStatusChangedListener listener : mListeners) {

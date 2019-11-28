@@ -77,6 +77,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".ui.mine.ExpandActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!-- 屏幕适配基数 -->
         <meta-data
