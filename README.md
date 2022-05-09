@@ -1,24 +1,18 @@
-## 简介
+## 初衷
 
-微讯是一款使用 MVP + Retrofit2 + RxJava2 + Dagger2 框架开发的新闻APP。
-包含新闻、视频、妹子和我的四个模块，项目大致功能已经完成，部分功能正在完善中。
-如果觉得对你有帮助的话请帮忙star一下，多谢啦！！！
+重学安卓之路道阻且艰，不忘初心，方得始终。
+这个项目会持续更新，大家一起交流共同进步。
 
-该项目旨在帮助开发者
+## 特色
 
-##
+1.永远相信美好的事情即将发生
+2.整洁的代码风格和标准的命名规范
+3.Jetpack MVVM框架组件的深入理解
+4.Retrofit2.0和Rxjava3.0的完美结合
+5.ConstraintLayout约束布局的最佳实践
+6.未完待续...
 
-## 演示
 
-<img src="screenshots/app.gif" width="330" hspace="20" />
 
-<img src="screenshots/news.gif" width="330" hspace="20" />
-
-<img src="screenshots/video.gif" width="330" hspace="20" />
-
-<img src="screenshots/belle.gif" width="330"  hspace="20">
-
-## 声明
-本项目新闻和视频 Api 来自今日头条解析，妹子图 Api 来自煎蛋，这个属于个人开发作品，仅供学习交流使用, 不可用于任何商业用途。
 
 
